@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala", "Lubala\Lubala.csproj", "{1156CD1E-16E5-4FDC-9CD8-D1E3C2C83801}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Tests", "Lubala.Tests\Lubala.Tests.csproj", "{3E481E04-E75E-4735-8135-F9FB51912FF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1156CD1E-16E5-4FDC-9CD8-D1E3C2C83801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1156CD1E-16E5-4FDC-9CD8-D1E3C2C83801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1156CD1E-16E5-4FDC-9CD8-D1E3C2C83801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E481E04-E75E-4735-8135-F9FB51912FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E481E04-E75E-4735-8135-F9FB51912FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E481E04-E75E-4735-8135-F9FB51912FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E481E04-E75E-4735-8135-F9FB51912FF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
