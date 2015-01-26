@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Core\IRequestMessage.cs" />
     <Compile Include="Core\Signature.cs" />
+    <Compile Include="Core\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
