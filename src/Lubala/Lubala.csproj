@@ -50,7 +50,7 @@
     <Compile Include="Core\IRequest.cs" />
     <Compile Include="Core\IResponse.cs" />
     <Compile Include="Core\HostContext.cs" />
-    <Compile Include="LubalaDaemon.cs" />
+    <Compile Include="LubalaKernal.cs" />
     <Compile Include="DaemonSetting.cs" />
     <Compile Include="IMessageHandler.cs" />
     <Compile Include="Handlers\WechatValidationHandler.cs" />
@@ -78,12 +78,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="Globals\" />
-    <Folder Include="Quotas\" />
-    <Folder Include="Exchangers\" />
-    <Folder Include="Cryptographic\" />
-    <Folder Include="Messages\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

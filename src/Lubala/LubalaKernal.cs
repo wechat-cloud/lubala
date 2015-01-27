@@ -2,10 +2,10 @@
 
 namespace Lubala
 {
-	public class LubalaDaemon
+	public class LubalaKernal
 	{
 		private DaemonSetting _setting;
-		public LubalaDaemon( DaemonSetting setting)
+		public LubalaKernal( DaemonSetting setting)
 		{
 			_setting = setting;
 		}
