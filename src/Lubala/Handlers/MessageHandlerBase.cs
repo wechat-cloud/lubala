@@ -4,7 +4,7 @@ namespace Lubala
 {
 	public abstract class MessageHandlerBase : IMessageHandler
 	{
-		public abstract void HandleCore(WechatContext context);
+		public abstract void HandleCore(IWechatContext context);
 	}
 }
 

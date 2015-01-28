@@ -40,6 +40,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IHttpChannel.cs" />
@@ -49,7 +55,6 @@
     <Compile Include="Core\EncodingMode.cs" />
     <Compile Include="Core\IWechatRequest.cs" />
     <Compile Include="Core\IWechatResponse.cs" />
-    <Compile Include="Core\WechatContext.cs" />
     <Compile Include="LubalaKernal.cs" />
     <Compile Include="DaemonSetting.cs" />
     <Compile Include="IMessageHandler.cs" />
@@ -64,8 +69,10 @@
     <Compile Include="Cryptographic\EncodingAesKey.cs" />
     <Compile Include="Core\MessageValidator.cs" />
     <Compile Include="Messages\RequestMessageBase.cs" />
-    <Compile Include="Core\RequestAuth.cs" />
     <Compile Include="Quotas\Empty.cs" />
+    <Compile Include="Core\IWechatContext.cs" />
+    <Compile Include="Core\ITypeResolver.cs" />
+    <Compile Include="Core\SignLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

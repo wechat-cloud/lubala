@@ -10,7 +10,7 @@ namespace Lubala
 			_setting = setting;
 		}
 
-		public virtual async void ExecuteOn(WechatContext hostContext){
+		public virtual async void ExecuteOn(IWechatContext hostContext){
 		}
 	}
 }

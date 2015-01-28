@@ -8,7 +8,7 @@ namespace Lubala
 		{
 		}
 
-		public override void HandleCore(WechatContext context)
+		public override void HandleCore(IWechatContext context)
 		{
 			throw new NotImplementedException();
 		}

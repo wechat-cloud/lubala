@@ -4,7 +4,7 @@ namespace Lubala
 {
 	public class RequestMessageBase
 	{
-		public RequestAuth Auth {
+		public SignLoad Auth {
 			get;
 			set;
 		}
