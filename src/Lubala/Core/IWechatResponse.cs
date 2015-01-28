@@ -2,7 +2,7 @@
 
 namespace Lubala
 {
-	public interface IRequest
+	public interface IWechatResponse
 	{
 	}
 }

@@ -13,10 +13,5 @@ namespace Lubala.Core
         {
             _signature = signature;
         }
-
-        public bool Validate(IRequestMessage request)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
