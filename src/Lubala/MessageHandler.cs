@@ -2,7 +2,7 @@
 
 namespace Lubala
 {
-	public interface IMessageHandler
+	public abstract class MessageHandler
 	{
 	}
 }

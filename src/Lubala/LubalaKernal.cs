@@ -4,8 +4,8 @@ namespace Lubala
 {
 	public class LubalaKernal
 	{
-		private DaemonSetting _setting;
-		public LubalaKernal( DaemonSetting setting)
+		private KernalSetting _setting;
+		public LubalaKernal( KernalSetting setting)
 		{
 			_setting = setting;
 		}

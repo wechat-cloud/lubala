@@ -56,16 +56,10 @@
     <Compile Include="Core\IWechatRequest.cs" />
     <Compile Include="Core\IWechatResponse.cs" />
     <Compile Include="LubalaKernal.cs" />
-    <Compile Include="DaemonSetting.cs" />
-    <Compile Include="IMessageHandler.cs" />
     <Compile Include="Handlers\WechatValidationHandler.cs" />
     <Compile Include="Handlers\MessageHandlerBase.cs" />
     <Compile Include="Core\TokenHolder.cs" />
     <Compile Include="Globals\ErrorCodeParser.cs" />
-    <Compile Include="Exchangers\RetrieverBase.cs" />
-    <Compile Include="Exchangers\TokenRetriever.cs" />
-    <Compile Include="Exchangers\WechatServerIpRetriever.cs" />
-    <Compile Include="Exchangers\MediaFileExchanger.cs" />
     <Compile Include="Cryptographic\EncodingAesKey.cs" />
     <Compile Include="Core\MessageValidator.cs" />
     <Compile Include="Messages\RequestMessageBase.cs" />
@@ -73,6 +67,12 @@
     <Compile Include="Core\IWechatContext.cs" />
     <Compile Include="Core\ITypeResolver.cs" />
     <Compile Include="Core\SignLoad.cs" />
+    <Compile Include="MessageHandler.cs" />
+    <Compile Include="KernalSetting.cs" />
+    <Compile Include="Services\MediaFileExchanger.cs" />
+    <Compile Include="Services\RetrieverBase.cs" />
+    <Compile Include="Services\TokenRetriever.cs" />
+    <Compile Include="Services\WechatServerIpRetriever.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -86,4 +86,8 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
 </Project>
