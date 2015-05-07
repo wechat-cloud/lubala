@@ -51,6 +51,7 @@
     <Compile Include="Core\IHttpChannel.cs" />
     <Compile Include="Core\Signature.cs" />
     <Compile Include="Core\Token.cs" />
+    <Compile Include="IWechatMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\EncodingMode.cs" />
     <Compile Include="Core\IWechatRequest.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Services\RetrieverBase.cs" />
     <Compile Include="Services\TokenRetriever.cs" />
     <Compile Include="Services\WechatServerIpRetriever.cs" />
+    <Compile Include="WechatContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,9 +87,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
+  <ItemGroup />
 </Project>
