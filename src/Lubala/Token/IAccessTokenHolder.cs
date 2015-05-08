@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lubala.Core
+namespace Lubala.Token
 {
-    internal class Token
+    interface IAccessTokenHolder
     {
-        public string AccessToken { get; set; }
     }
 }

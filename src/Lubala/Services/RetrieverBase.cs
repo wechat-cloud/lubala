@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lubala.Exchangers
+﻿namespace Lubala.Services
 {
 	public class RetrieverBase
 	{

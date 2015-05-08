@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lubala.Core
+namespace Lubala.Messages
 {
-    public interface IHttpChannel
+    public class MessageBase
     {
     }
 }

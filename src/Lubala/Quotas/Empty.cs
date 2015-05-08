@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lubala
+﻿namespace Lubala.Quotas
 {
 	public class Empty
 	{

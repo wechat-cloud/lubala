@@ -6,6 +6,7 @@ namespace Lubala
 	{
 		T Resolve<T>();
 		object Resolve(Type type);
+        void Register<TInterface, TImplementation>() where TImplementation : TInterface;
 	}
 }
 

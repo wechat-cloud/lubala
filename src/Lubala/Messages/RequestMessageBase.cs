@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lubala
+﻿namespace Lubala.Messages
 {
 	public class RequestMessageBase
 	{

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lubala
+﻿namespace Lubala.Globals
 {
 	public class ErrorCodeParser
 	{

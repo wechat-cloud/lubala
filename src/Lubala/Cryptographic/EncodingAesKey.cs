@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lubala
+namespace Lubala.Cryptographic
 {
 	public class EncodingAesKey
 	{
