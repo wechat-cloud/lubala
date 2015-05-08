@@ -37,20 +37,6 @@ namespace Lubala
             _handlerCollection.Add(messageHandler);
         }
 
-        public MessageBase ExecuteOn(IWechatContext wechatContext)
-        {
-            if (wechatContext == null)
-            {
-                throw new ArgumentNullException("wechatContext");
-            }
-
-            var kernelContext = new KernelContext(wechatContext, _handlerCollection);
-
-            var dispatcher = TypeResolver.Resolve<IDispatcher>();
-            var handler = dispatcher.Dispatching(kernelContext);
-            return handler.Process();
-        }
-
         public TService GetService<TService>() where TService : ILubalaService
         {
             var service = TypeResolver.Resolve<TService>();
@@ -61,6 +47,20 @@ namespace Lubala
         public MessageBase VerifyAvailability(IWechatContext wechatContext)
         {
             throw new NotImplementedException();
+        }
+
+        public MessageBase ExecuteOn(IWechatContext wechatContext)
+        {
+            if (wechatContext == null)
+            {
+                throw new ArgumentNullException("wechatContext");
+            }
+
+            var kernelContext = new KernelContext(wechatContext, Setting, _handlerCollection);
+
+            var dispatcher = TypeResolver.Resolve<IDispatcher>();
+            var handler = dispatcher.Dispatching(kernelContext);
+            return handler.Process();
         }
     }
 }

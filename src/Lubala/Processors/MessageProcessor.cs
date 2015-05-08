@@ -3,8 +3,13 @@ using Lubala.Messages;
 
 namespace Lubala.Processors
 {
-    public abstract class MessageProcessor
+    internal abstract class MessageProcessor
     {
+        public MessageProcessor(ProcessorContext processorContext)
+        {
+            
+        }
+
         internal MessageBase Process()
         {
             throw new NotImplementedException();

@@ -1,4 +1,5 @@
 ﻿using Lubala.Core;
+using Lubala.Cryptographic;
 
 namespace Lubala
 {
@@ -24,6 +25,7 @@ namespace Lubala
             TypeResolver.Register<ILubalaModuleLoader, DefaultLubalaModuleLoader>();
             TypeResolver.Register<IKernelSettingProvider, DefaultKernelSettingProvider>();
             TypeResolver.Register<IMessageValidationService, DefaultMessageValidationService>();
+            TypeResolver.Register<IMessageCryptographicService, AesKeyMessageCryptographicService>();
         }
     }
 }

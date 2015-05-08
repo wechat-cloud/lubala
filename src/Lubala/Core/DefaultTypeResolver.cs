@@ -22,5 +22,10 @@ namespace Lubala.Core
         {
             throw new NotImplementedException();
         }
+
+        public void Replace<TInterface, TImplementation>() where TImplementation : TInterface
+        {
+            throw new NotImplementedException();
+        }
     }
 }

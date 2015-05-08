@@ -10,11 +10,18 @@ namespace Lubala
 {
     internal class KernelContext
     {
-        internal KernelContext(IWechatContext wechatContext, HandlerCollection handlerCollection)
+        private KernelSetting _setting;
+        private HandlerCollection _handlerCollection;
+
+        internal KernelContext(IWechatContext wechatContext, KernelSetting setting, HandlerCollection handlerCollection)
         {
             if (wechatContext == null)
             {
                 throw new ArgumentNullException("wechatContext");
+            }
+            if (setting == null)
+            {
+                throw new ArgumentNullException("setting");
             }
             if (handlerCollection == null)
             {
@@ -22,12 +29,14 @@ namespace Lubala
             }
 
             WechatContext = wechatContext;
-            RawBody = wechatContext.RawBody;
+            Setting = setting;
             MessageHandlers = new ReadOnlyCollection<IMessageHandler>(handlerCollection);
+            RawBody = wechatContext.RawBody;
         }
 
         public IWechatContext WechatContext { get; private set; }
-        public string RawBody { get; private set; }
+        public KernelSetting Setting { get; private set; }
         public IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
+        public string RawBody { get; private set; }
     }
 }

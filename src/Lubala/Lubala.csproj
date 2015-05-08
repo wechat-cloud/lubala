@@ -47,8 +47,11 @@
     <Compile Include="Core\ILubalaModule.cs" />
     <Compile Include="Core\ILubalaModuleLoader.cs" />
     <Compile Include="Core\IMessageValidationService.cs" />
+    <Compile Include="Cryptographic\AesKeyMessageCryptographicService.cs" />
+    <Compile Include="Cryptographic\IMessageCryptographicService.cs" />
     <Compile Include="KernelService.cs" />
     <Compile Include="Core\Signature.cs" />
+    <Compile Include="Processors\ProcessorContext.cs" />
     <Compile Include="Token\Token.cs" />
     <Compile Include="Core\DefaultKernelSettingProvider.cs" />
     <Compile Include="Extensions\LubalaKernelExtension.cs" />
@@ -65,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\EncodingMode.cs" />
     <Compile Include="LubalaKernel.cs" />
-    <Compile Include="Processors\WechatValidationProcessor.cs" />
     <Compile Include="Token\TokenHolder.cs" />
     <Compile Include="Globals\ErrorCodeParser.cs" />
     <Compile Include="Cryptographic\EncodingAesKey.cs" />
