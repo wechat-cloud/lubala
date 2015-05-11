@@ -6,6 +6,6 @@ namespace Lubala
     {
         KernelSetting Setting { get; }
         void RegisterHandler(IMessageHandler messageHandler);
-        MessageBase ExecuteOn(IWechatContext wechatContext);
+        MessageBase Hanlde(IWechatContext wechatContext);
     }
 }

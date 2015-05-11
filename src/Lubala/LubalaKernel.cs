@@ -27,6 +27,13 @@ namespace Lubala
             {
                 Setting = setting;
             }
+
+            InitializeKernel();
+        }
+
+        private void InitializeKernel()
+        {
+            TypeResolver = KernelService.TypeResolver;
         }
 
         public ITypeResolver TypeResolver { get; private set; }
@@ -49,7 +56,7 @@ namespace Lubala
             throw new NotImplementedException();
         }
 
-        public MessageBase ExecuteOn(IWechatContext wechatContext)
+        public MessageBase Hanlde(IWechatContext wechatContext)
         {
             if (wechatContext == null)
             {
