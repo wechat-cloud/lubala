@@ -23,7 +23,6 @@ namespace Lubala
         private static void RegisterDefaultLubalaServices()
         {
             TypeResolver.Register<ILubalaModuleLoader, DefaultLubalaModuleLoader>();
-            TypeResolver.Register<IKernelSettingProvider, DefaultKernelSettingProvider>();
             TypeResolver.Register<IMessageValidationService, DefaultMessageValidationService>();
             TypeResolver.Register<IMessageCryptographicService, AesKeyMessageCryptographicService>();
         }

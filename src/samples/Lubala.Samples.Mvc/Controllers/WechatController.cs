@@ -8,11 +8,11 @@ namespace Lubala.Samples.Mvc.Controllers
 {
     public class WechatController : Controller
     {
-        // private LubalaKernel _kernel;
+        private LubalaKernel _kernel;
         public WechatController()
         {
-            // var setting = new KernelSetting("appId", "appSecret");
-            // _kernel = new LubalaKernel(setting);
+            var setting = new KernelSetting("appId", "appSecret");
+            _kernel = new LubalaKernel(setting);
         }
 
         [HttpGet]

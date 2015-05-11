@@ -16,24 +16,26 @@ namespace Lubala
             moduleLoader.LoadAllModules();
         }
 
-        public LubalaKernel(KernelSetting setting = null)
+        public LubalaKernel(IKernelSettingProvider kernelSettingProvider)
         {
-            if (setting == null)
+            if (kernelSettingProvider == null)
             {
-                var settingProvider = KernelService.TypeResolver.Resolve<IKernelSettingProvider>();
-                Setting = settingProvider.CreateSetting();
-            }
-            else
-            {
-                Setting = setting;
+                throw new ArgumentNullException("kernelSettingProvider");
             }
 
-            InitializeKernel();
+            var setting = kernelSettingProvider.CreateSetting();
+            InitializeKernel(setting);
         }
 
-        private void InitializeKernel()
+        public LubalaKernel(KernelSetting setting)
+        {
+            InitializeKernel(setting);
+        }
+
+        private void InitializeKernel(KernelSetting setting)
         {
             TypeResolver = KernelService.TypeResolver;
+            Setting = setting;
         }
 
         public ITypeResolver TypeResolver { get; private set; }

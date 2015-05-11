@@ -9,7 +9,7 @@ namespace Lubala.Core
     {
         public void LoadAllModules()
         {
-            throw new NotImplementedException();
+            // TODO: implementated it later.
         }
     }
 }
