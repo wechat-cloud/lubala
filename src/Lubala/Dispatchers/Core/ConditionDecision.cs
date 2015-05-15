@@ -13,16 +13,16 @@ namespace Lubala.Dispatchers.Core
             _first = second;
         }
 
-        public object Decide(object context)
+        public object Deciding(object context)
         {
             if (_first.IsSatisfied(context))
             {
-                return _first.Decide(context);
+                return _first.Deciding(context);
             }
 
             if (_second.IsSatisfied(context))
             {
-                return _second.Decide(context);
+                return _second.Deciding(context);
             }
 
             throw new InvalidOperationException("decision tree cannot handle.");

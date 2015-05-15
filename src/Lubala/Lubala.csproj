@@ -51,7 +51,9 @@
     <Compile Include="Cryptographic\IMessageCryptographicService.cs" />
     <Compile Include="Dispatchers\Contexts\MessageTypeContext.cs" />
     <Compile Include="Dispatchers\Core\ConditionDecision.cs" />
+    <Compile Include="Dispatchers\Core\DecisionBase.cs" />
     <Compile Include="Dispatchers\Core\EmptyDecision.cs" />
+    <Compile Include="Dispatchers\Core\IGeneticDecision.cs" />
     <Compile Include="Dispatchers\Transforms\JsonParsingDecision.cs" />
     <Compile Include="Dispatchers\Transforms\MessageTypeParsingDecision.cs" />
     <Compile Include="Dispatchers\Transforms\XmlDocumentParsingDecision.cs" />
@@ -59,10 +61,10 @@
     <Compile Include="Dispatchers\Core\ProducingDecision.cs" />
     <Compile Include="Dispatchers\Core\TransformDecision.cs" />
     <Compile Include="Dispatchers\DefaultDispatcher.cs" />
-    <Compile Include="Dispatchers\DefaultXmlMessageTypeRecognizer.cs" />
+    <Compile Include="Dispatchers\Transforms\DefaultXmlMessageTypeRecognizer.cs" />
     <Compile Include="Dispatchers\Core\IDecision.cs" />
-    <Compile Include="Dispatchers\IMessageTypeMapper.cs" />
-    <Compile Include="Dispatchers\IMessageTypeRecognizer.cs" />
+    <Compile Include="Dispatchers\Transforms\IMessageTypeMapper.cs" />
+    <Compile Include="Dispatchers\Transforms\IMessageTypeRecognizer.cs" />
     <Compile Include="Dispatchers\Core\SequenceDecision.cs" />
     <Compile Include="Dispatchers\Producing\EventMessageProcessorDecision.cs" />
     <Compile Include="Dispatchers\Producing\LinkMessageDecision.cs" />

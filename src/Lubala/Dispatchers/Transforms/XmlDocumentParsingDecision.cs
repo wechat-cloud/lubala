@@ -8,18 +8,13 @@ namespace Lubala.Dispatchers.Transforms
     internal class XmlDocumentParsingDecision  : TransformDecision<KernelContext, XmlMessageContext>
     {
         public XmlDocumentParsingDecision(IDecision nextDecision) : base(nextDecision) { }
-
-        protected override XmlMessageContext Transform(KernelContext context)
+        
+        public override bool IsSatisfied(KernelContext context)
         {
-            var bodyStream = context.BodyStream;
-            using (bodyStream)
-            {
-                var document = XDocument.Load(bodyStream);
-                return new XmlMessageContext(context, document);
-            }
+            throw new NotImplementedException();
         }
 
-        public override bool IsSatisfied(object context)
+        protected override XmlMessageContext Transform(KernelContext context)
         {
             throw new NotImplementedException();
         }

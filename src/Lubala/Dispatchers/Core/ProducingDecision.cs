@@ -2,21 +2,15 @@
 
 namespace Lubala.Dispatchers.Core
 {
-    public abstract class ProducingDecision<TInContext, TResult> : IDecision
+    internal abstract class ProducingDecision<TContext, TResult> : DecisionBase<TContext, TResult>
     {
-        public object Decide(object context)
+        public override TResult Deciding(TContext context)
         {
-            var convertedContext = (TInContext) context;
-            if (IsSatisfied(convertedContext))
-            {
-                var result = Produce(convertedContext);
-                return result;
-            }
-
-            throw new InvalidOperationException("decision tree cannot handle.");
+            var result = Produce(context);
+            return result;
         }
 
-        public abstract bool IsSatisfied(object context);
-        protected abstract TResult Produce(TInContext context);
+        public abstract override bool IsSatisfied(TContext context);
+        protected abstract TResult Produce(TContext context);
     }
 }

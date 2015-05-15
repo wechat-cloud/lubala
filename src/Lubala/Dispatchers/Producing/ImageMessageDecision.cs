@@ -9,9 +9,9 @@ using Lubala.Processors;
 
 namespace Lubala.Dispatchers.Producing
 {
-    class ImageMessageDecision : ProducingDecision<XmlMessageContext, MessageProcessor>
+    internal class ImageMessageDecision : ProducingDecision<XmlMessageContext, MessageProcessor>
     {
-        public override bool IsSatisfied(object context)
+        public override bool IsSatisfied(XmlMessageContext context)
         {
             throw new NotImplementedException();
         }

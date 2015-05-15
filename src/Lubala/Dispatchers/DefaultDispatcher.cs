@@ -18,7 +18,7 @@ namespace Lubala.Dispatchers
 
         public MessageProcessor Dispatching(KernelContext wechatContext)
         {
-            var decisionResult = _dicisionTree.Decide(wechatContext);
+            var decisionResult = _dicisionTree.Deciding(wechatContext);
             return (MessageProcessor) decisionResult;
         }
 

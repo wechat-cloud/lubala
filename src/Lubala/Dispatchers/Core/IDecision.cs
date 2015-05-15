@@ -2,7 +2,7 @@
 {
     public interface IDecision
     {
-        object Decide(object context);
+        object Deciding(object context);
         bool IsSatisfied(object context);
     }
 }

@@ -14,14 +14,14 @@ namespace Lubala.Dispatchers.Core
 
         public SequenceDecision(IList<IDecision> decisions) : this(decisions.ToArray()) { }
 
-        public object Decide(object context)
+        public object Deciding(object context)
         {
             for (int i = 0; i < _decisions.Length; i++)
             {
                 var decision = _decisions[i];
                 if (decision.IsSatisfied(context))
                 {
-                    return decision.Decide(context);
+                    return decision.Deciding(context);
                 }
             }
 

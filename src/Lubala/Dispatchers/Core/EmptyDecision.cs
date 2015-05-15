@@ -8,7 +8,7 @@ namespace Lubala.Dispatchers.Core
 {
     internal class EmptyDecision : IDecision
     {
-        public object Decide(object context)
+        public object Deciding(object context)
         {
             throw new InvalidOperationException("decision tree cannot handle.");
         }

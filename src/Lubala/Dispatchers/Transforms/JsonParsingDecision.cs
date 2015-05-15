@@ -11,8 +11,8 @@ namespace Lubala.Dispatchers.Transforms
     internal class JsonParsingDecision : TransformDecision<KernelContext, XmlMessageContext>
     {
         public JsonParsingDecision(IDecision nextDecision) : base(nextDecision) { }
-
-        public override bool IsSatisfied(object context)
+        
+        public override bool IsSatisfied(KernelContext context)
         {
             throw new NotImplementedException();
         }

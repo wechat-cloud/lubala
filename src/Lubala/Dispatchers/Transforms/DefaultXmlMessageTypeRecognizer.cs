@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml.Linq;
 using Lubala.Messages;
 
-namespace Lubala.Dispatchers
+namespace Lubala.Dispatchers.Transforms
 {
     internal class DefaultXmlMessageTypeRecognizer : IMessageTypeRecognizer
     {

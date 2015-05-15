@@ -11,8 +11,8 @@ namespace Lubala.Dispatchers.Transforms
     internal class MessageTypeParsingDecision : TransformDecision<XmlMessageContext, MessageTypeContext>
     {
         public MessageTypeParsingDecision(IDecision nextDecision) : base(nextDecision) { }
-
-        public override bool IsSatisfied(object context)
+        
+        public override bool IsSatisfied(XmlMessageContext context)
         {
             throw new NotImplementedException();
         }

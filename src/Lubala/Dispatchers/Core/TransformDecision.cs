@@ -1,6 +1,6 @@
 ﻿namespace Lubala.Dispatchers.Core
 {
-    public abstract class TransformDecision<TInContext, TOutContext> : IDecision
+    internal abstract class TransformDecision<TContext, TResult> : DecisionBase<TContext, TResult>
     {
         private IDecision _nextDecision;
         public TransformDecision(IDecision nextDecision)
@@ -8,14 +8,14 @@
             _nextDecision = nextDecision;
         }
 
-        public object Decide(object context)
+        public override TResult Deciding(TContext context)
         {
-            var convertedContext = (TInContext) context;
+            var convertedContext = (TContext)context;
             var processedContext = Transform(convertedContext);
-            return _nextDecision.Decide(processedContext);
+            return (TResult)_nextDecision.Deciding(processedContext);
         }
 
-        public abstract bool IsSatisfied(object context);
-        protected abstract TOutContext Transform(TInContext context);
+        public abstract override bool IsSatisfied(TContext context);
+        protected abstract TResult Transform(TContext context);
     }
 }
