@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,5 +39,6 @@ namespace Lubala
         public KernelSetting Setting { get; private set; }
         public IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
         public string RawBody { get; private set; }
+        public Stream BodyStream { get; set; }
     }
 }
