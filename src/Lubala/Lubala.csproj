@@ -49,8 +49,13 @@
     <Compile Include="Core\IMessageValidationService.cs" />
     <Compile Include="Cryptographic\AesKeyMessageCryptographicService.cs" />
     <Compile Include="Cryptographic\IMessageCryptographicService.cs" />
+    <Compile Include="Dispatchers\DefaultDispatcher.cs" />
+    <Compile Include="Dispatchers\DefaultXmlMessageTypeRecognizer.cs" />
+    <Compile Include="Dispatchers\IMessageTypeMapper.cs" />
+    <Compile Include="Dispatchers\IMessageTypeRecognizer.cs" />
     <Compile Include="KernelService.cs" />
     <Compile Include="Core\Signature.cs" />
+    <Compile Include="Messages\MessageType.cs" />
     <Compile Include="Processors\ProcessorContext.cs" />
     <Compile Include="Token\Token.cs" />
     <Compile Include="Extensions\LubalaKernelExtension.cs" />
