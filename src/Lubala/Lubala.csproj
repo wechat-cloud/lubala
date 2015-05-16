@@ -85,21 +85,32 @@
     <Compile Include="Dispatchers\Producing\TextMessageDecision.cs" />
     <Compile Include="KernelService.cs" />
     <Compile Include="Core\Signature.cs" />
+    <Compile Include="Messages\ImageMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\LinkMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\LocationMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
+    </Compile>
     <Compile Include="Messages\MessageType.cs" />
-    <Compile Include="Messages\Sources\GenerateModels.cs">
+    <Compile Include="Messages\Messages.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateModels.tt</DependentUpon>
+      <DependentUpon>Messages.tt</DependentUpon>
     </Compile>
-    <Compile Include="Messages\Sources\Sample.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sample.Context.tt</DependentUpon>
+    <Compile Include="Messages\ShortVideoMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
     </Compile>
-    <Compile Include="Messages\Sources\Sample.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sample.tt</DependentUpon>
+    <Compile Include="Messages\TextMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\VideoMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\VoiceMessage.cs">
+      <DependentUpon>Messages.txt4</DependentUpon>
     </Compile>
     <Compile Include="Processors\ProcessorContext.cs" />
     <Compile Include="Processors\TextMessageProcessor.cs" />
@@ -138,38 +149,29 @@
     <Compile Include="WechatContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Messages\Sources\ImageMessage.txt" />
-    <Content Include="Messages\Sources\ImageMessage.xml" />
-    <Content Include="Messages\Sources\LinkMessage.txt" />
-    <Content Include="Messages\Sources\LinkMessage.xml" />
-    <Content Include="Messages\Sources\LocationMessage.txt" />
-    <Content Include="Messages\Sources\LocationMessage.xml" />
-    <Content Include="Messages\Sources\ShortVideoMessage.txt" />
-    <Content Include="Messages\Sources\ShortVideoMessage.xml" />
-    <Content Include="Messages\Sources\TextMessage.txt" />
-    <Content Include="Messages\Sources\TextMessage.xml">
+    <Content Include="Messages\Raws\ImageMessage.txt" />
+    <Content Include="Messages\Raws\ImageMessage.xml" />
+    <Content Include="Messages\Raws\LinkMessage.txt" />
+    <Content Include="Messages\Raws\LinkMessage.xml" />
+    <Content Include="Messages\Raws\LocationMessage.txt" />
+    <Content Include="Messages\Raws\LocationMessage.xml" />
+    <Content Include="Messages\Raws\ShortVideoMessage.txt" />
+    <Content Include="Messages\Raws\ShortVideoMessage.xml" />
+    <Content Include="Messages\Raws\TextMessage.txt" />
+    <Content Include="Messages\Raws\TextMessage.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Messages\Sources\VideoMessage.txt" />
-    <Content Include="Messages\Sources\VideoMessage.xml" />
-    <Content Include="Messages\Sources\VoiceMessage.txt" />
-    <Content Include="Messages\Sources\VoiceMessage.xml" />
+    <Content Include="Messages\Raws\VideoMessage.txt" />
+    <Content Include="Messages\Raws\VideoMessage.xml" />
+    <Content Include="Messages\Raws\VoiceMessage.txt" />
+    <Content Include="Messages\Raws\VoiceMessage.xml" />
     <None Include="App.config" />
-    <None Include="Messages\Sources\EF.Utility.CS.ttinclude" />
-    <None Include="Messages\Sources\EF6.Utility.CS.ttinclude" />
-    <None Include="Messages\Sources\GenerateModels.tt">
+    <None Include="Messages\Messages.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateModels.cs</LastGenOutput>
+      <LastGenOutput>Messages.cs</LastGenOutput>
     </None>
-    <None Include="Messages\Sources\GenerateTSQL.Utility.ttinclude" />
-    <None Include="Messages\Sources\Sample.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Sample.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Messages\Sources\Sample.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Sample.cs</LastGenOutput>
-    </None>
+    <None Include="Messages\Messages.txt4" />
+    <None Include="Messages\TemplateFileManager.ttinclude" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

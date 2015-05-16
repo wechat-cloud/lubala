@@ -1,0 +1,149 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ output extension=".cs" #>
+<#@ include file="TemplateFileManager.ttinclude" #>
+<#
+    var manager = TemplateFileManager.Create(this);
+    
+    var rawFolder = Host.ResolvePath("Raws");
+    var txtDict = Directory.GetFiles(rawFolder, "*.txt").ToDictionary(
+        raw => Path.GetFileNameWithoutExtension(raw), 
+        raw => File.ReadAllLines(raw));
+    var xmlDict = Directory.GetFiles(rawFolder, "*.xml").ToDictionary(
+        raw => Path.GetFileNameWithoutExtension(raw), 
+        raw => {
+            using(var stream = new FileStream(raw, FileMode.Open, FileAccess.Read)) {
+                return XDocument.Load(stream);
+            }
+        });
+
+    foreach(var xml in xmlDict) {
+        ModelGenerator generator = null;
+        var fileName = Path.GetFileNameWithoutExtension(xml.Key);
+        var xmlDocument = xml.Value;
+        if(txtDict.ContainsKey(fileName)) {
+            var descriptor = new ElementDescriptor(txtDict[fileName]);
+            generator = new ModelGenerator(xmlDocument, descriptor);
+        } else {
+            generator = new ModelGenerator(xmlDocument);
+        }
+
+        manager.StartNewFile(fileName + ".cs", "Lubala", "Messages");
+        var properties = generator.GetAllProperties();
+#>
+namespace Lubala.Messages {
+    public sealed class <#=fileName#> : MessageBase {
+<#
+foreach(var property in properties) {
+    var description = generator.GetPropertyDescription(property);
+#>
+<#
+    if(!string.IsNullOrEmpty(description)) {
+#>
+        /// <summary>
+        /// <#=description#>
+        /// </summary>
+<#
+    }
+#>
+        public string <#=property#> { get; internal set; }
+<#
+}
+#>
+    } 
+}
+<#
+        manager.EndBlock();
+    }
+    manager.Process();
+#>
+<#+
+
+    public class ElementDescriptor {
+        private IDictionary<string, string> _descriptionDict = new Dictionary<string, string>();
+        public ElementDescriptor(IEnumerable<string> allLines) {
+            if(allLines.Any()) {
+                ParseDescriptionTable(allLines);
+            }
+        }
+
+        public string GetDescription(string propertyName) {
+            if(_descriptionDict.ContainsKey(propertyName)) {
+                return _descriptionDict[propertyName];
+            }
+
+            return null;
+        }
+
+        private void ParseDescriptionTable(IEnumerable<string> allLines) {
+            var enumerator = allLines.GetEnumerator();
+
+            // skip first line.
+            enumerator.MoveNext();
+
+            while(enumerator.MoveNext()) {
+                var currentLine = enumerator.Current;
+                ParseLine(currentLine);
+            }
+        }
+
+        private void ParseLine(string line) {
+            var nameBuilder = new StringBuilder();
+            var lineEnumerator = line.GetEnumerator();
+            while(lineEnumerator.MoveNext()) {
+                var currentCharacter = lineEnumerator.Current;
+                if(Char.IsWhiteSpace(currentCharacter) || currentCharacter == '\t') {
+                    break;
+                }
+                nameBuilder.Append(currentCharacter);
+            }
+            
+            var descriptionBuilder = new StringBuilder();
+            bool stopSkip = false;
+            while(lineEnumerator.MoveNext()) {
+                var currentCharacter = lineEnumerator.Current;
+                if(!stopSkip) {
+                    if(Char.IsWhiteSpace(currentCharacter) || currentCharacter == '\t') {
+                        continue;
+                    }
+                }
+                stopSkip = true;
+                descriptionBuilder.Append(currentCharacter);
+            }
+
+            var propertyName = nameBuilder.ToString();
+            var description = descriptionBuilder.ToString();
+
+            _descriptionDict.Add(propertyName, description);
+        }
+    }
+
+    public class ModelGenerator {
+        private XDocument _xmlDocument;
+        private ElementDescriptor _elementDescriptor;
+        public ModelGenerator (XDocument xmlDocument, ElementDescriptor elementDescriptor = null) {
+            _xmlDocument = xmlDocument;
+            _elementDescriptor = elementDescriptor;
+        }
+
+        public IEnumerable<string> GetAllProperties() {
+            var root = _xmlDocument.Root;
+            var elements = root.Elements();
+
+            return elements.Select(e => e.Name.LocalName);
+        }
+
+        public string GetPropertyDescription(string propertyName) {
+            if(_elementDescriptor == null) {
+                return null;
+            }
+
+            return _elementDescriptor.GetDescription(propertyName);
+        }
+    }
+#>
