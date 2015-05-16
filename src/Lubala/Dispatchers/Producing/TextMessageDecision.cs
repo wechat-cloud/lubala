@@ -9,14 +9,14 @@ using Lubala.Processors;
 
 namespace Lubala.Dispatchers.Producing
 {
-    internal class TextMessageDecision : ProducingDecision<XmlMessageContext, MessageProcessor>
+    internal class TextMessageDecision : ProducingDecision<XmlMessageContext, IMessageProcessor>
     {
         public override bool IsSatisfied(XmlMessageContext context)
         {
             throw new NotImplementedException();
         }
 
-        protected override MessageProcessor Produce(XmlMessageContext context)
+        protected override IMessageProcessor Produce(XmlMessageContext context)
         {
             throw new NotImplementedException();
         }

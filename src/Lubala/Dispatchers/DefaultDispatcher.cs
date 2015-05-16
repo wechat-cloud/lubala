@@ -16,10 +16,10 @@ namespace Lubala.Dispatchers
             _dicisionTree = BuildDefaultDecisionTree();
         }
 
-        public MessageProcessor Dispatching(KernelContext wechatContext)
+        public IMessageProcessor Dispatching(KernelContext wechatContext)
         {
             var decisionResult = _dicisionTree.Deciding(wechatContext);
-            return (MessageProcessor) decisionResult;
+            return (IMessageProcessor) decisionResult;
         }
 
         private IDecision BuildDefaultDecisionTree()

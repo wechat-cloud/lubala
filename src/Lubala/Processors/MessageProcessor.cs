@@ -3,16 +3,8 @@ using Lubala.Messages;
 
 namespace Lubala.Processors
 {
-    internal abstract class MessageProcessor
+    public interface IMessageProcessor
     {
-        public MessageProcessor(ProcessorContext processorContext)
-        {
-            
-        }
-
-        internal MessageBase Process()
-        {
-            throw new NotImplementedException();
-        }
+        MessageBase Process();
     }
 }
