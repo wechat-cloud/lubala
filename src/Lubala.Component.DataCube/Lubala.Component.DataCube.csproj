@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2C4B19E-85EC-4B30-9FDD-EA5F8E802A37}</ProjectGuid>
+    <ProjectGuid>{13C0A800-85A0-4BF9-A4A2-CD568E48617B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Lubala.Core</RootNamespace>
-    <AssemblyName>Lubala.Core</AssemblyName>
+    <RootNamespace>Lubala.Component.DataCube</RootNamespace>
+    <AssemblyName>Lubala.Component.DataCube</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

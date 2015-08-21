@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2C4B19E-85EC-4B30-9FDD-EA5F8E802A37}</ProjectGuid>
+    <ProjectGuid>{5492AEC5-62E7-474A-92CD-922CA831058A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Lubala.Core</RootNamespace>
-    <AssemblyName>Lubala.Core</AssemblyName>
+    <RootNamespace>Lubala.Component.QRCode</RootNamespace>
+    <AssemblyName>Lubala.Component.QRCode</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
