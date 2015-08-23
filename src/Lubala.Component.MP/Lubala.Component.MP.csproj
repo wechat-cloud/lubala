@@ -53,6 +53,8 @@
     <Compile Include="Messages\OutgointNewsMessage.cs" />
     <Compile Include="Messages\OutgointVideoMessage.cs" />
     <Compile Include="Messages\OutgointVoiceMessage.cs" />
+    <Compile Include="MPConfig.cs" />
+    <Compile Include="Parsers\ImageMessageParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushingHubExtension.cs" />
   </ItemGroup>

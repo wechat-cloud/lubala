@@ -2,7 +2,7 @@
 
 namespace Lubala.Component.MP.Messages
 {
-    class IncomingImageMessage : InteractableMessage, IDuplicateCheckable
+    public class IncomingImageMessage : InteractableMessage, IDuplicateCheckable
     {
         public double MsgId { get; }
     }

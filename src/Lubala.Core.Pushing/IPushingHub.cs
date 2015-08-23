@@ -7,6 +7,9 @@ namespace Lubala.Core.Pushing
 	public interface IPushingHub
 	{
 	    void Interpreting(Stream sourceStream, Stream targetStream);
-	}
+
+        IReadOnlyCollection<EventProcessor> EventProcessors { get; }
+        IReadOnlyCollection<IMessageHandler> MessageHandlers { get; }
+    }
 }
 

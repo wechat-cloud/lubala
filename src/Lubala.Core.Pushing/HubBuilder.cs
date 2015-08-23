@@ -8,13 +8,12 @@ namespace Lubala.Core.Pushing
 {
     public sealed class HubBuilder
     {
-
-        public HubBuilder RegisterEventProcessor(IEventProcessor eventProcessor)
+        public HubBuilder RegisterEventProcessor(EventProcessor eventProcessor)
         {
             throw new NotImplementedException();
         }
 
-        public HubBuilder RegisterMessageHandler(IMessageHandler messageHandler)
+        public HubBuilder RegisterMessageHandler(Type MessageType, IMessageHandler messageHandler)
         {
             throw new NotImplementedException();
         }

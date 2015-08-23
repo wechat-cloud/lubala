@@ -7,7 +7,23 @@ namespace Lubala.Core
 	{
 		public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<HubBuilder> hubBuilder)
         {
-			throw new NotImplementedException();
+            //var hub = channel.CreatePushingHub(builder =>
+            //{
+            //    builder.ConfigureMP(config =>
+            //    {
+            //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
+            //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
+            //    });
+
+            //    builder.ConfigureUserManagement(config =>
+            //    {
+            //        config.RegisterMessageHandler<BlaBlaBla>(() => { });
+            //    });
+            //});
+
+            //hub.Interpreting(Request.Stream, Response.Stream);
+
+            throw new NotImplementedException();
 		}
 	}
 }

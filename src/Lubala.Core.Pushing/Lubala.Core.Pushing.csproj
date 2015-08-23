@@ -31,10 +31,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\EventCodeAttribute.cs" />
     <Compile Include="HubBuilder.cs" />
     <Compile Include="HubContext.cs" />
-    <Compile Include="IEventProcessor.cs" />
+    <Compile Include="EventProcessor.cs" />
     <Compile Include="IMessageParser.cs" />
+    <Compile Include="MessageParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushingExtension.cs" />
     <Compile Include="IPushingHub.cs" />
@@ -48,4 +50,5 @@
       <Name>Lubala.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
 </Project>

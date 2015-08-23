@@ -9,20 +9,39 @@ namespace Lubala.Core.Pushing
 {
     internal class PushingHub : IPushingHub
     {
+        private HubContext _hubContext;
         internal PushingHub(HubContext hubContext)
         {
             if (hubContext == null)
             {
                 throw new ArgumentNullException(nameof(hubContext));
             }
-            
+
+            _hubContext = hubContext;
         }
 
-        internal IReadOnlyCollection<IEventProcessor> EventProcessors { get; private set; }
-        internal IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
+        public IReadOnlyCollection<EventProcessor> EventProcessors { get; private set; }
+        public IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
 
         public void Interpreting(Stream sourceStream, Stream targetStream)
         {
+
+            // TODO: pick up one event processor.
+            EventProcessor processor = null;
+            if (processor == null)
+            {
+                // TODO: write empty string.
+            }
+
+            var incomingMessage = processor.MessageParser.ParseMessage(sourceStream, _hubContext);
+
+            var incomingMessageType = incomingMessage.GetType();
+
+            // TODO: pick up one message handler.
+            IMessageHandler handler = null;
+            var result = handler.HandleMessage(incomingMessage);
+
+            // TODO: write result into target stream.
             throw new NotImplementedException();
         }
     }
