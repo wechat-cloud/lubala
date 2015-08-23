@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Core.Tests", "src\Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Core.Pushing.Tests", "src\Lubala.Core.Pushing.Tests\Lubala.Core.Pushing.Tests.csproj", "{65E6B42C-FDF9-4840-BD39-1783611185C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.User", "src\Lubala.Component.User\Lubala.Component.User.csproj", "{BF8C581A-0FA9-417C-8F16-028F27EC5052}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.UserManagement", "src\Lubala.Component.UserManagement\Lubala.Component.UserManagement.csproj", "{950BD068-B51F-4A80-8237-50939252091F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,10 +121,10 @@ Global
 		{65E6B42C-FDF9-4840-BD39-1783611185C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65E6B42C-FDF9-4840-BD39-1783611185C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65E6B42C-FDF9-4840-BD39-1783611185C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF8C581A-0FA9-417C-8F16-028F27EC5052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF8C581A-0FA9-417C-8F16-028F27EC5052}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF8C581A-0FA9-417C-8F16-028F27EC5052}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF8C581A-0FA9-417C-8F16-028F27EC5052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950BD068-B51F-4A80-8237-50939252091F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950BD068-B51F-4A80-8237-50939252091F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950BD068-B51F-4A80-8237-50939252091F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950BD068-B51F-4A80-8237-50939252091F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
