@@ -5,7 +5,8 @@ namespace Lubala.Core
 {
 	public static class PushingExtension
 	{
-		public static IPushingManager GetPushingManager(this ILubalaChannel channel){
+		public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<HubBuilder> hubBuilder)
+        {
 			throw new NotImplementedException();
 		}
 	}

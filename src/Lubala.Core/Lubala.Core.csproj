@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,8 +31,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EncodingMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cryptographic\IMessageCryptographicService.cs" />
+    <Compile Include="Pushing\IDuplicateCheckable.cs" />
+    <Compile Include="Pushing\InteractableMessage.cs" />
+    <Compile Include="Pushing\IPassiveResponse.cs" />
     <Compile Include="Token\ITokenSource.cs" />
     <Compile Include="LubalaChannel.cs" />
     <Compile Include="Token\DefaultTokenSource.cs" />
@@ -44,11 +48,5 @@
     <Compile Include="Pushing\OutgoingMessageBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Cryptographic\" />
-    <Folder Include="Token\" />
-    <Folder Include="Serialization\" />
-    <Folder Include="Serialization\Attributes\" />
-    <Folder Include="Pushing\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

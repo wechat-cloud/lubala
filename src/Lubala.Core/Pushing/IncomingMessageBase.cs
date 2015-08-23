@@ -2,8 +2,8 @@
 
 namespace Lubala.Core.Pushing
 {
-	public class IncomingMessageBase
-	{
+	public class IncomingMessageBase : InteractableMessage
+    {
 		public IncomingMessageBase() {
 		}
 	}

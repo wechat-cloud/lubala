@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B03A1786-BBDC-4A43-89EC-4189B38FAD29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lubala.Component.MP</RootNamespace>
+    <AssemblyName>Lubala.Component.MP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Messages\IncomingImageMessage.cs" />
+    <Compile Include="Messages\IncomingLinkMessage.cs" />
+    <Compile Include="Messages\IncomingLocationMessage.cs" />
+    <Compile Include="Messages\IncomingShortVideoMessage.cs" />
+    <Compile Include="Messages\IncomingTextMessage.cs" />
+    <Compile Include="Messages\IncomingVideoMessage.cs" />
+    <Compile Include="Messages\IncomingVoiceMessage.cs" />
+    <Compile Include="Messages\OutgoingTextMessage.cs" />
+    <Compile Include="Messages\OutgointImageMessage.cs" />
+    <Compile Include="Messages\OutgointMusicMessage.cs" />
+    <Compile Include="Messages\OutgointNewsMessage.cs" />
+    <Compile Include="Messages\OutgointVideoMessage.cs" />
+    <Compile Include="Messages\OutgointVoiceMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushingHubExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">
+      <Project>{7fd72bc4-5112-4dc1-b488-2708128aeacc}</Project>
+      <Name>Lubala.Core.Pushing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lubala.Core\Lubala.Core.csproj">
+      <Project>{c2c4b19e-85ec-4b30-9fdd-ea5f8e802a37}</Project>
+      <Name>Lubala.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
