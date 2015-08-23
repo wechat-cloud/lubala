@@ -2,7 +2,7 @@
 
 namespace Lubala.Component.MP.Messages
 {
-    class OutgointMusicMessage : InteractableMessage, IPassiveResponse
+	public class RawImageMessage : MPIncomingMessage
     {
     }
 }

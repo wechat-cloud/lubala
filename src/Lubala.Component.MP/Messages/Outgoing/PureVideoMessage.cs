@@ -2,7 +2,7 @@
 
 namespace Lubala.Component.MP.Messages
 {
-    class OutgointVideoMessage : InteractableMessage, IPassiveResponse
+	public class PureVideoMessage : MPOutgoingMessage
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Lubala.Component.MP.Messages
 {
-    class OutgointVoiceMessage : InteractableMessage, IPassiveResponse
+	public class PureVoiceMessage : MPOutgoingMessage
     {
     }
 }

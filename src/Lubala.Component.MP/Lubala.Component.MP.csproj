@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lubala.Component.MP</RootNamespace>
     <AssemblyName>Lubala.Component.MP</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,40 +39,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\IncomingImageMessage.cs" />
-    <Compile Include="Messages\IncomingLinkMessage.cs" />
-    <Compile Include="Messages\IncomingLocationMessage.cs" />
-    <Compile Include="Messages\IncomingShortVideoMessage.cs" />
-    <Compile Include="Messages\IncomingTextMessage.cs" />
-    <Compile Include="Messages\IncomingVideoMessage.cs" />
-    <Compile Include="Messages\IncomingVoiceMessage.cs" />
-    <Compile Include="Messages\OutgoingTextMessage.cs" />
-    <Compile Include="Messages\OutgointImageMessage.cs" />
-    <Compile Include="Messages\OutgointMusicMessage.cs" />
-    <Compile Include="Messages\OutgointNewsMessage.cs" />
-    <Compile Include="Messages\OutgointVideoMessage.cs" />
-    <Compile Include="Messages\OutgointVoiceMessage.cs" />
     <Compile Include="MPConfig.cs" />
     <Compile Include="Parsers\ImageMessageParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushingHubExtension.cs" />
+    <Compile Include="Messages\MPIncomingMessage.cs" />
+    <Compile Include="Messages\MPOutgoingMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureImageMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureMusicMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureNewsMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureTextMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureVideoMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureVoiceMessage.cs" />
+    <Compile Include="Messages\Incoming\RawImageMessage.cs" />
+    <Compile Include="Messages\Incoming\RawLinkMessage.cs" />
+    <Compile Include="Messages\Incoming\RawLocationMessage.cs" />
+    <Compile Include="Messages\Incoming\RawShortVideoMessage.cs" />
+    <Compile Include="Messages\Incoming\RawTextMessage.cs" />
+    <Compile Include="Messages\Incoming\RawVideoMessage.cs" />
+    <Compile Include="Messages\Incoming\RawVoiceMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">
-      <Project>{7fd72bc4-5112-4dc1-b488-2708128aeacc}</Project>
+      <Project>{7FD72BC4-5112-4DC1-B488-2708128AEACC}</Project>
       <Name>Lubala.Core.Pushing</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lubala.Core\Lubala.Core.csproj">
-      <Project>{c2c4b19e-85ec-4b30-9fdd-ea5f8e802a37}</Project>
+      <Project>{C2C4B19E-85EC-4B30-9FDD-EA5F8E802A37}</Project>
       <Name>Lubala.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Messages\Incoming\" />
+    <Folder Include="Messages\Outgoing\" />
+  </ItemGroup>
 </Project>

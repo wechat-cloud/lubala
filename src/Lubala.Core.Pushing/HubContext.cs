@@ -2,6 +2,7 @@
 {
     public class HubContext
     {
-        public EncodingMode EncodingMode { get; }
+		public ILubalaChannel Channel{ get; private set; }
+
     }
 }

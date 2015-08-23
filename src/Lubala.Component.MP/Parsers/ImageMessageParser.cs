@@ -11,9 +11,9 @@ using Lubala.Core.Pushing.Attributes;
 namespace Lubala.Component.MP.Parsers
 {
     [EventCode("image")]
-    public class ImageMessageParser : MessageParser<IncomingImageMessage>
+    public class ImageMessageParser : MessageParser<RawImageMessage>
     {
-        protected override IncomingImageMessage ParseCore(Stream sourceStream, HubContext context)
+        protected override RawImageMessage ParseCore(Stream sourceStream, HubContext context)
         {
             throw new NotImplementedException();
         }

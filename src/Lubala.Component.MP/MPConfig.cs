@@ -39,8 +39,7 @@ namespace Lubala.Component.MP
             _hubBuilder.RegisterEventProcessor(processor);
         }
 
-        public MPConfig RegisterMessageHandler<T>(IMessageHandler<T, IPassiveResponse> handler)
-            where T: InteractableMessage
+        public MPConfig RegisterMessageHandler<T>(IMessageHandler<T, MPOutgoingMessage> handler) where T: MPIncomingMessage
         {
             _hubBuilder.RegisterMessageHandler(typeof (T), handler);
             return this;

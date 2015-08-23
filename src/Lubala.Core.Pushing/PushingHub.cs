@@ -23,7 +23,7 @@ namespace Lubala.Core.Pushing
         public IReadOnlyCollection<EventProcessor> EventProcessors { get; private set; }
         public IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
 
-        public void Interpreting(Stream sourceStream, Stream targetStream)
+		public void Interpreting(Stream sourceStream, Stream targetStream, EncodingOption encodingOption = null)
         {
 
             // TODO: pick up one event processor.
@@ -33,13 +33,13 @@ namespace Lubala.Core.Pushing
                 // TODO: write empty string.
             }
 
-            var incomingMessage = processor.MessageParser.ParseMessage(sourceStream, _hubContext);
+            // var incomingMessage = processor.MessageParser.ParseMessage(sourceStream, _hubContext);
 
-            var incomingMessageType = incomingMessage.GetType();
+            // var incomingMessageType = incomingMessage.GetType();
 
             // TODO: pick up one message handler.
-            IMessageHandler handler = null;
-            var result = handler.HandleMessage(incomingMessage);
+            // IMessageHandler handler = null;
+            // var result = handler.HandleMessage(incomingMessage);
 
             // TODO: write result into target stream.
             throw new NotImplementedException();
