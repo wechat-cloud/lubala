@@ -18,10 +18,13 @@ namespace Lubala.Core.Pushing
             }
 
             _hubContext = hubContext;
+
+            EventProcessors = _hubContext.GetEventProcessors();
+            MessageHandlers = _hubContext.GetMessageHandlers();
         }
 
         public IReadOnlyCollection<EventProcessor> EventProcessors { get; private set; }
-        public IReadOnlyCollection<IMessageHandler> MessageHandlers { get; private set; }
+        public IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; private set; }
 
 		public void Interpreting(Stream sourceStream, Stream targetStream, EncodingOption encodingOption = null)
         {

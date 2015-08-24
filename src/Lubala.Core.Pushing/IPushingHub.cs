@@ -9,7 +9,7 @@ namespace Lubala.Core.Pushing
 	    void Interpreting(Stream sourceStream, Stream targetStream, EncodingOption encodingOption = null);
 
         IReadOnlyCollection<EventProcessor> EventProcessors { get; }
-        IReadOnlyCollection<IMessageHandler> MessageHandlers { get; }
+        IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; }
     }
 }
 

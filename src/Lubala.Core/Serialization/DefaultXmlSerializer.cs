@@ -15,18 +15,23 @@ namespace Lubala.Core.Serialization
         {
             var serializer = new XmlSerializer(typeof(T));
 
-            var settings = new XmlWriterSettings
+            var xmlSettings = new XmlWriterSettings
             {
                 Indent = true,
                 OmitXmlDeclaration = true,
             };
-
-            using (var writer = XmlWriter.Create(targetStream, settings))
+            using (var stream = new MemoryStream())
             {
-                var ns = new XmlSerializerNamespaces();
-                ns.Add("", "");
+                using (var writer = XmlWriter.Create(stream, xmlSettings))
+                {
+                    var ns = new XmlSerializerNamespaces();
+                    ns.Add("", "");
 
-                serializer.Serialize(writer, obj, ns);
+                    serializer.Serialize(writer, obj, ns);
+                }
+
+                stream.Position = 0;
+                stream.WriteTo(targetStream);
             }
         }
 

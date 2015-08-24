@@ -8,14 +8,27 @@ namespace Lubala.Core.Pushing
 {
     internal sealed class HubBuilder : IHubBuilder
     {
-        public IHubBuilder RegisterEventProcessor(EventProcessor eventProcessor)
+        private readonly HubContext _context;
+        public HubBuilder(ILubalaChannel channel)
         {
-            throw new NotImplementedException();
+            _context = new HubContext {Channel = channel};
         }
 
-        public IHubBuilder RegisterMessageHandler(Type MessageType, IMessageHandler messageHandler)
+        public IHubBuilder RegisterEventProcessor(EventProcessor eventProcessor)
         {
-            throw new NotImplementedException();
+            _context.EventProcessors.Add(eventProcessor);
+            return this;
+        }
+
+        public IHubBuilder RegisterMessageHandler(Type messageType, IMessageHandler messageHandler)
+        {
+            _context.MessageHandlers.Add(messageType, messageHandler);
+            return this;
+        }
+
+        public IPushingHub BuildPushingHub()
+        {
+            return new PushingHub(_context);
         }
     }
 }

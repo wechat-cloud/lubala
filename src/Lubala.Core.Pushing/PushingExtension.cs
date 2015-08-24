@@ -4,27 +4,30 @@ using Lubala.Core.Pushing;
 namespace Lubala.Core
 {
 	public static class PushingExtension
-	{
-		public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<IHubBuilder> hubBuilder)
+    {
+        //var hub = channel.CreatePushingHub(builder =>
+        //{
+        //    builder.ConfigureMP(config =>
+        //    {
+        //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
+        //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
+        //    });
+
+        //    builder.ConfigureUserManagement(config =>
+        //    {
+        //        config.RegisterMessageHandler<BlaBlaBla>(() => { });
+        //    });
+        //});
+
+        //hub.Interpreting(Request.Stream, Response.Stream);
+        public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<IHubBuilder> configurer)
         {
-            //var hub = channel.CreatePushingHub(builder =>
-            //{
-            //    builder.ConfigureMP(config =>
-            //    {
-            //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
-            //        config.RegisterMessageHandler<IncomingTextMessage>(() => { });
-            //    });
+            var builder = new HubBuilder(channel);
+		    configurer(builder);
 
-            //    builder.ConfigureUserManagement(config =>
-            //    {
-            //        config.RegisterMessageHandler<BlaBlaBla>(() => { });
-            //    });
-            //});
-
-            //hub.Interpreting(Request.Stream, Response.Stream);
-
-            throw new NotImplementedException();
-		}
+		    var pushingHub = builder.BuildPushingHub();
+		    return pushingHub;
+        }
 	}
 }
 
