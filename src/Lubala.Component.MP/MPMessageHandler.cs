@@ -18,9 +18,9 @@ namespace Lubala.Component.MP
         where TIn : MPIncomingMessage
         where TOut : MPOutgoingMessage
     {
-        internal override Type IncomingMessageType { get { return typeof (TIn); } }
+        internal override Type IncomingMessageType => typeof (TIn);
 
-        public abstract TOut HandleMessage(TIn incomingMessage);
+        protected abstract TOut HandleMessage(TIn incomingMessage);
 
         public sealed override IPassiveResponse HandleMessage(InteractableMessage incomingMessage)
         {

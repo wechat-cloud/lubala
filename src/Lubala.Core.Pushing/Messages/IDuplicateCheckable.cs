@@ -8,6 +8,6 @@ namespace Lubala.Core.Pushing
 {
     public interface IDuplicateCheckable
     {
-        double MsgId { get; }
+        long MsgId { get; }
     }
 }

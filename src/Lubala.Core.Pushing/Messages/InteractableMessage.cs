@@ -1,17 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Lubala.Core.Pushing
 {
     [Serializable]
+    [XmlRoot("xml")]
     public abstract class InteractableMessage
     {
-        public string ToUserName { get; protected set; }
-        public string FromUserName { get; protected set; }
-        public int CreateTime { get; protected set; }
-        public string MsgType { get; protected set; }
+        [XmlElement("ToUserName")]
+        public string ToUserName { get; set; }
+
+        [XmlElement("FromUserName")]
+        public string FromUserName { get; set; }
+
+        [XmlElement("CreateTime", typeof (int))]
+        public int CreateTime { get; set; }
+
+        [XmlElement("MsgType")]
+        public abstract string MsgType { get; }
     }
 }

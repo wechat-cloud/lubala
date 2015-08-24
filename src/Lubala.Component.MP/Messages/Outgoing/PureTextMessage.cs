@@ -1,8 +1,13 @@
-﻿using Lubala.Core.Pushing;
+﻿using System.Xml.Serialization;
 
 namespace Lubala.Component.MP.Messages
 {
-	public class PureTextMessage : MPOutgoingMessage
+    [XmlRoot("xml")]
+    public class PureTextMessage : MPOutgoingMessage
     {
+        [XmlElement("Content")]
+        public string Content { get; set; }
+
+        public override string MsgType => "text";
     }
 }

@@ -1,8 +1,16 @@
-﻿using Lubala.Core.Pushing;
+﻿using System.Xml.Serialization;
 
 namespace Lubala.Component.MP.Messages
 {
-	public class RawImageMessage : MPIncomingMessage
+    [XmlRoot("xml")]
+    public class RawImageMessage : MPIncomingMessage
     {
+        [XmlElement("PicUrl")]
+        public string PicUrl { get; set; }
+
+        [XmlElement("MediaId")]
+        public string MediaId { get; set; }
+
+        public override string MsgType => "image";
     }
 }

@@ -20,7 +20,8 @@ namespace Lubala.Component.MP
 
             _lightweightFunc = lightweightFunc;
         }
-        public override MPOutgoingMessage HandleMessage(TIn incomingMessage)
+
+        protected override MPOutgoingMessage HandleMessage(TIn incomingMessage)
         {
             return _lightweightFunc(incomingMessage);
         }
