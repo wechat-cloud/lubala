@@ -11,10 +11,10 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.MP
 {
-    public sealed class MPConfig
+    public sealed class MPConfigurer
     {
         private IHubBuilder _hubBuilder;
-        public MPConfig(IHubBuilder hubBuilder)
+        public MPConfigurer(IHubBuilder hubBuilder)
         {
             _hubBuilder = hubBuilder;
 
@@ -46,7 +46,7 @@ namespace Lubala.Component.MP
             _hubBuilder.RegisterEventProcessor(processor);
         }
 
-        public MPConfig RegisterMessageHandler(MPMessageHandler handler)
+        public MPConfigurer RegisterMessageHandler(MPMessageHandler handler)
         {
             var incomingMessageType = handler.IncomingMessageType;
             _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);

@@ -16,7 +16,7 @@ namespace Lubala.Component.MP.Tests
         public void TestDefaultEventProcessorsRegistered()
         {
             var moq = new Mock<IHubBuilder>();
-            var config = new MPConfig(moq.Object);
+            var config = new MPConfigurer(moq.Object);
 
             moq.Verify(x => x.RegisterMessageHandler(It.IsAny<Type>(), It.IsAny<IMessageHandler>()), Times.Never);
             moq.Verify(x => x.RegisterEventProcessor(It.IsAny<EventProcessor>()), Times.Exactly(7));
@@ -26,7 +26,7 @@ namespace Lubala.Component.MP.Tests
         public void TestMessageHandlerSetupCorrectly()
         {
             var moq = new Mock<IHubBuilder>();
-            var config = new MPConfig(moq.Object);
+            var config = new MPConfigurer(moq.Object);
 
             var moqMessageHandler = new Mock<MPMessageHandler<RawImageMessage, PureTextMessage>>();
             config.RegisterMessageHandler(moqMessageHandler.Object);

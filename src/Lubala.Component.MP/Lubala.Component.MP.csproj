@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MPConfig.cs" />
+    <Compile Include="MPConfigurer.cs" />
     <Compile Include="MPMessageHandler.cs" />
     <Compile Include="Parsers\ImageMessageParser.cs" />
     <Compile Include="Parsers\LocationMessageParser.cs" />
