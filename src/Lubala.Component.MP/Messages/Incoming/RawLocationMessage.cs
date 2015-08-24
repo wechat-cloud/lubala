@@ -6,10 +6,10 @@ namespace Lubala.Component.MP.Messages
     public class RawLocationMessage : MPIncomingMessage
     {
         [XmlElement("Location_X")]
-        public double Location_X { get; set; }
+        public double LocationX { get; set; }
 
         [XmlElement("Location_Y")]
-        public double Location_Y { get; set; }
+        public double LocationY { get; set; }
 
         [XmlElement("Scale")]
         public string Scale { get; set; }

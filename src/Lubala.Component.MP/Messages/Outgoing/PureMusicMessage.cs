@@ -11,11 +11,11 @@ namespace Lubala.Component.MP.Messages
         [XmlElement("Description")]
         public string Description { get; set; }
 
-        [XmlElement("MusicURL")]
-        public string MusicURL { get; set; }
+        [XmlElement("MusicUrl")]
+        public string MusicUrl { get; set; }
 
-        [XmlElement("HQMusicUrl")]
-        public string HQMusicUrl { get; set; }
+        [XmlElement("HighQualityMusicUrl")]
+        public string HighQualityMusicUrl { get; set; }
 
         [XmlElement("ThumbMediaId")]
         public string ThumbMediaId { get; set; }

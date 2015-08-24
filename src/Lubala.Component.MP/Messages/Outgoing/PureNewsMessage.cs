@@ -26,7 +26,7 @@ namespace Lubala.Component.MP.Messages
         public string Description { get; set; }
 
         [XmlElement("PicUrl")]
-        public string PicUrl { get; set; }
+        public string PictureUrl { get; set; }
 
         [XmlElement("Url")]
         public string Url { get; set; }

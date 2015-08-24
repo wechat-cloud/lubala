@@ -6,7 +6,7 @@ namespace Lubala.Component.MP.Messages
     public class RawImageMessage : MPIncomingMessage
     {
         [XmlElement("PicUrl")]
-        public string PicUrl { get; set; }
+        public string PictureUrl { get; set; }
 
         [XmlElement("MediaId")]
         public string MediaId { get; set; }
