@@ -1,8 +1,10 @@
 ﻿using System.Xml.Serialization;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.MP.Messages
 {
+    [EventCode("image")]
     [XmlRoot("xml")]
     public class RawShortVideoMessage : MPIncomingMessage, IAcceptPassiveMessage
     {

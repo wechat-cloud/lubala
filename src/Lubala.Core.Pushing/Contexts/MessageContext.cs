@@ -12,7 +12,6 @@ namespace Lubala.Core.Pushing
 
         public string Raw { get; internal set; }
         public string EventCode { get; internal set; }
-        public IMessageParser Parser { get; internal set; }
         public bool SupportPassiveMessage { get; internal set; }
     }
 }

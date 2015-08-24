@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using Lubala.Component.MP.Messages;
-using Lubala.Component.MP.Parsers;
 using Lubala.Core.Pushing;
 using Lubala.Core.Pushing.Attributes;
 
@@ -11,36 +10,9 @@ namespace Lubala.Component.MP
     {
         private readonly IHubBuilder _hubBuilder;
 
-        public MPConfigurer(IHubBuilder hubBuilder)
+        internal MPConfigurer(IHubBuilder hubBuilder)
         {
             _hubBuilder = hubBuilder;
-
-            RegisterDefaultEventProcessors();
-        }
-
-        private void RegisterDefaultEventProcessors()
-        {
-            RegisterEventProcessor(new ImageMessageParser());
-            RegisterEventProcessor(new LinkMessageParser());
-            RegisterEventProcessor(new LocationMessageParser());
-            RegisterEventProcessor(new ShortVideoMessageParser());
-            RegisterEventProcessor(new TextMessageParser());
-            RegisterEventProcessor(new VideoMessageParser());
-            RegisterEventProcessor(new VoiceMessageParser());
-        }
-
-        private void RegisterEventProcessor(IMessageParser parser)
-        {
-            var attr = parser.GetType().GetCustomAttribute(typeof (EventCodeAttribute));
-            if (attr == null)
-            {
-                // TODO: log
-                return;
-            }
-
-            var eventCodeAttribute = (EventCodeAttribute) attr;
-            var processor = new EventProcessor(eventCodeAttribute.EventCode, parser);
-            _hubBuilder.RegisterEventProcessor(processor);
         }
 
         public MPConfigurer RegisterMessageHandler(MPMessageHandler handler)

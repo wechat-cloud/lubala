@@ -42,15 +42,8 @@
     <Compile Include="LightweightMessageHandler.cs" />
     <Compile Include="MPConfigurer.cs" />
     <Compile Include="MPMessageHandler.cs" />
-    <Compile Include="Parsers\ImageMessageParser.cs" />
-    <Compile Include="Parsers\LocationMessageParser.cs" />
-    <Compile Include="Parsers\ShortVideoMessageParser.cs" />
-    <Compile Include="Parsers\TextMessageParser.cs" />
-    <Compile Include="Parsers\VideoMessageParser.cs" />
-    <Compile Include="Parsers\VoiceMessageParser.cs" />
-    <Compile Include="Parsers\LinkMessageParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PushingHubExtension.cs" />
+    <Compile Include="HubBuilderExtension.cs" />
     <Compile Include="Messages\MPIncomingMessage.cs" />
     <Compile Include="Messages\MPOutgoingMessage.cs" />
     <Compile Include="Messages\Outgoing\PureImageMessage.cs" />

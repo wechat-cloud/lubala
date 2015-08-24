@@ -19,23 +19,13 @@ namespace Lubala.Core.Pushing
 
             _hubContext = hubContext;
 
-            EventProcessors = _hubContext.GetEventProcessors();
             MessageHandlers = _hubContext.GetMessageHandlers();
         }
 
-        public IReadOnlyCollection<EventProcessor> EventProcessors { get; private set; }
         public IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; private set; }
 
-		public void Interpreting(Stream sourceStream, Stream targetStream, EncodingOption encodingOption = null)
+        public string Interpreting(string content, EncodingOption encodingOption = null)
         {
-
-            // TODO: pick up one event processor.
-            EventProcessor processor = null;
-            if (processor == null)
-            {
-                // TODO: write empty string.
-            }
-
             // var incomingMessage = processor.MessageParser.ParseMessage(sourceStream, _hubContext);
 
             // var incomingMessageType = incomingMessage.GetType();

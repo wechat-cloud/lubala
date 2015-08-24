@@ -8,7 +8,6 @@ namespace Lubala.Core.Pushing
 {
     public interface IHubBuilder
     {
-        IHubBuilder RegisterEventProcessor(EventProcessor eventProcessor);
         IHubBuilder RegisterMessageHandler(Type messageType, IMessageHandler messageHandler);
     }
 }

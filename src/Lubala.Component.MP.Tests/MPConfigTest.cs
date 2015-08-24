@@ -13,16 +13,6 @@ namespace Lubala.Component.MP.Tests
     public class MPConfigTest
     {
         [Fact]
-        public void TestDefaultEventProcessorsRegistered()
-        {
-            var moq = new Mock<IHubBuilder>();
-            var config = new MPConfigurer(moq.Object);
-
-            moq.Verify(x => x.RegisterMessageHandler(It.IsAny<Type>(), It.IsAny<IMessageHandler>()), Times.Never);
-            moq.Verify(x => x.RegisterEventProcessor(It.IsAny<EventProcessor>()), Times.Exactly(7));
-        }
-
-        [Fact]
         public void TestMessageHandlerSetupCorrectly()
         {
             var moq = new Mock<IHubBuilder>();
