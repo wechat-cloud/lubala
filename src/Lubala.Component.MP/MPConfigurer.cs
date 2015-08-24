@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Lubala.Component.MP.Messages;
 using Lubala.Component.MP.Parsers;
 using Lubala.Core.Pushing;
@@ -13,7 +9,8 @@ namespace Lubala.Component.MP
 {
     public sealed class MPConfigurer
     {
-        private IHubBuilder _hubBuilder;
+        private readonly IHubBuilder _hubBuilder;
+
         public MPConfigurer(IHubBuilder hubBuilder)
         {
             _hubBuilder = hubBuilder;
@@ -51,6 +48,13 @@ namespace Lubala.Component.MP
             var incomingMessageType = handler.IncomingMessageType;
             _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);
             return this;
+        }
+
+        public MPConfigurer RegisterMessageHandler<TIn>(Func<TIn, MPOutgoingMessage> lightweightFunc)
+            where TIn : MPIncomingMessage
+        {
+            var handler = new LightweightMessageHandler<TIn>(lightweightFunc);
+            return RegisterMessageHandler(handler);
         }
     }
 }

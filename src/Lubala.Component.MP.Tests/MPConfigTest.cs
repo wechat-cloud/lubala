@@ -30,8 +30,10 @@ namespace Lubala.Component.MP.Tests
 
             var moqMessageHandler = new Mock<MPMessageHandler<RawImageMessage, PureTextMessage>>();
             config.RegisterMessageHandler(moqMessageHandler.Object);
-
             moq.Verify(x => x.RegisterMessageHandler(It.IsAny<Type>(), It.IsAny<IMessageHandler>()), Times.Exactly(1));
+
+            config.RegisterMessageHandler<RawImageMessage>(image => new PureTextMessage());
+            moq.Verify(x => x.RegisterMessageHandler(It.IsAny<Type>(), It.IsAny<IMessageHandler>()), Times.Exactly(2));
         }
     }
 }
