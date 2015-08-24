@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Lubala.Component.MP.Messages;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.MP
 {
     public abstract class MPMessageHandler : IMessageHandler
     {
         internal abstract Type IncomingMessageType { get; }
-        public abstract IPassiveResponse HandleMessage(InteractableMessage incomingMessage);
+        public abstract IPassiveMessage HandleMessage(IPushingMessage incomingMessage);
     }
 
     public abstract class MPMessageHandler<TIn, TOut> : MPMessageHandler
@@ -22,11 +23,12 @@ namespace Lubala.Component.MP
 
         protected abstract TOut HandleMessage(TIn incomingMessage);
 
-        public sealed override IPassiveResponse HandleMessage(InteractableMessage incomingMessage)
+        public sealed override IPassiveMessage HandleMessage(IPushingMessage incomingMessage)
         {
-            if (incomingMessage is TIn)
+            var typedMessage = incomingMessage as TIn;
+            if (typedMessage != null)
             {
-                return HandleMessage((TIn)incomingMessage);
+                return HandleMessage(typedMessage);
             }
 
             throw new InvalidCastException("incomingMessage doesn't match required message type.");

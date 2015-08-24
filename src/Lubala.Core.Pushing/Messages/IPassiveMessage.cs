@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lubala.Core.Pushing
 {
-    public interface IPassiveResponse
+    public interface IPassiveMessage
     {
+        string Serialize();
     }
 }
