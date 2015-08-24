@@ -12,7 +12,7 @@ namespace Lubala.Component.MP
     public abstract class MPMessageHandler : IMessageHandler
     {
         internal abstract Type IncomingMessageType { get; }
-        public abstract IPassiveMessage HandleMessage(IPushingMessage incomingMessage);
+        public abstract IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context);
     }
 
     public abstract class MPMessageHandler<TIn, TOut> : MPMessageHandler
@@ -21,14 +21,14 @@ namespace Lubala.Component.MP
     {
         internal override Type IncomingMessageType => typeof (TIn);
 
-        protected abstract TOut HandleMessage(TIn incomingMessage);
+        protected abstract TOut HandleMessage(TIn incomingMessage, MessageContext context);
 
-        public sealed override IPassiveMessage HandleMessage(IPushingMessage incomingMessage)
+        public sealed override IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
         {
             var typedMessage = incomingMessage as TIn;
             if (typedMessage != null)
             {
-                return HandleMessage(typedMessage);
+                return HandleMessage(typedMessage, context);
             }
 
             throw new InvalidCastException("incomingMessage doesn't match required message type.");

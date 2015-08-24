@@ -50,7 +50,7 @@ namespace Lubala.Component.MP
             return this;
         }
 
-        public MPConfigurer RegisterMessageHandler<TIn>(Func<TIn, MPOutgoingMessage> lightweightFunc)
+        public MPConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, MPOutgoingMessage> lightweightFunc)
             where TIn : MPIncomingMessage
         {
             var handler = new LightweightMessageHandler<TIn>(lightweightFunc);

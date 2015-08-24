@@ -1,9 +1,10 @@
 ﻿using System.Xml.Serialization;
+using Lubala.Core.Pushing;
 
 namespace Lubala.Component.MP.Messages
 {
     [XmlRoot("xml")]
-    public class RawLinkMessage : MPIncomingMessage
+    public class RawLinkMessage : MPIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("Title")]
         public string Title { get; set; }

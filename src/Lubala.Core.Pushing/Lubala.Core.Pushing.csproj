@@ -36,9 +36,11 @@
     <Compile Include="Attributes\EventCodeAttribute.cs" />
     <Compile Include="Builder\IHubBuilder.cs" />
     <Compile Include="Builder\HubBuilder.cs" />
-    <Compile Include="HubContext.cs" />
+    <Compile Include="Contexts\HubContext.cs" />
+    <Compile Include="Contexts\MessageContext.cs" />
     <Compile Include="EventProcessor.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
+    <Compile Include="Messages\IAcceptPassiveMessage.cs" />
     <Compile Include="Messages\IPushingMessage.cs" />
     <Compile Include="Parsers\IMessageParser.cs" />
     <Compile Include="Parsers\MessageParser.cs" />

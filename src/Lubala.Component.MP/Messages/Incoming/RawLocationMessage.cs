@@ -1,9 +1,10 @@
 ﻿using System.Xml.Serialization;
+using Lubala.Core.Pushing;
 
 namespace Lubala.Component.MP.Messages
 {
     [XmlRoot("xml")]
-    public class RawLocationMessage : MPIncomingMessage
+    public class RawLocationMessage : MPIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("Location_X")]
         public double LocationX { get; set; }

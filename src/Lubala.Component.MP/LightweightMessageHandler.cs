@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lubala.Component.MP.Messages;
+using Lubala.Core.Pushing;
 
 namespace Lubala.Component.MP
 {
     internal class LightweightMessageHandler<TIn> : MPMessageHandler<TIn, MPOutgoingMessage>
         where TIn : MPIncomingMessage
     {
-        private readonly Func<TIn, MPOutgoingMessage> _lightweightFunc;
-        internal LightweightMessageHandler(Func<TIn, MPOutgoingMessage> lightweightFunc)
+        private readonly Func<TIn, MessageContext, MPOutgoingMessage> _lightweightFunc;
+        internal LightweightMessageHandler(Func<TIn, MessageContext, MPOutgoingMessage> lightweightFunc)
         {
             if (lightweightFunc == null)
             {
@@ -21,9 +22,9 @@ namespace Lubala.Component.MP
             _lightweightFunc = lightweightFunc;
         }
 
-        protected override MPOutgoingMessage HandleMessage(TIn incomingMessage)
+        protected override MPOutgoingMessage HandleMessage(TIn incomingMessage, MessageContext context)
         {
-            return _lightweightFunc(incomingMessage);
+            return _lightweightFunc(incomingMessage, context);
         }
     }
 }

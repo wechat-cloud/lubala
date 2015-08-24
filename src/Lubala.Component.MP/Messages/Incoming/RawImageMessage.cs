@@ -1,9 +1,10 @@
 ﻿using System.Xml.Serialization;
+using Lubala.Core.Pushing;
 
 namespace Lubala.Component.MP.Messages
 {
     [XmlRoot("xml")]
-    public class RawImageMessage : MPIncomingMessage
+    public class RawImageMessage : MPIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("PicUrl")]
         public string PictureUrl { get; set; }

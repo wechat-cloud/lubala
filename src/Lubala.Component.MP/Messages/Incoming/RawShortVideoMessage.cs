@@ -1,9 +1,10 @@
 ﻿using System.Xml.Serialization;
+using Lubala.Core.Pushing;
 
 namespace Lubala.Component.MP.Messages
 {
     [XmlRoot("xml")]
-    public class RawShortVideoMessage : MPIncomingMessage
+    public class RawShortVideoMessage : MPIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("MediaId")]
         public string MediaId { get; set; }
