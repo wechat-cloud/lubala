@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EventCodeAttribute.cs" />
+    <Compile Include="IHubBuilder.cs" />
     <Compile Include="HubBuilder.cs" />
     <Compile Include="HubContext.cs" />
     <Compile Include="EventProcessor.cs" />

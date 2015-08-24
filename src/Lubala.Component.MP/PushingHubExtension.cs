@@ -10,7 +10,7 @@ namespace Lubala.Pushing
 {
     public static class PushingHubExtension
     {
-        public static HubBuilder ConfigureMP(this HubBuilder hubBuilder)
+        public static IHubBuilder ConfigureMP(this IHubBuilder hubBuilder)
         {
             // TODO: register default mp handlers.
             return hubBuilder;

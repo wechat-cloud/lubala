@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Lubala.Core.Pushing
 {
-    public sealed class HubBuilder
+    internal sealed class HubBuilder : IHubBuilder
     {
-        public HubBuilder RegisterEventProcessor(EventProcessor eventProcessor)
+        public IHubBuilder RegisterEventProcessor(EventProcessor eventProcessor)
         {
             throw new NotImplementedException();
         }
 
-        public HubBuilder RegisterMessageHandler(Type MessageType, IMessageHandler messageHandler)
+        public IHubBuilder RegisterMessageHandler(Type MessageType, IMessageHandler messageHandler)
         {
             throw new NotImplementedException();
         }

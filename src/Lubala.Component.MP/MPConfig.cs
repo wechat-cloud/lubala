@@ -13,8 +13,8 @@ namespace Lubala.Component.MP
 {
     public sealed class MPConfig
     {
-        private HubBuilder _hubBuilder;
-        public MPConfig(HubBuilder hubBuilder)
+        private IHubBuilder _hubBuilder;
+        public MPConfig(IHubBuilder hubBuilder)
         {
             _hubBuilder = hubBuilder;
 
@@ -24,6 +24,12 @@ namespace Lubala.Component.MP
         private void RegisterDefaultEventProcessors()
         {
             RegisterEventProcessor(new ImageMessageParser());
+            RegisterEventProcessor(new LinkMessageParser());
+            RegisterEventProcessor(new LocationMessageParser());
+            RegisterEventProcessor(new ShortVideoMessageParser());
+            RegisterEventProcessor(new TextMessageParser());
+            RegisterEventProcessor(new VideoMessageParser());
+            RegisterEventProcessor(new VoiceMessageParser());
         }
 
         private void RegisterEventProcessor(IMessageParser parser)
@@ -32,6 +38,7 @@ namespace Lubala.Component.MP
             if (attr == null)
             {
                 // TODO: log
+                return;
             }
 
             var eventCodeAttribute = (EventCodeAttribute) attr;
@@ -39,9 +46,10 @@ namespace Lubala.Component.MP
             _hubBuilder.RegisterEventProcessor(processor);
         }
 
-        public MPConfig RegisterMessageHandler<T>(IMessageHandler<T, MPOutgoingMessage> handler) where T: MPIncomingMessage
+        public MPConfig RegisterMessageHandler(MPMessageHandler handler)
         {
-            _hubBuilder.RegisterMessageHandler(typeof (T), handler);
+            var incomingMessageType = handler.IncomingMessageType;
+            _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);
             return this;
         }
     }

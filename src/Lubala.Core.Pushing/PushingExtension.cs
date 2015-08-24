@@ -5,7 +5,7 @@ namespace Lubala.Core
 {
 	public static class PushingExtension
 	{
-		public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<HubBuilder> hubBuilder)
+		public static IPushingHub CreatePushingHub(this ILubalaChannel channel, Action<IHubBuilder> hubBuilder)
         {
             //var hub = channel.CreatePushingHub(builder =>
             //{

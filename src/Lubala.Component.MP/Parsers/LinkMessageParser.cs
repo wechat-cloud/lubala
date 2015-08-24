@@ -10,10 +10,10 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.MP.Parsers
 {
-    [EventCode("image")]
-    internal class ImageMessageParser : MessageParser<RawImageMessage>
+    [EventCode("link")]
+    internal class LinkMessageParser : MessageParser<RawLinkMessage>
     {
-        protected override RawImageMessage ParseCore(Stream sourceStream, HubContext context)
+        protected override RawLinkMessage ParseCore(Stream sourceStream, HubContext context)
         {
             throw new NotImplementedException();
         }
