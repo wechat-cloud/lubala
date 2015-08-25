@@ -33,13 +33,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\EventCodeAttribute.cs" />
+    <Compile Include="Attributes\MessageTypeAttribute.cs" />
     <Compile Include="Builder\IHubBuilder.cs" />
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
     <Compile Include="Messages\IAcceptPassiveMessage.cs" />
+    <Compile Include="Messages\InteactableEvent.cs" />
     <Compile Include="Messages\IPushingMessage.cs" />
     <Compile Include="Messages\IDuplicateCheckable.cs" />
     <Compile Include="Messages\InteractableMessage.cs" />

@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Core.Tests", "src\Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Core.Pushing.Tests", "src\Lubala.Core.Pushing.Tests\Lubala.Core.Pushing.Tests.csproj", "{65E6B42C-FDF9-4840-BD39-1783611185C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.MP", "src\Lubala.Component.MP\Lubala.Component.MP.csproj", "{B03A1786-BBDC-4A43-89EC-4189B38FAD29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.Mp", "src\Lubala.Component.Mp\Lubala.Component.Mp.csproj", "{B03A1786-BBDC-4A43-89EC-4189B38FAD29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.MP.Tests", "src\Lubala.Component.MP.Tests\Lubala.Component.MP.Tests.csproj", "{68EE5C2C-BFDB-44BF-BE6C-C82C839D7297}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.Mp.Tests", "src\Lubala.Component.Mp.Tests\Lubala.Component.Mp.Tests.csproj", "{68EE5C2C-BFDB-44BF-BE6C-C82C839D7297}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

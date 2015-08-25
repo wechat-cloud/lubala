@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Lubala.Component.MP.Messages;
+using Lubala.Component.Mp.Messages;
 using Lubala.Core.Serialization;
 using Xunit;
 

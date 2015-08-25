@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Core.Pushing.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.UserManagement", "src\Lubala.Component.UserManagement\Lubala.Component.UserManagement.csproj", "{950BD068-B51F-4A80-8237-50939252091F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.MP", "src\Lubala.Component.MP\Lubala.Component.MP.csproj", "{B03A1786-BBDC-4A43-89EC-4189B38FAD29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lubala.Component.Mp", "src\Lubala.Component.Mp\Lubala.Component.Mp.csproj", "{B03A1786-BBDC-4A43-89EC-4189B38FAD29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

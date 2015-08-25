@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B03A1786-BBDC-4A43-89EC-4189B38FAD29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lubala.Component.Mp</RootNamespace>
+    <AssemblyName>Lubala.Component.MP</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LightweightMessageHandler.cs" />
+    <Compile Include="Messages\Incoming\RawClickEvent.cs" />
+    <Compile Include="Messages\Incoming\RawLocationEvent.cs" />
+    <Compile Include="Messages\Incoming\RawScanEvent.cs" />
+    <Compile Include="Messages\Incoming\RawSubscribeEvent.cs" />
+    <Compile Include="Messages\Incoming\RawUnsubscribeEvent.cs" />
+    <Compile Include="MPConfigurer.cs" />
+    <Compile Include="MPMessageHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HubBuilderExtension.cs" />
+    <Compile Include="Messages\MPIncomingMessage.cs" />
+    <Compile Include="Messages\MPOutgoingMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureImageMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureMusicMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureNewsMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureTextMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureVideoMessage.cs" />
+    <Compile Include="Messages\Outgoing\PureVoiceMessage.cs" />
+    <Compile Include="Messages\Incoming\RawImageMessage.cs" />
+    <Compile Include="Messages\Incoming\RawLinkMessage.cs" />
+    <Compile Include="Messages\Incoming\RawLocationMessage.cs" />
+    <Compile Include="Messages\Incoming\RawShortVideoMessage.cs" />
+    <Compile Include="Messages\Incoming\RawTextMessage.cs" />
+    <Compile Include="Messages\Incoming\RawVideoMessage.cs" />
+    <Compile Include="Messages\Incoming\RawVoiceMessage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">
+      <Project>{7FD72BC4-5112-4DC1-B488-2708128AEACC}</Project>
+      <Name>Lubala.Core.Pushing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lubala.Core\Lubala.Core.csproj">
+      <Project>{C2C4B19E-85EC-4B30-9FDD-EA5F8E802A37}</Project>
+      <Name>Lubala.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
+</Project>
