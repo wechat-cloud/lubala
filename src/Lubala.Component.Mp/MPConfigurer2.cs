@@ -34,15 +34,15 @@ namespace Lubala.Component.Mp
             _hubBuilder.RegisterMessageType<RawUnsubscribeEvent>();
         }
 
-        public MpConfigurer RegisterMessageHandler(MPMessageHandler handler)
+        public MpConfigurer RegisterMessageHandler(MpMessageHandler handler)
         {
             var incomingMessageType = handler.IncomingMessageType;
             _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);
             return this;
         }
 
-        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, MPOutgoingMessage> lightweightFunc)
-            where TIn : MPIncomingMessage
+        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, MpOutgoingMessage> lightweightFunc)
+            where TIn : MpIncomingMessage
         {
             var handler = new LightweightMessageHandler<TIn>(lightweightFunc);
             return RegisterMessageHandler(handler);

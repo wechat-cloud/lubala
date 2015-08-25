@@ -6,7 +6,7 @@ namespace Lubala.Component.Mp.Messages
 {
     [MessageType("image")]
     [XmlRoot("xml")]
-    public class RawShortVideoMessage : MPIncomingMessage, IAcceptPassiveMessage
+    public class RawShortVideoMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("MediaId")]
         public string MediaId { get; set; }

@@ -6,7 +6,7 @@ namespace Lubala.Component.Mp.Messages
 {
     [MessageType("image")]
     [XmlRoot("xml")]
-    public class RawLocationMessage : MPIncomingMessage, IAcceptPassiveMessage
+    public class RawLocationMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("Location_X")]
         public double LocationX { get; set; }

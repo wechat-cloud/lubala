@@ -8,11 +8,11 @@ using Lubala.Core.Pushing;
 
 namespace Lubala.Component.Mp
 {
-    internal class LightweightMessageHandler<TIn> : MPMessageHandler<TIn, MPOutgoingMessage>
-        where TIn : MPIncomingMessage
+    internal class LightweightMessageHandler<TIn> : MPMessageHandler<TIn, MpOutgoingMessage>
+        where TIn : MpIncomingMessage
     {
-        private readonly Func<TIn, MessageContext, MPOutgoingMessage> _lightweightFunc;
-        internal LightweightMessageHandler(Func<TIn, MessageContext, MPOutgoingMessage> lightweightFunc)
+        private readonly Func<TIn, MessageContext, MpOutgoingMessage> _lightweightFunc;
+        internal LightweightMessageHandler(Func<TIn, MessageContext, MpOutgoingMessage> lightweightFunc)
         {
             if (lightweightFunc == null)
             {
@@ -22,7 +22,7 @@ namespace Lubala.Component.Mp
             _lightweightFunc = lightweightFunc;
         }
 
-        protected override MPOutgoingMessage HandleMessage(TIn incomingMessage, MessageContext context)
+        protected override MpOutgoingMessage HandleMessage(TIn incomingMessage, MessageContext context)
         {
             return _lightweightFunc(incomingMessage, context);
         }

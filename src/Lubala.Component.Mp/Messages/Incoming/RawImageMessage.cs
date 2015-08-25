@@ -6,7 +6,7 @@ namespace Lubala.Component.Mp.Messages
 {
     [MessageType("image")]
     [XmlRoot("xml")]
-    public class RawImageMessage : MPIncomingMessage, IAcceptPassiveMessage
+    public class RawImageMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("PicUrl")]
         public string PictureUrl { get; set; }

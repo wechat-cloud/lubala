@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Lubala.Component.Mp.Tests
 {
-    public class MPConfigTest
+    public class MpConfigTest
     {
         [Fact]
         public void TestMessageHandlerSetupCorrectly()

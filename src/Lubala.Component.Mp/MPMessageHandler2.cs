@@ -9,15 +9,15 @@ using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp
 {
-    public abstract class MPMessageHandler : IMessageHandler
+    public abstract class MpMessageHandler : IMessageHandler
     {
         internal abstract Type IncomingMessageType { get; }
         public abstract IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context);
     }
 
-    public abstract class MPMessageHandler<TIn, TOut> : MPMessageHandler
-        where TIn : MPIncomingMessage
-        where TOut : MPOutgoingMessage
+    public abstract class MPMessageHandler<TIn, TOut> : MpMessageHandler
+        where TIn : MpIncomingMessage
+        where TOut : MpOutgoingMessage
     {
         internal override Type IncomingMessageType => typeof (TIn);
 

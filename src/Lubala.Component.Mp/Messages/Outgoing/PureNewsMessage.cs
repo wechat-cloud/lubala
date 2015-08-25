@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureNewsMessage : MPOutgoingMessage
+    public class PureNewsMessage : MpOutgoingMessage
     {
         public PureNewsMessage()
         {

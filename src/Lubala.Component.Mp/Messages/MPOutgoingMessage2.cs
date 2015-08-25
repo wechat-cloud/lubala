@@ -3,7 +3,7 @@ using Lubala.Core.Pushing;
 
 namespace Lubala.Component.Mp.Messages
 {
-	public abstract class MPOutgoingMessage : InteractableMessage, IPassiveMessage
+	public abstract class MpOutgoingMessage : InteractableMessage, IPassiveMessage
 	{
 	    public string Serialize()
 	    {

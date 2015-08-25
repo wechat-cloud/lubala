@@ -45,12 +45,12 @@
     <Compile Include="Messages\Incoming\RawScanEvent.cs" />
     <Compile Include="Messages\Incoming\RawSubscribeEvent.cs" />
     <Compile Include="Messages\Incoming\RawUnsubscribeEvent.cs" />
-    <Compile Include="MPConfigurer.cs" />
-    <Compile Include="MPMessageHandler.cs" />
+    <Compile Include="MpConfigurer.cs" />
+    <Compile Include="MpMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HubBuilderExtension.cs" />
-    <Compile Include="Messages\MPIncomingMessage.cs" />
-    <Compile Include="Messages\MPOutgoingMessage.cs" />
+    <Compile Include="Messages\MpIncomingMessage.cs" />
+    <Compile Include="Messages\MpOutgoingMessage.cs" />
     <Compile Include="Messages\Outgoing\PureImageMessage.cs" />
     <Compile Include="Messages\Outgoing\PureMusicMessage.cs" />
     <Compile Include="Messages\Outgoing\PureNewsMessage.cs" />

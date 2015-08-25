@@ -3,7 +3,7 @@
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureVideoMessage : MPOutgoingMessage
+    public class PureVideoMessage : MpOutgoingMessage
     {
         [XmlElement("MediaId")]
         public string MediaId { get; set; }
