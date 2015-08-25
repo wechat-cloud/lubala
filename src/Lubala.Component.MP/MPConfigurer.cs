@@ -13,6 +13,18 @@ namespace Lubala.Component.MP
         internal MPConfigurer(IHubBuilder hubBuilder)
         {
             _hubBuilder = hubBuilder;
+            RegisterDefaultTypes();
+        }
+
+        private void RegisterDefaultTypes()
+        {
+            _hubBuilder.RegisterMessageType<RawImageMessage>();
+            _hubBuilder.RegisterMessageType<RawLinkMessage>();
+            _hubBuilder.RegisterMessageType<RawLocationMessage>();
+            _hubBuilder.RegisterMessageType<RawShortVideoMessage>();
+            _hubBuilder.RegisterMessageType<RawTextMessage>();
+            _hubBuilder.RegisterMessageType<RawVideoMessage>();
+            _hubBuilder.RegisterMessageType<RawVoiceMessage>();
         }
 
         public MPConfigurer RegisterMessageHandler(MPMessageHandler handler)

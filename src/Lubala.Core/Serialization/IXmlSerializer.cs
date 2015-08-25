@@ -11,5 +11,6 @@ namespace Lubala.Core.Serialization
     {
         void Serialize<T>(T obj, Stream targetStream);
         T Deserialize<T>(Stream source);
+        object Deserialize(Stream source, Type type);
     }
 }

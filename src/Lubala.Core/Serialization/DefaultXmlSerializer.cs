@@ -37,9 +37,14 @@ namespace Lubala.Core.Serialization
 
         public T Deserialize<T>(Stream source)
         {
-            var serializer = new XmlSerializer(typeof(T));
+            return (T) Deserialize(source, typeof (T));
+        }
+
+        public object Deserialize(Stream source, Type type)
+        {
+            var serializer = new XmlSerializer(type);
             var result = serializer.Deserialize(source);
-            return (T) result;
+            return result;
         }
     }
 }
