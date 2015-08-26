@@ -1,5 +1,5 @@
 ﻿using System;
-using Lubala.Core.Token;
+using Lubala.Core.Tokens;
 
 namespace Lubala.Core
 {
@@ -11,6 +11,7 @@ namespace Lubala.Core
 		}
 
 	    public ITypeResolver Resolver { get; private set; }
+	    public WechatToken Token { get; }
 	}
 }
 

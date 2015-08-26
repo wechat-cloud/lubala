@@ -1,5 +1,5 @@
 ﻿using System;
-using Lubala.Core.Token;
+using Lubala.Core.Tokens;
 
 namespace Lubala.Core
 {

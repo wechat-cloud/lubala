@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lubala.Core.Cryptographic;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
 
@@ -24,11 +25,25 @@ namespace Lubala.Core.Pushing
             MessageTypes = _hubContext.GetMessageTypes();
             MessageHandlers = _hubContext.GetMessageHandlers();
             Resolver = _hubContext.Resolver;
+            Channel = _hubContext.Channel;
         }
 
         internal IReadOnlyDictionary<TypeIdentity, Type> MessageTypes { get; }
-        public IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; private set; }
-        internal ITypeResolver Resolver { get; private set; }
+        public IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; }
+        internal ITypeResolver Resolver { get; }
+        internal ILubalaChannel Channel { get; }
+
+        public bool Verify(string timestamp, string nonce, string signature)
+        {
+            var tokenValue = Channel.Token.TokenValue;
+            var tempArray = new SortedSet<string> {timestamp, nonce, tokenValue};
+            var toHash = string.Join("", tempArray);
+
+            var hasher = Resolver.Resolve<ISha1Hasher>();
+            var result = hasher.HashString(toHash);
+
+            return result == signature;
+        }
 
         public string Interpreting(string content, EncodingOption encodingOption = null)
         {

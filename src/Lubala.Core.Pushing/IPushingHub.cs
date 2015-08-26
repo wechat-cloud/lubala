@@ -6,6 +6,7 @@ namespace Lubala.Core.Pushing
 {
 	public interface IPushingHub
 	{
+	    bool Verify(string timestamp, string nonce, string signature);
 	    string Interpreting(string content, EncodingOption encodingOption = null);
 	}
 }

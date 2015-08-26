@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lubala.Core.Token
+namespace Lubala.Core.Tokens
 {
 	public class DefaultTokenSource : ITokenSource
 	{

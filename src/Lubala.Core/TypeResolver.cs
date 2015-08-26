@@ -1,4 +1,5 @@
 ﻿using System;
+using Lubala.Core.Cryptographic;
 using Lubala.Core.Serialization;
 
 namespace Lubala.Core
@@ -24,6 +25,7 @@ namespace Lubala.Core
 
         private static void RegisterDefaultServices()
         {
+            Resolver.Register<ISha1Hasher, DefaultSha1Hasher>();
             Resolver.Register<IXmlSerializer, DefaultXmlSerializer>();
         }
     }
