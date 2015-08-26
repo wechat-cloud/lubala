@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lubala.Component.Mp.Messages;
+using System.Xml.Serialization;
 using Lubala.Core.Serialization;
 using Xunit;
 
@@ -17,7 +13,7 @@ namespace Lubala.Core.Tests.Serialization
         public void TestSerializePureTextMessage()
         {
             var serializer = new DefaultXmlSerializer();
-            var pureTextMessage = new PassiveTextMessage
+            var message = new TestTextMessage
             {
                 Content = "hello",
                 CreateTime = 11223,
@@ -27,7 +23,7 @@ namespace Lubala.Core.Tests.Serialization
 
             using (var stream = new MemoryStream())
             {
-                serializer.Serialize(pureTextMessage, stream);
+                serializer.Serialize(message, stream);
                 stream.Position = 0;
                 using (var reader = new StreamReader(stream))
                 {
@@ -40,19 +36,20 @@ namespace Lubala.Core.Tests.Serialization
         [Fact]
         public void TestDeserializePureTextMessage()
         {
-            var xml = @"<xml><ToUserName>Rongkai</ToUserName><FromUserName>Lu</FromUserName><CreateTime>11223</CreateTime><Content>hello</Content></xml>";
+            var xml =
+                @"<xml><ToUserName>Rongkai</ToUserName><FromUserName>Lu</FromUserName><CreateTime>11223</CreateTime><Content>hello</Content></xml>";
 
             var serializer = new DefaultXmlSerializer();
 
-            RawTextMessage message;
+            TestTextMessage message;
             using (var stream = new MemoryStream())
             {
-                using(var writer = new StreamWriter(stream))
+                using (var writer = new StreamWriter(stream))
                 {
                     writer.WriteLine(xml);
                     writer.Flush();
                     stream.Position = 0;
-                    message = serializer.Deserialize<RawTextMessage>(stream);
+                    message = serializer.Deserialize<TestTextMessage>(stream);
                 }
             }
 
@@ -61,5 +58,28 @@ namespace Lubala.Core.Tests.Serialization
             Assert.Equal(message.FromUserName, "Lu");
             Assert.Equal(message.CreateTime, 11223);
         }
+    }
+
+    [Serializable]
+    [XmlRoot("xml")]
+    public class TestTextMessage
+    {
+        [XmlElement("ToUserName")]
+        public string ToUserName { get; set; }
+
+        [XmlElement("FromUserName")]
+        public string FromUserName { get; set; }
+
+        [XmlElement("CreateTime")]
+        public int CreateTime { get; set; }
+
+        [XmlElement("MsgType")]
+        public string MsgType { get; set; }
+
+        [XmlElement("CreateTime", typeof (long))]
+        public long MsgId { get; }
+
+        [XmlElement("Content")]
+        public string Content { get; set; }
     }
 }
