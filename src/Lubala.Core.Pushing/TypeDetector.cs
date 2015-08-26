@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,21 +9,14 @@ using System.Xml.Linq;
 
 namespace Lubala.Core.Pushing
 {
-    internal class TypeDetector
+    internal class TypeDetector : ITypeDetector
     {
-        private readonly string _content;
-        public TypeDetector(string content)
+        public TypeIdentity Detecting(XDocument xml)
         {
-            _content = content;
-        }
+            var root = xml.Root;
 
-        internal TypeIdentity Detecting()
-        {
-            var xmlDocument = XDocument.Parse(_content);
-            var root = xmlDocument.Root;
-
-            var msgTypeElement = root.Element("MsgType");
-            var eventTypeElement = root.Element("Event");
+            var msgTypeElement = root?.Element("MsgType");
+            var eventTypeElement = root?.Element("Event");
 
             var msgType = msgTypeElement?.Value;
             var eventType = eventTypeElement?.Value;

@@ -11,8 +11,7 @@ namespace Lubala.Core.Pushing
         public ILubalaChannel Channel { get; internal set; }
 
         public string Raw { get; internal set; }
-        public string MsgType { get; internal set; }
-        public string EventType { get; internal set; }
+        public TypeIdentity TypeIdentity { get; internal set; }
         public bool SupportPassiveMessage { get; internal set; }
     }
 }

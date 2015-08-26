@@ -12,6 +12,13 @@ namespace Lubala.Core.Pushing
 {
     internal class PushingHub : IPushingHub
     {
+        static PushingHub()
+        {
+            TypeResolver.Resolver.Register<ISourceStreamReader, DefaultSourceStreamReader>();
+            TypeResolver.Resolver.Register<IPushingEngine, PushingEngine>();
+            TypeResolver.Resolver.Register<ITypeDetector, TypeDetector>();
+        }
+
         private HubContext _hubContext;
         internal PushingHub(HubContext hubContext)
         {
@@ -28,10 +35,11 @@ namespace Lubala.Core.Pushing
             Channel = _hubContext.Channel;
         }
 
-        internal IReadOnlyDictionary<TypeIdentity, Type> MessageTypes { get; }
+        public ILubalaChannel Channel { get; }
+        public EncodingMode EncodingMode { get; set; } = EncodingMode.Plain;
         public IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; }
+        internal IReadOnlyDictionary<TypeIdentity, Type> MessageTypes { get; }
         internal ITypeResolver Resolver { get; }
-        internal ILubalaChannel Channel { get; }
 
         public bool Verify(string timestamp, string nonce, string signature)
         {
@@ -45,71 +53,30 @@ namespace Lubala.Core.Pushing
             return result == signature;
         }
 
-        public string Interpreting(string content, EncodingOption encodingOption = null)
+        public Task InterpretingAsync(Stream sourceStream, Stream targetStream)
         {
-            var detector = new TypeDetector(content);
-            var typeIdentity = detector.Detecting();
-
-            var typePicker = new TypePicker(MessageTypes);
-            var targetType = typePicker.Picking(typeIdentity);
-
-            if (targetType == null)
+            return Task.Factory.StartNew(() =>
             {
-                // TODO: log unrecognized type.
-                return "";
-            }
+                Interpreting(sourceStream, targetStream);
+            });
+        }
 
-            var serializer = Resolver.Resolve<IXmlSerializer>();
-            IPushingMessage message = null;
+        public void Interpreting(Stream sourceStream, Stream targetStream)
+        {
+            var engine = Resolver.Resolve<IPushingEngine>();
+            var passiveMessage = engine.ProducePassiveMessage(sourceStream, _hubContext);
 
-            using (var stream = new MemoryStream())
+            var serializedMessage = passiveMessage.Serialize();
+            using (var tempStream = new MemoryStream())
             {
-                using (var writer = new StreamWriter(stream))
+                using (var writer = new StreamWriter(tempStream))
                 {
-                    writer.Write(content);
-                    writer.Flush();
-                    stream.Position = 0;
+                    writer.Write(serializedMessage);
+                    tempStream.Position = 0;
 
-                    message = (IPushingMessage)serializer.Deserialize(stream, targetType);
+                    tempStream.WriteTo(targetStream);
                 }
             }
-
-            var handlerPicker = new HandlerPicker(MessageHandlers);
-            var handler = handlerPicker.Picking(message);
-
-            if (handler == null)
-            {
-                // TODO: no handler.
-                return "";
-            }
-
-            var messageContext = new MessageContext
-            {
-                Channel = _hubContext.Channel,
-                MsgType = typeIdentity.MsgType,
-                EventType = typeIdentity.EventType,
-                Raw = content,
-                SupportPassiveMessage = message is IAcceptPassiveMessage
-            };
-
-            try
-            {
-                var passive = handler.HandleMessage(message, messageContext);
-
-                if (messageContext.SupportPassiveMessage)
-                {
-                    return passive.Serialize();
-                }
-                else
-                {
-                    return "";
-                }
-            }
-            catch (Exception exp)
-            {
-                // TODO: log
-            }
-            return "";
         }
     }
 }

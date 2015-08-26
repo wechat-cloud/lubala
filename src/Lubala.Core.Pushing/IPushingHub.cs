@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Lubala.Core.Pushing
 {
 	public interface IPushingHub
 	{
+        IReadOnlyDictionary<Type, IMessageHandler> MessageHandlers { get; }
+        ILubalaChannel Channel { get; }
+	    EncodingMode EncodingMode { get; }
+
 	    bool Verify(string timestamp, string nonce, string signature);
-	    string Interpreting(string content, EncodingOption encodingOption = null);
-	}
+        void Interpreting(Stream sourceStream, Stream targetStream);
+        Task InterpretingAsync(Stream sourceStream, Stream targetStream);
+    }
 }
 

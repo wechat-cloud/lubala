@@ -39,7 +39,14 @@
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
+    <Compile Include="DefaultSourceStreamReader.cs" />
     <Compile Include="HandlerPicker.cs" />
+    <Compile Include="Handlers\SafeMessageHandler.cs" />
+    <Compile Include="IPushingEngine.cs" />
+    <Compile Include="ISourceStreamReader.cs" />
+    <Compile Include="ITypeDetector.cs" />
+    <Compile Include="Messages\EmptyPassiveMessage.cs" />
+    <Compile Include="PushingEngine.cs" />
     <Compile Include="TypePicker.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
     <Compile Include="Messages\IAcceptPassiveMessage.cs" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace Lubala.Core.Serialization
@@ -34,17 +35,20 @@ namespace Lubala.Core.Serialization
                 stream.WriteTo(targetStream);
             }
         }
-
-        public T Deserialize<T>(Stream source)
+        
+        public T Deserialize<T>(XDocument xml)
         {
-            return (T) Deserialize(source, typeof (T));
+            return (T) Deserialize(xml, typeof(T));
         }
 
-        public object Deserialize(Stream source, Type type)
+        public object Deserialize(XDocument xml, Type type)
         {
-            var serializer = new XmlSerializer(type);
-            var result = serializer.Deserialize(source);
-            return result;
+            using (var reader = xml.CreateReader())
+            {
+                var serializer = new XmlSerializer(type);
+                var result = serializer.Deserialize(reader);
+                return result;
+            }
         }
     }
 }

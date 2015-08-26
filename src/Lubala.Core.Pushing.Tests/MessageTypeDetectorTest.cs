@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Xunit;
 
 namespace Lubala.Core.Pushing.Tests
@@ -21,11 +22,16 @@ namespace Lubala.Core.Pushing.Tests
  <Content><![CDATA[this is a test]]></Content>
  <MsgId>1234567890123456</MsgId>
 </xml>";
-            var detector = new TypeDetector(testXml);
-            var type = detector.Detecting();
 
-            Assert.Equal(type.MsgType, "text");
-            Assert.Equal(type.EventType, null);
+            using (var t = StringStream.Create(testXml))
+            {
+                var xml = XDocument.Load(t.Stream);
+                var detector = new TypeDetector();
+                var type = detector.Detecting(xml);
+
+                Assert.Equal(type.MsgType, "text");
+                Assert.Equal(type.EventType, null);
+            }
         }
     }
 }

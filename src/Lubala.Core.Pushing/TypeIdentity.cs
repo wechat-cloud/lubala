@@ -1,6 +1,6 @@
 ﻿namespace Lubala.Core.Pushing
 {
-    internal class TypeIdentity
+    public class TypeIdentity
     {
         private const string NULLTYPE = "$$NULL$$";
         public string MsgType { get; set; }

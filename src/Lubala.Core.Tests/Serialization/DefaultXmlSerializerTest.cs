@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using Lubala.Core.Serialization;
 using Xunit;
@@ -42,6 +43,7 @@ namespace Lubala.Core.Tests.Serialization
             var serializer = new DefaultXmlSerializer();
 
             TestTextMessage message;
+
             using (var stream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(stream))
@@ -49,7 +51,8 @@ namespace Lubala.Core.Tests.Serialization
                     writer.WriteLine(xml);
                     writer.Flush();
                     stream.Position = 0;
-                    message = serializer.Deserialize<TestTextMessage>(stream);
+                    var xmlDoc = XDocument.Load(stream);
+                    message = serializer.Deserialize<TestTextMessage>(xmlDoc);
                 }
             }
 
