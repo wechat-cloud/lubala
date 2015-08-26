@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("shortvideo")]
     [XmlRoot("xml")]
     public class RawShortVideoMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
@@ -13,7 +13,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("ThumbMediaId")]
         public string ThumbMediaId { get; set; }
-
-        public override string MsgType => "shortvideo";
     }
 }

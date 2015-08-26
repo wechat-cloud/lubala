@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lubala.Core.Pushing.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-    public class MessageTypeAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    public class MsgTypeAttribute : Attribute
     {
-        public MessageTypeAttribute(string msgType)
+        public MsgTypeAttribute(string msgType)
         {
             if (string.IsNullOrEmpty(msgType))
             {
@@ -20,6 +20,5 @@ namespace Lubala.Core.Pushing.Attributes
         }
 
         public string MsgType { get; private set; }
-        public string EventType { get; set; }
     }
 }

@@ -5,11 +5,9 @@ using Lubala.Core.Pushing.Messages;
 namespace Lubala.Component.Mp.Messages.Incoming
 {
     [XmlRoot("xml")]
-    [MessageType("event", EventType = "CLICK")]
-    public class RawClickEvent : InteactableEvent
+    [EventType("CLICK")]
+    public class RawClickEvent : InteractableEvent
     {
-        public override string Event => "CLICK";
-
         [XmlElement("EventKey")]
         public string EventKey { get; set; }
     }

@@ -44,7 +44,7 @@ namespace Lubala.Core.Tests.Serialization
 
             var serializer = new DefaultXmlSerializer();
 
-            PureTextMessage message;
+            RawTextMessage message;
             using (var stream = new MemoryStream())
             {
                 using(var writer = new StreamWriter(stream))
@@ -52,7 +52,7 @@ namespace Lubala.Core.Tests.Serialization
                     writer.WriteLine(xml);
                     writer.Flush();
                     stream.Position = 0;
-                    message = serializer.Deserialize<PureTextMessage>(stream);
+                    message = serializer.Deserialize<RawTextMessage>(stream);
                 }
             }
 

@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("voice")]
     [XmlRoot("xml")]
     public class RawVoiceMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
@@ -13,7 +13,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("Format")]
         public string Format { get; set; }
-
-        public override string MsgType => "voice";
     }
 }

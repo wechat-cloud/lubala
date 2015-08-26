@@ -4,13 +4,11 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("text")]
     [XmlRoot("xml")]
     public class RawTextMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
         [XmlElement("Content")]
         public string Content { get; set; }
-
-        public override string MsgType => "text";
     }
 }

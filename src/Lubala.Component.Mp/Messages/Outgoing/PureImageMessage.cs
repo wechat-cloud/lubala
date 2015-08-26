@@ -7,7 +7,5 @@ namespace Lubala.Component.Mp.Messages
     {
         [XmlElement("MediaId")]
         public string MediaId { get; set; }
-
-        public override string MsgType => "image";
     }
 }

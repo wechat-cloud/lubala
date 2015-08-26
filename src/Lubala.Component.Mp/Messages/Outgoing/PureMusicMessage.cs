@@ -19,7 +19,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("ThumbMediaId")]
         public string ThumbMediaId { get; set; }
-
-        public override string MsgType => "music";
     }
 }

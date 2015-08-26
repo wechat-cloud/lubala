@@ -7,7 +7,5 @@ namespace Lubala.Component.Mp.Messages
     {
         [XmlElement("Content")]
         public string Content { get; set; }
-
-        public override string MsgType => "text";
     }
 }

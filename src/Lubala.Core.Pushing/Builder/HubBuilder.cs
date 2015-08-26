@@ -20,13 +20,13 @@ namespace Lubala.Core.Pushing
         public IHubBuilder RegisterMessageType<T>() where T : IPushingMessage
         {
             var targetType = typeof (T);
-            var eventCodeAttribute = targetType.GetCustomAttribute(typeof (MessageTypeAttribute));
+            var eventCodeAttribute = targetType.GetCustomAttribute(typeof (MsgTypeAttribute));
             if (eventCodeAttribute == null)
             {
                 throw new InvalidOperationException($"{targetType.Name} doesn't setup EventCode attribute.");
             }
 
-            var eventCode = ((MessageTypeAttribute) eventCodeAttribute).MsgType;
+            var eventCode = ((MsgTypeAttribute) eventCodeAttribute).MsgType;
 
             _context.MessageTypes.Add(eventCode, targetType);
             return this;

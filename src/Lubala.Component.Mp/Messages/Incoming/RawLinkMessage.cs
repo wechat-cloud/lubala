@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("link")]
     [XmlRoot("xml")]
     public class RawLinkMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
@@ -16,7 +16,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("Url")]
         public string Url { get; set; }
-
-        public override string MsgType => "link";
     }
 }

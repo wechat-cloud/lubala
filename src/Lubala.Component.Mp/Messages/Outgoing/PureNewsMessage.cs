@@ -30,8 +30,6 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("Url")]
         public string Url { get; set; }
-
-        public override string MsgType => "news";
     }
 
     [Serializable]

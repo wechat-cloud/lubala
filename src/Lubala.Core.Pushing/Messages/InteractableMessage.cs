@@ -13,10 +13,10 @@ namespace Lubala.Core.Pushing
         [XmlElement("FromUserName")]
         public string FromUserName { get; set; }
 
-        [XmlElement("CreateTime", typeof (int))]
+        [XmlElement("CreateTime")]
         public int CreateTime { get; set; }
 
         [XmlElement("MsgType")]
-        public abstract string MsgType { get; }
+        public string MsgType { get; set; }
     }
 }

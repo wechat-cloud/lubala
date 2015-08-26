@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("image")]
     [XmlRoot("xml")]
     public class RawImageMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
@@ -13,7 +13,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("MediaId")]
         public string MediaId { get; set; }
-
-        public override string MsgType => "image";
     }
 }

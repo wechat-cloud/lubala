@@ -5,11 +5,9 @@ using Lubala.Core.Pushing.Messages;
 namespace Lubala.Component.Mp.Messages.Incoming
 {
     [XmlRoot("xml")]
-    [MessageType("event", EventType = "SCAN")]
-    public class RawScanEvent : InteactableEvent
+    [EventType("SCAN")]
+    public class RawScanEvent : InteractableEvent
     {
-        public override string Event => "SCAN";
-
         [XmlElement("EventKey")]
         public string EventKey { get; set; }
 

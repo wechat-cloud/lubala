@@ -13,7 +13,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("Description")]
         public string Description { get; set; }
-
-        public override string MsgType => "video";
     }
 }

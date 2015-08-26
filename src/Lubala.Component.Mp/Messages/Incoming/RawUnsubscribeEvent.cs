@@ -5,9 +5,8 @@ using Lubala.Core.Pushing.Messages;
 namespace Lubala.Component.Mp.Messages.Incoming
 {
     [XmlRoot("xml")]
-    [MessageType("event", EventType = "unsubscribe")]
-    public class RawUnsubscribeEvent : InteactableEvent
+    [EventType("unsubscribe")]
+    public class RawUnsubscribeEvent : InteractableEvent
     {
-        public override string Event => "unsubscribe";
     }
 }

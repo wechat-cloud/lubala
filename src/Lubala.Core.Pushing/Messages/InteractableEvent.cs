@@ -7,11 +7,9 @@ using System.Xml.Serialization;
 
 namespace Lubala.Core.Pushing.Messages
 {
-    public abstract class InteactableEvent : InteractableMessage, IPushingMessage
+    public abstract class InteractableEvent : InteractableMessage, IPushingMessage
     {
-        public override sealed string MsgType => "event";
-
         [XmlElement("Event")]
-        public abstract string Event { get; }
+        public string Event { get; set; }
     }
 }

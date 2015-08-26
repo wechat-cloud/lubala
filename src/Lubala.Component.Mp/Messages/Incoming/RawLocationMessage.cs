@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [MessageType("image")]
+    [MsgType("location")]
     [XmlRoot("xml")]
     public class RawLocationMessage : MpIncomingMessage, IAcceptPassiveMessage
     {
@@ -19,7 +19,5 @@ namespace Lubala.Component.Mp.Messages
 
         [XmlElement("Label")]
         public string Label { get; set; }
-
-        public override string MsgType => "location";
     }
 }

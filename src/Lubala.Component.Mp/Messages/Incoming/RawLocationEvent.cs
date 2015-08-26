@@ -5,11 +5,9 @@ using Lubala.Core.Pushing.Messages;
 namespace Lubala.Component.Mp.Messages.Incoming
 {
     [XmlRoot("xml")]
-    [MessageType("event", EventType = "LOCATION")]
-    public class RawLocationEvent : InteactableEvent
+    [EventType("LOCATION")]
+    public class RawLocationEvent : InteractableEvent
     {
-        public override string Event => "LOCATION";
-
         [XmlElement("Latitude")]
         public double Latitude { get; set; }
 

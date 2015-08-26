@@ -5,11 +5,9 @@ using Lubala.Core.Pushing.Messages;
 namespace Lubala.Component.Mp.Messages.Incoming
 {
     [XmlRoot("xml")]
-    [MessageType("event", EventType = "subscribe")]
-    public class RawSubscribeEvent : InteactableEvent
+    [EventType("subscribe")]
+    public class RawSubscribeEvent : InteractableEvent
     {
-        public override string Event => "subscribe";
-
         [XmlElement("EventKey")]
         public string EventKey { get; set; }
 
