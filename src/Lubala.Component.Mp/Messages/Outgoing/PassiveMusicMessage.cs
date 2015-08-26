@@ -3,7 +3,7 @@
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureMusicMessage : MpOutgoingMessage
+    public class PassiveMusicMessage : MpOutgoingMessage
     {
         [XmlElement("Title")]
         public string Title { get; set; }

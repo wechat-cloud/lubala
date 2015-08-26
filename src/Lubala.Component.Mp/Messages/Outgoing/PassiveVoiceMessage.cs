@@ -3,7 +3,7 @@
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureVoiceMessage : MpOutgoingMessage
+    public class PassiveVoiceMessage : MpOutgoingMessage
     {
         [XmlElement("MediaId")]
         public string MediaId { get; set; }

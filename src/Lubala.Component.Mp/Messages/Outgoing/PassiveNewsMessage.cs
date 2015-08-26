@@ -5,9 +5,9 @@ using System.Xml.Serialization;
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureNewsMessage : MpOutgoingMessage
+    public class PassiveNewsMessage : MpOutgoingMessage
     {
-        public PureNewsMessage()
+        public PassiveNewsMessage()
         {
             Articles = new List<ArticleItem>();
         }

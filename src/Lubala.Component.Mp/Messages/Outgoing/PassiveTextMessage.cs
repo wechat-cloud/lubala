@@ -3,7 +3,7 @@
 namespace Lubala.Component.Mp.Messages
 {
     [XmlRoot("xml")]
-    public class PureTextMessage : MpOutgoingMessage
+    public class PassiveTextMessage : MpOutgoingMessage
     {
         [XmlElement("Content")]
         public string Content { get; set; }

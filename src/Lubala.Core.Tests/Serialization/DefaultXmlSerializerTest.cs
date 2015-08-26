@@ -17,7 +17,7 @@ namespace Lubala.Core.Tests.Serialization
         public void TestSerializePureTextMessage()
         {
             var serializer = new DefaultXmlSerializer();
-            var pureTextMessage = new PureTextMessage
+            var pureTextMessage = new PassiveTextMessage
             {
                 Content = "hello",
                 CreateTime = 11223,
