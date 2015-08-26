@@ -39,6 +39,8 @@
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
+    <Compile Include="HandlerPicker.cs" />
+    <Compile Include="TypePicker.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
     <Compile Include="Messages\IAcceptPassiveMessage.cs" />
     <Compile Include="Messages\InteractableEvent.cs" />
@@ -46,12 +48,14 @@
     <Compile Include="Messages\IDuplicateCheckable.cs" />
     <Compile Include="Messages\InteractableMessage.cs" />
     <Compile Include="Messages\IPassiveMessage.cs" />
+    <Compile Include="TypeDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushingExtension.cs" />
     <Compile Include="IPushingHub.cs" />
     <Compile Include="Handlers\IMessageHandler.cs" />
     <Compile Include="PushingHub.cs" />
     <Compile Include="Encoding\EncodingOption.cs" />
+    <Compile Include="TypeIdentity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

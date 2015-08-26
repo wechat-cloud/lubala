@@ -9,15 +9,21 @@ namespace Lubala.Core.Pushing
     {
         internal HubContext()
         {
-            MessageTypes = new Dictionary<string, Type>();
+            MessageTypes = new Dictionary<TypeIdentity, Type>();
             MessageHandlers = new Dictionary<Type, IMessageHandler>();
         }
 
         public ILubalaChannel Channel { get; internal set; }
 
-        public IDictionary<string, Type> MessageTypes { get; }
+        public IDictionary<TypeIdentity, Type> MessageTypes { get; }
         public IDictionary<Type, IMessageHandler> MessageHandlers { get; }
-        
+        public ITypeResolver Resolver { get; internal set; }
+
+        public IReadOnlyDictionary<TypeIdentity, Type> GetMessageTypes()
+        {
+            return new ReadOnlyDictionary<TypeIdentity, Type>(MessageTypes);
+        }
+
         public IReadOnlyDictionary<Type, IMessageHandler> GetMessageHandlers()
         {
             return new ReadOnlyDictionary<Type, IMessageHandler>(MessageHandlers);

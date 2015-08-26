@@ -24,4 +24,4 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-
+[assembly: InternalsVisibleTo("Lubala.Core.Pushing.Tests")]

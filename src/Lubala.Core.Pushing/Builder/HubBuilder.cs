@@ -14,26 +14,42 @@ namespace Lubala.Core.Pushing
         private readonly HubContext _context;
         public HubBuilder(ILubalaChannel channel)
         {
-            _context = new HubContext {Channel = channel};
+            _context = new HubContext {Channel = channel, Resolver = channel.Resolver};
         }
 
         public IHubBuilder RegisterMessageType<T>() where T : IPushingMessage
         {
             var targetType = typeof (T);
-            var eventCodeAttribute = targetType.GetCustomAttribute(typeof (MsgTypeAttribute));
-            if (eventCodeAttribute == null)
+            var msgTypeAttribute = targetType.GetCustomAttribute(typeof (MsgTypeAttribute));
+            var eventTypeAttribute = targetType.GetCustomAttribute(typeof(EventTypeAttribute));
+
+            if (msgTypeAttribute == null && eventTypeAttribute == null)
             {
-                throw new InvalidOperationException($"{targetType.Name} doesn't setup EventCode attribute.");
+                throw new InvalidOperationException($"{targetType.Name} doesn't setup a valid MsgType/EventType attribute.");
             }
 
-            var eventCode = ((MsgTypeAttribute) eventCodeAttribute).MsgType;
-
-            _context.MessageTypes.Add(eventCode, targetType);
+            if (eventTypeAttribute != null)
+            {
+                var attr = (EventTypeAttribute) eventTypeAttribute;
+                var identity = new TypeIdentity {MsgType = attr.MsgType, EventType = attr.EventType};
+                _context.MessageTypes.Add(identity, targetType);
+            }
+            else
+            {
+                var attr = (MsgTypeAttribute)msgTypeAttribute;
+                var identity = new TypeIdentity { MsgType = attr.MsgType, EventType = null };
+                _context.MessageTypes.Add(identity, targetType);
+            }
+            
             return this;
         }
 
         public IHubBuilder RegisterMessageHandler(Type messageType, IMessageHandler messageHandler)
         {
+            if (messageHandler == null)
+            {
+                throw new ArgumentNullException(nameof(messageHandler));
+            }
             _context.MessageHandlers.Add(messageType, messageHandler);
             return this;
         }
