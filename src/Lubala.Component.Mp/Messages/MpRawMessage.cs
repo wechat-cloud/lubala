@@ -5,7 +5,7 @@ using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp.Messages
 {
-	public abstract class MpIncomingMessage : InteractableMessage, IPushingMessage, IDuplicateCheckable
+	public abstract class MpRawMessage : PushingMessage, IPushingMessage, IDuplicateCheckable
     {
         [XmlElement("CreateTime", typeof(long))]
         public long MsgId { get; }

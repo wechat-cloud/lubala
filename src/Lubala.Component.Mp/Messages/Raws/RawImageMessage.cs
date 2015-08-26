@@ -1,17 +1,19 @@
 ﻿using System.Xml.Serialization;
 using Lubala.Core.Pushing;
 using Lubala.Core.Pushing.Attributes;
+using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
     [MsgType("image")]
-    [XmlRoot("xml")]
-    public class RawImageMessage : MpIncomingMessage, IAcceptPassiveMessage
+    public class RawImageMessage : MpRawMessage, IAcceptPassiveMessage
     {
-        [XmlElement("PicUrl")]
+        [Node("PicUrl")]
         public string PictureUrl { get; set; }
 
-        [XmlElement("MediaId")]
+        [Node("MediaId")]
         public string MediaId { get; set; }
+
+        public override string MsgType => "image";
     }
 }

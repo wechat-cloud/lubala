@@ -1,14 +1,16 @@
 ﻿using System.Xml.Serialization;
 using Lubala.Core.Pushing;
 using Lubala.Core.Pushing.Attributes;
+using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
     [MsgType("text")]
-    [XmlRoot("xml")]
-    public class RawTextMessage : MpIncomingMessage, IAcceptPassiveMessage
+    public class RawTextMessage : MpRawMessage, IAcceptPassiveMessage
     {
-        [XmlElement("Content")]
+        [Node("Content")]
         public string Content { get; set; }
+
+        public override string MsgType => "text";
     }
 }

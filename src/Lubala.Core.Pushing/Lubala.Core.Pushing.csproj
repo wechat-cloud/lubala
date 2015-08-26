@@ -50,10 +50,10 @@
     <Compile Include="TypePicker.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
     <Compile Include="Messages\IAcceptPassiveMessage.cs" />
-    <Compile Include="Messages\InteractableEvent.cs" />
+    <Compile Include="Messages\PushingEvent.cs" />
     <Compile Include="Messages\IPushingMessage.cs" />
     <Compile Include="Messages\IDuplicateCheckable.cs" />
-    <Compile Include="Messages\InteractableMessage.cs" />
+    <Compile Include="Messages\PushingMessage.cs" />
     <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="TypeDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

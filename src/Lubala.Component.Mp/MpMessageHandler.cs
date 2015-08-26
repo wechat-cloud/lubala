@@ -16,8 +16,8 @@ namespace Lubala.Component.Mp
     }
 
     public abstract class MPMessageHandler<TIn, TOut> : MpMessageHandler
-        where TIn : MpIncomingMessage
-        where TOut : MpOutgoingMessage
+        where TIn : MpRawMessage
+        where TOut : MpPassiveMessage
     {
         internal override Type IncomingMessageType => typeof (TIn);
 

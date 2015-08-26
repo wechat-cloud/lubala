@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Lubala.Core.Serialization;
+using Lubala.Core.Serialization.Attributes;
 using Xunit;
 
 namespace Lubala.Core.Tests.Serialization
@@ -13,13 +15,17 @@ namespace Lubala.Core.Tests.Serialization
         [Fact]
         public void TestSerializePureTextMessage()
         {
-            var serializer = new DefaultXmlSerializer();
+            var serializer = new WechatXmlSerializer();
             var message = new TestTextMessage
             {
                 Content = "hello",
                 CreateTime = 11223,
-                FromUserName = "Lu",
-                ToUserName = "Rongkai"
+                FromUserName = "<Lu>",
+                ToUserName = "Rongkai",
+                Subs = new Sub[]
+                {
+                    new Sub(), new Sub(), 
+                }
             };
 
             using (var stream = new MemoryStream())
@@ -38,9 +44,24 @@ namespace Lubala.Core.Tests.Serialization
         public void TestDeserializePureTextMessage()
         {
             var xml =
-                @"<xml><ToUserName>Rongkai</ToUserName><FromUserName>Lu</FromUserName><CreateTime>11223</CreateTime><Content>hello</Content></xml>";
+                @"<xml>
+  <ToUserName>Rongkai</ToUserName>
+  <FromUserName>&lt;Lu&gt;</FromUserName>
+  <CreateTime>11223</CreateTime>
+  <MsgType>text</MsgType>
+  <MsgId>11223</MsgId>
+  <Content>hello</Content>
+  <ssss>
+    <dd>
+      <X>8/26/2015 11:56:06 PM</X>
+    </dd>
+    <dd>
+      <X>8/26/2015 11:56:06 PM</X>
+    </dd>
+  </ssss>
+</xml>";
 
-            var serializer = new DefaultXmlSerializer();
+            var serializer = new WechatXmlSerializer();
 
             TestTextMessage message;
 
@@ -58,31 +79,38 @@ namespace Lubala.Core.Tests.Serialization
 
             Assert.Equal(message.Content, "hello");
             Assert.Equal(message.ToUserName, "Rongkai");
-            Assert.Equal(message.FromUserName, "Lu");
+            Assert.Equal(message.FromUserName, "<Lu>");
             Assert.Equal(message.CreateTime, 11223);
         }
     }
-
-    [Serializable]
-    [XmlRoot("xml")]
+    
     public class TestTextMessage
     {
-        [XmlElement("ToUserName")]
+        [Node("ToUserName")]
         public string ToUserName { get; set; }
 
-        [XmlElement("FromUserName")]
+        [Node("FromUserName")]
         public string FromUserName { get; set; }
 
-        [XmlElement("CreateTime")]
+        [Node("CreateTime")]
         public int CreateTime { get; set; }
 
-        [XmlElement("MsgType")]
-        public string MsgType { get; set; }
+        [Node("MsgType")]
+        public string MsgType => "text";
 
-        [XmlElement("CreateTime", typeof (long))]
-        public long MsgId { get; }
+        [Node("MsgId")]
+        public long MsgId => 11223;
 
-        [XmlElement("Content")]
+        [Node("Content")]
         public string Content { get; set; }
+
+        [Array("ssss")]
+        [ArrayItem("dd", typeof(Sub))]
+        public Sub[] Subs { get; set; }
+    }
+
+    public class Sub
+    {
+        public string X => DateTime.Now.ToString();
     }
 }

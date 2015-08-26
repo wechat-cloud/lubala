@@ -40,30 +40,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LightweightMessageHandler.cs" />
-    <Compile Include="Messages\Incoming\RawClickEvent.cs" />
-    <Compile Include="Messages\Incoming\RawLocationEvent.cs" />
-    <Compile Include="Messages\Incoming\RawScanEvent.cs" />
-    <Compile Include="Messages\Incoming\RawSubscribeEvent.cs" />
-    <Compile Include="Messages\Incoming\RawUnsubscribeEvent.cs" />
-    <Compile Include="Messages\Outgoing\PassiveImageMessage.cs" />
-    <Compile Include="Messages\Outgoing\PassiveMusicMessage.cs" />
-    <Compile Include="Messages\Outgoing\PassiveNewsMessage.cs" />
-    <Compile Include="Messages\Outgoing\PassiveTextMessage.cs" />
-    <Compile Include="Messages\Outgoing\PassiveVideoMessage.cs" />
-    <Compile Include="Messages\Outgoing\PassiveVoiceMessage.cs" />
+    <Compile Include="Messages\Raws\RawClickEvent.cs" />
+    <Compile Include="Messages\Raws\RawLocationEvent.cs" />
+    <Compile Include="Messages\Raws\RawScanEvent.cs" />
+    <Compile Include="Messages\Raws\RawSubscribeEvent.cs" />
+    <Compile Include="Messages\Raws\RawUnsubscribeEvent.cs" />
+    <Compile Include="Messages\Passives\PassiveImageMessage.cs" />
+    <Compile Include="Messages\Passives\PassiveMusicMessage.cs" />
+    <Compile Include="Messages\Passives\PassiveNewsMessage.cs" />
+    <Compile Include="Messages\Passives\PassiveTextMessage.cs" />
+    <Compile Include="Messages\Passives\PassiveVideoMessage.cs" />
+    <Compile Include="Messages\Passives\PassiveVoiceMessage.cs" />
     <Compile Include="MpConfigurer.cs" />
     <Compile Include="MpMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HubBuilderExtension.cs" />
-    <Compile Include="Messages\MpIncomingMessage.cs" />
-    <Compile Include="Messages\MpOutgoingMessage.cs" />
-    <Compile Include="Messages\Incoming\RawImageMessage.cs" />
-    <Compile Include="Messages\Incoming\RawLinkMessage.cs" />
-    <Compile Include="Messages\Incoming\RawLocationMessage.cs" />
-    <Compile Include="Messages\Incoming\RawShortVideoMessage.cs" />
-    <Compile Include="Messages\Incoming\RawTextMessage.cs" />
-    <Compile Include="Messages\Incoming\RawVideoMessage.cs" />
-    <Compile Include="Messages\Incoming\RawVoiceMessage.cs" />
+    <Compile Include="Messages\MpRawMessage.cs" />
+    <Compile Include="Messages\MpPassiveMessage.cs" />
+    <Compile Include="Messages\Raws\RawImageMessage.cs" />
+    <Compile Include="Messages\Raws\RawLinkMessage.cs" />
+    <Compile Include="Messages\Raws\RawLocationMessage.cs" />
+    <Compile Include="Messages\Raws\RawShortVideoMessage.cs" />
+    <Compile Include="Messages\Raws\RawTextMessage.cs" />
+    <Compile Include="Messages\Raws\RawVideoMessage.cs" />
+    <Compile Include="Messages\Raws\RawVoiceMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">

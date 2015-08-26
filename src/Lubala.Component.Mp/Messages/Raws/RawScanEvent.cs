@@ -1,17 +1,19 @@
 ﻿using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Serialization.Attributes;
 
-namespace Lubala.Component.Mp.Messages.Incoming
+namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
     [EventType("SCAN")]
-    public class RawScanEvent : InteractableEvent
+    public class RawScanEvent : PushingEvent
     {
-        [XmlElement("EventKey")]
+        [Node("EventKey")]
         public string EventKey { get; set; }
 
-        [XmlElement("Ticket")]
+        [Node("Ticket")]
         public string Ticket { get; set; }
+
+        public override string Event => "SCAN";
     }
 }
