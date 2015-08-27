@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lubala.Core
 {
-    internal class Token : ApiEntityBase
+    public abstract class ApiEntityBase
     {
-        public string access_token { get; set; }
-        public int expires_in { get; set; }
     }
 }

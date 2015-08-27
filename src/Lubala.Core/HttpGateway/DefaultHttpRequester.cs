@@ -1,4 +1,6 @@
 ﻿using RestSharp;
+using RestSharp.Deserializers;
+using RestSharp.Serializers;
 
 namespace Lubala.Core.HttpGateway
 {
@@ -18,8 +20,17 @@ namespace Lubala.Core.HttpGateway
         public T Execute<T>(string resource, ApiContext context) where T : new()
         {
             var request = CreateRestRequest(resource, context);
-            var response = _client.Get<T>(request);
-            return response.Data;
+            var response = _client.Get(request);
+
+            var deserializer = new JsonDeserializer();
+
+            var failedTest = deserializer.Deserialize<InvokeApiFailed>(response);
+            if (failedTest.IsFailed())
+            {
+                throw new ApiInvokeException(failedTest.errcode, failedTest.errmsg);
+            }
+
+            return deserializer.Deserialize<T>(response);
         }
 
         private static string GetUserAgentString()

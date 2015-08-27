@@ -6,7 +6,7 @@ namespace Lubala.Core.Tokens
     {
         private readonly Token _token;
 
-        public WechatToken(Token token, DateTimeOffset createdDate)
+        internal WechatToken(Token token, DateTimeOffset createdDate)
         {
             _token = token;
             CreatedDateTime = createdDate;

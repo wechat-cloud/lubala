@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Lubala.Core.Tokens;
 
-namespace Lubala.Core
+namespace Lubala.Core.HttpGateway
 {
     public class ApiContext
     {

@@ -38,11 +38,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiContext.cs" />
+    <Compile Include="ApiEntityBase.cs" />
+    <Compile Include="HttpGateway\ApiContext.cs" />
     <Compile Include="Cryptographic\DefaultSha1Hasher.cs" />
     <Compile Include="Cryptographic\ISha1Hasher.cs" />
+    <Compile Include="HttpGateway\ApiInvokeException.cs" />
     <Compile Include="HttpGateway\DefaultHttpRequester.cs" />
     <Compile Include="HttpGateway\IHttpRequester.cs" />
+    <Compile Include="HttpGateway\InvokeApiFailed.cs" />
     <Compile Include="Resolvers\DefaultTypeResolver.cs" />
     <Compile Include="EncodingMode.cs" />
     <Compile Include="Resolvers\ITypeResolver.cs" />
@@ -62,7 +65,7 @@
     <Compile Include="Tokens\DefaultTokenSource.cs" />
     <Compile Include="ILubalaChannel.cs" />
     <Compile Include="LubalaChannelFactory.cs" />
-    <Compile Include="Tokens\RequestParam.cs" />
+    <Compile Include="HttpGateway\RequestParam.cs" />
     <Compile Include="Tokens\Token.cs" />
     <Compile Include="Resolvers\TypeResolver.cs" />
     <Compile Include="Tokens\WechatToken.cs" />

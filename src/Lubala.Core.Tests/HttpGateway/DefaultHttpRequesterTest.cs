@@ -15,14 +15,29 @@ namespace Lubala.Core.Tests.HttpGateway
         public void TestRetrieveToken()
         {
             var x = new SecretInformationReader();
-            
             var requester = new DefaultHttpRequester();
 
             var context = new ApiContext();
             context.AddParam("grant_type", "client_credential")
                 .AddParam("appid", x.AppId)
                 .AddParam("secret", x.AppSecret);
-            var result = requester.Execute<Token>("/cgi-bin/token", context);
+            var token = requester.Execute<Token>("/cgi-bin/token", context);
+
+            Assert.NotNull(token.access_token);
+        }
+
+        [Fact]
+        public void TestRetrieveTokenWithWrong()
+        {
+            var requester = new DefaultHttpRequester();
+
+            var context = new ApiContext();
+            context.AddParam("grant_type", "client_credential")
+                .AddParam("appid", "wrong AppId")
+                .AddParam("secret", "wrong AppSecret");
+            Assert.Throws<ApiInvokeException>(() => {
+                var token = requester.Execute<Token>("/cgi-bin/token", context);
+            });
         }
     }
 }

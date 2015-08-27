@@ -1,6 +1,6 @@
-﻿namespace Lubala.Core.Tokens
+﻿namespace Lubala.Core.HttpGateway
 {
-    public class RequestParam
+    internal class RequestParam
     {
         private RequestParam(string key, string value)
         {
