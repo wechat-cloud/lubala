@@ -9,6 +9,12 @@ namespace Lubala.Component.Mp.Messages
     {
         [XmlElement("CreateTime", typeof(long))]
         public long MsgId { get; }
-	}
+
+        public IPassiveMessage Reply(MpPassiveMessage passiveMessage)
+        {
+            BridgeTo(passiveMessage);
+            return passiveMessage;
+        }
+    }
 }
 

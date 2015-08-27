@@ -7,15 +7,22 @@ namespace Lubala.Core.Pushing
     public abstract class PushingMessage
     {
         [Node("ToUserName")]
-        public string ToUserName { get; private set; }
+        public string ToUserName { get; protected set; }
 
         [Node("FromUserName")]
-        public string FromUserName { get; private set; }
+        public string FromUserName { get; protected set; }
 
         [Node("CreateTime")]
-        public int CreateTime { get; private set; }
+        public long CreateTime { get; protected set; }
 
         [Node("MsgType")]
         public abstract string MsgType { get; }
+
+        protected void BridgeTo(PushingMessage target)
+        {
+            target.FromUserName = ToUserName;
+            target.ToUserName = FromUserName;
+            target.CreateTime = DateTimeOffset.UtcNow.DateTimeToEpoch();
+        }
     }
 }

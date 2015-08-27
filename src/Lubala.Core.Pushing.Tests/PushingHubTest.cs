@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Resolvers;
+using Lubala.Core.Serialization;
 using Moq;
 using Xunit;
 
@@ -29,9 +30,12 @@ namespace Lubala.Core.Pushing.Tests
 
             var builder = new HubBuilder(moqChannel.Object);
 
+            var serializerMoq = new Mock<IXmlSerializer>();
+            serializerMoq.Setup(x => x.Serialize(It.IsAny<object>(), It.IsAny<Stream>()));
+
             var moqPassive = new Mock<IPassiveMessage>();
             moqPassive
-                .Setup(x => x.Serialize())
+                .Setup(x => x.Serialize(serializerMoq.Object))
                 .Returns("success");
             var handler = new Mock<IMessageHandler>();
             handler
@@ -55,7 +59,7 @@ namespace Lubala.Core.Pushing.Tests
                         var result = reader.ReadToEnd();
                         Assert.Equal(result, "");
                     }
-                    moqPassive.Verify(x => x.Serialize(), Times.Never);
+                    moqPassive.Verify(x => x.Serialize(It.IsAny<IXmlSerializer>()), Times.Never);
                 }
             }
         }
@@ -68,9 +72,12 @@ namespace Lubala.Core.Pushing.Tests
 
             var builder = new HubBuilder(moqChannel.Object);
 
+            var serializerMoq = new Mock<IXmlSerializer>();
+            serializerMoq.Setup(x => x.Serialize(It.IsAny<object>(), It.IsAny<Stream>()));
+
             var moqPassive = new Mock<IPassiveMessage>();
             moqPassive
-                .Setup(x => x.Serialize())
+                .Setup(x => x.Serialize(serializerMoq.Object))
                 .Returns("success");
 
             builder.RegisterMessageType<TestTextMessage>();
@@ -90,7 +97,7 @@ namespace Lubala.Core.Pushing.Tests
                         var result = reader.ReadToEnd();
                         Assert.Equal(result, "");
                     }
-                    moqPassive.Verify(x => x.Serialize(), Times.Never);
+                    moqPassive.Verify(x => x.Serialize(It.IsAny<IXmlSerializer>()), Times.Never);
                 }
             }
         }

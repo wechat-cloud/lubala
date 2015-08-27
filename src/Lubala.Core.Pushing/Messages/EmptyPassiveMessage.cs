@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lubala.Core.Serialization;
 
 namespace Lubala.Core.Pushing.Messages
 {
     public sealed class EmptyPassiveMessage : IPassiveMessage
     {
-        public string Serialize()
+        public string Serialize(IXmlSerializer xmlSerializer)
         {
-            return "";
+            return string.Empty;
         }
     }
 }

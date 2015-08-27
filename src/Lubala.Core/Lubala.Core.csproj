@@ -38,7 +38,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiEntityBase.cs" />
+    <Compile Include="Extensions\EpochExtension.cs" />
     <Compile Include="HttpGateway\ApiContext.cs" />
     <Compile Include="Cryptographic\DefaultSha1Hasher.cs" />
     <Compile Include="Cryptographic\ISha1Hasher.cs" />

@@ -40,7 +40,7 @@ namespace Lubala.Core.Pushing
             }
 
             var message = ProducePassiveMessageCore(rawXml, context, payloads);
-            var result = message.Serialize();
+            var result = message.Serialize(_xmlSerializer);
 
             if (IsEncodingEnabled(context))
             {
