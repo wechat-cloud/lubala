@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lubala.Core.Cryptographic;
+using Lubala.Core.Pushing.Encoding;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
 
@@ -17,6 +18,8 @@ namespace Lubala.Core.Pushing
             TypeResolver.Resolver.Register<ISourceStreamReader, DefaultSourceStreamReader>();
             TypeResolver.Resolver.Register<IPushingEngine, PushingEngine>();
             TypeResolver.Resolver.Register<ITypeDetector, TypeDetector>();
+            TypeResolver.Resolver.Register<IEncodingProvider, AesEncodingProvider>();
+            TypeResolver.Resolver.Register<IAesCrypography, AesCrypography>();
         }
 
         private HubContext _hubContext;
@@ -53,25 +56,24 @@ namespace Lubala.Core.Pushing
             return result == signature;
         }
 
-        public Task InterpretingAsync(Stream sourceStream, Stream targetStream)
+        public Task InterpretingAsync(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads)
         {
             return Task.Factory.StartNew(() =>
             {
-                Interpreting(sourceStream, targetStream);
+                Interpreting(sourceStream, targetStream, payloads);
             });
         }
 
-        public void Interpreting(Stream sourceStream, Stream targetStream)
+        public void Interpreting(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads)
         {
             var engine = Resolver.Resolve<IPushingEngine>();
-            var passiveMessage = engine.ProducePassiveMessage(sourceStream, _hubContext);
+            var raw = engine.ProducePassiveMessage(sourceStream, _hubContext, payloads);
 
-            var serializedMessage = passiveMessage.Serialize();
             using (var tempStream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(tempStream))
                 {
-                    writer.Write(serializedMessage);
+                    writer.Write(raw);
                     tempStream.Position = 0;
 
                     tempStream.WriteTo(targetStream);

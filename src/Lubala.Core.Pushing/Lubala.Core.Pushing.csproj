@@ -40,6 +40,13 @@
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
     <Compile Include="DefaultSourceStreamReader.cs" />
+    <Compile Include="Encoding\AesCrypography.cs" />
+    <Compile Include="Encoding\AesEncodingProvider.cs" />
+    <Compile Include="Encoding\CrypographyConstant.cs" />
+    <Compile Include="Encoding\CryptographyContext.cs" />
+    <Compile Include="Encoding\CryptographyException.cs" />
+    <Compile Include="Encoding\IAesCrypography.cs" />
+    <Compile Include="Encoding\IEncodingProvider.cs" />
     <Compile Include="HandlerPicker.cs" />
     <Compile Include="Handlers\SafeMessageHandler.cs" />
     <Compile Include="IPushingEngine.cs" />
@@ -61,7 +68,6 @@
     <Compile Include="IPushingHub.cs" />
     <Compile Include="Handlers\IMessageHandler.cs" />
     <Compile Include="PushingHub.cs" />
-    <Compile Include="Encoding\EncodingOption.cs" />
     <Compile Include="TypeIdentity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
