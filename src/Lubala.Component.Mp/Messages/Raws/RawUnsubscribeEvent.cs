@@ -2,11 +2,11 @@ using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
 
-namespace Lubala.Component.Mp.Messages.Incoming
+namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
     [EventType("unsubscribe")]
-    public class RawUnsubscribeEvent : InteractableEvent
+    public class RawUnsubscribeEvent : PushingEvent
     {
+        public override string Event => "unsubscribe";
     }
 }

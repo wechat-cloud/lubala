@@ -7,6 +7,7 @@ namespace Lubala.Core
 	{
         ITypeResolver Resolver { get; }
 	    WechatToken Token { get; }
+        string AppId { get; }
 	}
 }
 

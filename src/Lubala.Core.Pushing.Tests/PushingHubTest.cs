@@ -46,7 +46,7 @@ namespace Lubala.Core.Pushing.Tests
             {
                 using (var fakeTargetStream = new MemoryStream())
                 {
-                    ph.Interpreting(t.Stream, fakeTargetStream);
+                    ph.Interpreting(t.Stream, fakeTargetStream, null);
 
                     fakeTargetStream.Position = 0;
                     using (var reader = new StreamReader(fakeTargetStream))
@@ -81,7 +81,7 @@ namespace Lubala.Core.Pushing.Tests
             {
                 using (var fakeTargetStream = new MemoryStream())
                 {
-                    ph.Interpreting(t.Stream, fakeTargetStream);
+                    ph.Interpreting(t.Stream, fakeTargetStream, null);
 
                     fakeTargetStream.Position = 0;
                     using (var reader = new StreamReader(fakeTargetStream))

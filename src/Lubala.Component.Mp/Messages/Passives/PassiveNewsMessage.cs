@@ -1,51 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
-    public class PassiveNewsMessage : MpOutgoingMessage
+    public class PassiveNewsMessage : MpPassiveMessage
     {
         public PassiveNewsMessage()
         {
             Articles = new List<ArticleItem>();
         }
 
-        [XmlElement("ArticleCount")]
+        [Node("ArticleCount")]
         public int ArticleCount { get; set; }
 
-        [XmlArray("Articles")]
-        [XmlArrayItem("item", typeof (ArticleItem))]
+        [Array("Articles")]
+        [ArrayItem("item", typeof (ArticleItem))]
         public List<ArticleItem> Articles { get; set; }
 
-        [XmlElement("Title")]
+        [Node("Title")]
         public string Title { get; set; }
 
-        [XmlElement("Description")]
+        [Node("Description")]
         public string Description { get; set; }
 
-        [XmlElement("PicUrl")]
+        [Node("PicUrl")]
         public string PictureUrl { get; set; }
 
-        [XmlElement("Url")]
+        [Node("Url")]
         public string Url { get; set; }
-    }
 
-    [Serializable]
-    [XmlType(AnonymousType = true)]
+        public override string MsgType => "news";
+    }
+    
     public class ArticleItem
     {
-        [XmlElement("Title")]
+        [Node("Title")]
         public string Title { get; set; }
 
-        [XmlElement("Description")]
+        [Node("Description")]
         public string Description { get; set; }
 
-        [XmlElement("PicUrl")]
+        [Node("PicUrl")]
         public string PicUrl { get; set; }
 
-        [XmlElement("Url")]
+        [Node("Url")]
         public string Url { get; set; }
     }
 }

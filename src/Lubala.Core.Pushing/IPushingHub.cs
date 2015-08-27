@@ -12,8 +12,8 @@ namespace Lubala.Core.Pushing
 	    EncodingMode EncodingMode { get; }
 
 	    bool Verify(string timestamp, string nonce, string signature);
-        void Interpreting(Stream sourceStream, Stream targetStream);
-        Task InterpretingAsync(Stream sourceStream, Stream targetStream);
+        void Interpreting(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads);
+        Task InterpretingAsync(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads);
     }
 }
 

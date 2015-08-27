@@ -1,20 +1,22 @@
 using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Serialization.Attributes;
 
-namespace Lubala.Component.Mp.Messages.Incoming
+namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
     [EventType("LOCATION")]
-    public class RawLocationEvent : InteractableEvent
+    public class RawLocationEvent : PushingEvent
     {
-        [XmlElement("Latitude")]
+        [Node("Latitude")]
         public double Latitude { get; set; }
 
-        [XmlElement("Longitude")]
+        [Node("Longitude")]
         public double Longitude { get; set; }
 
-        [XmlElement("Precision")]
+        [Node("Precision")]
         public double Precision { get; set; }
+
+        public override string Event => "LOCATION";
     }
 }

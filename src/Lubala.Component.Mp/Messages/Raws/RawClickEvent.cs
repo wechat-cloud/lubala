@@ -2,13 +2,14 @@ using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
 
-namespace Lubala.Component.Mp.Messages.Incoming
+namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
     [EventType("CLICK")]
-    public class RawClickEvent : InteractableEvent
+    public class RawClickEvent : PushingEvent
     {
         [XmlElement("EventKey")]
         public string EventKey { get; set; }
+
+        public override string Event => "CLICK";
     }
 }

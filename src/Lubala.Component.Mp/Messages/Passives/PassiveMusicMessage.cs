@@ -1,23 +1,25 @@
 ﻿using System.Xml.Serialization;
+using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
-    [XmlRoot("xml")]
-    public class PassiveMusicMessage : MpOutgoingMessage
+    public class PassiveMusicMessage : MpPassiveMessage
     {
-        [XmlElement("Title")]
+        [Node("Title")]
         public string Title { get; set; }
 
-        [XmlElement("Description")]
+        [Node("Description")]
         public string Description { get; set; }
 
-        [XmlElement("MusicUrl")]
+        [Node("MusicUrl")]
         public string MusicUrl { get; set; }
 
-        [XmlElement("HighQualityMusicUrl")]
+        [Node("HighQualityMusicUrl")]
         public string HighQualityMusicUrl { get; set; }
 
-        [XmlElement("ThumbMediaId")]
+        [Node("ThumbMediaId")]
         public string ThumbMediaId { get; set; }
+
+        public override string MsgType => "image";
     }
 }

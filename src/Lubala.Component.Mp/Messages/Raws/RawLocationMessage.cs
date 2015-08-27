@@ -1,23 +1,25 @@
 ﻿using System.Xml.Serialization;
 using Lubala.Core.Pushing;
 using Lubala.Core.Pushing.Attributes;
+using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Component.Mp.Messages
 {
     [MsgType("location")]
-    [XmlRoot("xml")]
-    public class RawLocationMessage : MpIncomingMessage, IAcceptPassiveMessage
+    public class RawLocationMessage : MpRawMessage, IAcceptPassiveMessage
     {
-        [XmlElement("Location_X")]
+        [Node("Location_X")]
         public double LocationX { get; set; }
 
-        [XmlElement("Location_Y")]
+        [Node("Location_Y")]
         public double LocationY { get; set; }
 
-        [XmlElement("Scale")]
+        [Node("Scale")]
         public string Scale { get; set; }
 
-        [XmlElement("Label")]
+        [Node("Label")]
         public string Label { get; set; }
+
+        public override string MsgType => "location";
     }
 }
