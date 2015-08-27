@@ -1,4 +1,5 @@
 ﻿using Lubala.Core.Cryptographic;
+using Lubala.Core.HttpGateway;
 using Lubala.Core.Serialization;
 using Lubala.Core.Tokens;
 
@@ -26,8 +27,9 @@ namespace Lubala.Core.Resolvers
         private static void RegisterDefaultServices()
         {
             Resolver.Register<ISha1Hasher, DefaultSha1Hasher>();
-            Resolver.Register<IXmlSerializer, DefaultXmlSerializer>();
+            Resolver.Register<IXmlSerializer, WechatXmlSerializer>();
             Resolver.Register<ITokenSource, DefaultTokenSource>();
+            Resolver.Register<IHttpRequester, DefaultHttpRequester>();
         }
     }
 }

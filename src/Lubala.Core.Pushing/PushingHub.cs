@@ -75,8 +75,9 @@ namespace Lubala.Core.Pushing
                 using (var writer = new StreamWriter(tempStream))
                 {
                     writer.Write(raw);
-                    tempStream.Position = 0;
+                    writer.Flush();
 
+                    tempStream.Position = 0;
                     tempStream.WriteTo(targetStream);
                 }
             }

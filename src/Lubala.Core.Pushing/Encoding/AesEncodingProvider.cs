@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Lubala.Core.Cryptographic;
@@ -37,7 +38,15 @@ namespace Lubala.Core.Pushing.Encoding
             var signature = GenarateSinature(raw, context);
 
             var xml = GenerateXmlDocument(context, raw, signature);
-            return xml.ToString();
+
+            using (var stringWriter = new StringWriter())
+            {
+                using (var textWriter = new XmlTextWriter(stringWriter))
+                {
+                    xml.WriteTo(textWriter);
+                    return stringWriter.ToString();
+                }
+            }
         }
 
         public XDocument DecryptMessage(XDocument xml, CryptographyContext context)

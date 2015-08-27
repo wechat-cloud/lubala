@@ -13,7 +13,7 @@ namespace Lubala.Core.Serialization
     {
         public void Serialize<T>(T obj, Stream targetStream)
         {
-            var targetType = typeof (T);
+            var targetType = obj.GetType();
             var xml = new XmlDocument();
             var root = CreateElement("xml", obj, targetType, xml);
             xml.AppendChild(root);

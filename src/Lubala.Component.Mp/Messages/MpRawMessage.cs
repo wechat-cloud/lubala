@@ -8,7 +8,7 @@ namespace Lubala.Component.Mp.Messages
 	public abstract class MpRawMessage : PushingMessage, IPushingMessage, IDuplicateCheckable
     {
         [XmlElement("CreateTime", typeof(long))]
-        public long MsgId { get; }
+        public long MsgId { get; private set; }
 
         public IPassiveMessage Reply(MpPassiveMessage passiveMessage)
         {

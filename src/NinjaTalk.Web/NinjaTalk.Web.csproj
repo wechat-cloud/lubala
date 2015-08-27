@@ -124,7 +124,20 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Lubala.Component.Mp\Lubala.Component.Mp.csproj">
+      <Project>{b03a1786-bbdc-4a43-89ec-4189b38fad29}</Project>
+      <Name>Lubala.Component.Mp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">
+      <Project>{7fd72bc4-5112-4dc1-b488-2708128aeacc}</Project>
+      <Name>Lubala.Core.Pushing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lubala.Core\Lubala.Core.csproj">
+      <Project>{c2c4b19e-85ec-4b30-9fdd-ea5f8e802a37}</Project>
+      <Name>Lubala.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
