@@ -8,7 +8,7 @@ namespace Lubala.Core
 {
     public class Token
     {
-        public string AccessToken { get; internal set; }
-        public int ExpiresIn { get; internal set; }
+        public string access_token { get; set; }
+        public int expires_in { get; set; }
     }
 }

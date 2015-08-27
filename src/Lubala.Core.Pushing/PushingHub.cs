@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Lubala.Core.Cryptographic;
 using Lubala.Core.Pushing.Encoding;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Resolvers;
 using Lubala.Core.Serialization;
 
 namespace Lubala.Core.Pushing

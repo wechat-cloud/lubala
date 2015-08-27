@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Resolvers;
 
 namespace Lubala.Core.Pushing
 {

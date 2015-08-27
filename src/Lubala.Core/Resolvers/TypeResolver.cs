@@ -1,8 +1,8 @@
-﻿using System;
-using Lubala.Core.Cryptographic;
+﻿using Lubala.Core.Cryptographic;
 using Lubala.Core.Serialization;
+using Lubala.Core.Tokens;
 
-namespace Lubala.Core
+namespace Lubala.Core.Resolvers
 {
     public class TypeResolver
     {
@@ -27,6 +27,7 @@ namespace Lubala.Core
         {
             Resolver.Register<ISha1Hasher, DefaultSha1Hasher>();
             Resolver.Register<IXmlSerializer, DefaultXmlSerializer>();
+            Resolver.Register<ITokenSource, DefaultTokenSource>();
         }
     }
 }

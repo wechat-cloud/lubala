@@ -9,16 +9,9 @@ namespace Lubala.Core
 			// init resolver here.
 		}
 
-		public ILubalaChannel CreateDefaultChannel() {
-			throw new NotImplementedException();
-		}
-
-		public ILubalaChannel CreateChannelWith(string apiKey, string apiSecret) {
-			throw new NotImplementedException();
-		}
-
-		public ILubalaChannel CreateChannelWith(ITokenSource tokenSource) {
-			throw new NotImplementedException();
+		public ILubalaChannel CreateChannel(string apiKey, string apiSecret) {
+			var channel = new LubalaChannel(apiKey, apiSecret);
+		    return channel;
 		}
 	}
 }

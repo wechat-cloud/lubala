@@ -3,6 +3,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Resolvers;
 using Moq;
 using Xunit;
 

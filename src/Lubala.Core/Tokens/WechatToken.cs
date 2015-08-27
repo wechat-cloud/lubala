@@ -12,9 +12,9 @@ namespace Lubala.Core.Tokens
             CreatedDateTime = createdDate;
         }
 
-        public string TokenValue => _token.AccessToken;
+        public string TokenValue => _token.access_token;
 
         public DateTimeOffset CreatedDateTime { get; }
-        public DateTimeOffset ExpiredDateTime => CreatedDateTime.AddSeconds(_token.ExpiresIn);
+        public DateTimeOffset ExpiredDateTime => CreatedDateTime.AddSeconds(_token.expires_in);
     }
 }

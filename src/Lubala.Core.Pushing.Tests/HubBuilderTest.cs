@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lubala.Core.Pushing.Messages;
+using Lubala.Core.Resolvers;
 using Moq;
 using Xunit;
 
