@@ -6,7 +6,9 @@ namespace Lubala.Core.Pushing.Encoding
     {
         public CryptographyException(int errorCode)
         {
-            throw new NotImplementedException();
+            ErrorCode = errorCode;
         }
+
+        public int ErrorCode { get; private set; }
     }
 }
