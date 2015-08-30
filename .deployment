@@ -1,2 +1,2 @@
 [config]
-project = Azure.sln
+project = src/NinjaTalk.Web/NinjaTalk.Web.csproj
