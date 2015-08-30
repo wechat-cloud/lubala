@@ -17,9 +17,10 @@ namespace Lubala.Core.Pushing
             _context = new HubContext {Channel = channel, Resolver = channel.Resolver};
         }
 
-        public IHubBuilder UseEncoding(string signature, bool compatible = true)
+        public IHubBuilder UseEncoding(string signature, string serverToken, bool compatible = true)
         {
             _context.EncodingMode = compatible ? EncodingMode.Compatible : EncodingMode.Secure;
+            _context.ServerToken = serverToken;
             _context.EncodingSignature = signature;
             return this;
         }

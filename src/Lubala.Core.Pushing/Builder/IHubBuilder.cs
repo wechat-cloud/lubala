@@ -9,7 +9,7 @@ namespace Lubala.Core.Pushing
 {
     public interface IHubBuilder
     {
-        IHubBuilder UseEncoding(string signature, bool compatible = true);
+        IHubBuilder UseEncoding(string signature, string serverToken, bool compatible = true);
         IHubBuilder RegisterMessageType<T>() where T : IPushingMessage;
         IHubBuilder RegisterMessageHandler(Type messageType, IMessageHandler messageHandler);
     }

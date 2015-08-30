@@ -72,7 +72,7 @@ namespace Lubala.Core.Serialization
             var node = xml.CreateElement(nodeName);
             if (arrayAttr == null)
             {
-                SetupNodeValue(propertyInfo, obj, node);
+                SetupNodeValue(propertyInfo, obj, node, xml);
             }
             else
             {
@@ -92,14 +92,15 @@ namespace Lubala.Core.Serialization
             return node;
         }
 
-        private void SetupNodeValue(PropertyInfo propertyInfo, object obj, XmlElement node)
+        private void SetupNodeValue(PropertyInfo propertyInfo, object obj, XmlElement node, XmlDocument xml)
         {
             var raw = propertyInfo.GetValue(obj);
             var propertyType = propertyInfo.PropertyType;
 
             var str = FormatValue(raw, propertyType);
 
-            node.InnerText = str;
+            var cdata = xml.CreateCDataSection(str);
+            node.AppendChild(cdata);
         }
 
         private string FormatValue(object raw, Type propertyType)

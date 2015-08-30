@@ -66,7 +66,7 @@ namespace Lubala.Core.Pushing
             {
                 var cryptographyContext = new CryptographyContext
                 {
-                    Token = context.Channel.Token.TokenValue,
+                    Token = context.ServerToken,
                     AppId = context.Channel.AppId,
                     EncodingAesKey = context.EncodingSignature,
                     MsgSignature = msgSignature,

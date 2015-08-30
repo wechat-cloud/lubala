@@ -45,14 +45,14 @@ namespace Lubala.Core.Pushing
         internal IReadOnlyDictionary<TypeIdentity, Type> MessageTypes { get; }
         internal ITypeResolver Resolver { get; }
 
-        public bool Verify(string timestamp, string nonce, string signature)
+        public bool Verify(string timestamp, string nonce, string signature, string verifyToken)
         {
-            var tokenValue = Channel.Token.TokenValue;
+            var tokenValue = verifyToken;
             var tempArray = new SortedSet<string> {timestamp, nonce, tokenValue};
             var toHash = string.Join("", tempArray);
 
             var hasher = Resolver.Resolve<ISha1Hasher>();
-            var result = hasher.HashString(toHash);
+            var result = hasher.HashString(toHash, System.Text.Encoding.ASCII);
 
             return result == signature;
         }
