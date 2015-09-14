@@ -28,7 +28,7 @@ namespace Lubala.Core.Pushing
             _xmlSerializer = xmlSerializer;
         }
 
-		public Task<PassiveMessage> ProducePassiveMessage(Stream sourceStream, HubContext context,
+		public Task<IPassiveMessage> ProducePassiveMessage(Stream sourceStream, HubContext context,
             IDictionary<string, string> payloads)
         {
             var rawXml = _sourceStreamReader.ReadAsXml(sourceStream);
@@ -80,7 +80,7 @@ namespace Lubala.Core.Pushing
             throw new InvalidOperationException("missing necessary key/value.");
         }
         
-        private PassiveMessage ProducePassiveMessageCore(XDocument rawXml, HubContext context, IDictionary<string, string> payloads)
+        private IPassiveMessage ProducePassiveMessageCore(XDocument rawXml, HubContext context, IDictionary<string, string> payloads)
         {
             var typeIdentity = _typeDetector.Detecting(rawXml);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Lubala.Core.Pushing.Attributes;
 using Lubala.Core.Pushing.Messages;
@@ -23,23 +24,20 @@ namespace Lubala.Core.Pushing.Tests
 </xml>";
 
         [Fact]
-        public void TestInterpreting()
+        public async void TestInterpreting()
         {
             var moqChannel = new Mock<ILubalaChannel>();
             moqChannel.SetupGet(c => c.Resolver).Returns(TypeResolver.Resolver);
 
             var builder = new HubBuilder(moqChannel.Object);
-
-            var serializerMoq = new Mock<IXmlSerializer>();
-            serializerMoq.Setup(x => x.Serialize(It.IsAny<object>(), It.IsAny<Stream>()));
-
+            
             var moqPassive = new Mock<IPassiveMessage>();
             moqPassive
-                .Setup(x => x.Serialize(serializerMoq.Object))
-                .Returns("success");
+                .Setup(x => x.SerializeTo(It.IsAny<Stream>(), It.IsAny<HubContext>()))
+                .Returns(new Task(() => { }));
             var handler = new Mock<IMessageHandler>();
             handler
-                .Setup(x => x.HandleMessage(It.IsAny<IPushingMessage>(), It.IsAny<MessageContext>()))
+                .Setup(x => x.HandleMessage(It.IsAny<PushingMessage>(), It.IsAny<MessageContext>()))
                 .Returns(moqPassive.Object);
 
             builder.RegisterMessageType<TestTextMessage>();
@@ -51,7 +49,7 @@ namespace Lubala.Core.Pushing.Tests
             {
                 using (var fakeTargetStream = new MemoryStream())
                 {
-                    ph.Interpreting(t.Stream, fakeTargetStream, null);
+                    await ph.InterpretingAsync(t.Stream, fakeTargetStream, null);
 
                     fakeTargetStream.Position = 0;
                     using (var reader = new StreamReader(fakeTargetStream))
@@ -59,26 +57,23 @@ namespace Lubala.Core.Pushing.Tests
                         var result = reader.ReadToEnd();
                         Assert.Equal(result, "");
                     }
-                    moqPassive.Verify(x => x.Serialize(It.IsAny<IXmlSerializer>()), Times.Never);
+                    moqPassive.Verify(x => x.SerializeTo(It.IsAny<Stream>(), It.IsAny<HubContext>()), Times.Never);
                 }
             }
         }
 
         [Fact]
-        public void TestInterpretingWithHandler()
+        public async void TestInterpretingWithHandler()
         {
             var moqChannel = new Mock<ILubalaChannel>();
             moqChannel.SetupGet(c => c.Resolver).Returns(TypeResolver.Resolver);
 
             var builder = new HubBuilder(moqChannel.Object);
-
-            var serializerMoq = new Mock<IXmlSerializer>();
-            serializerMoq.Setup(x => x.Serialize(It.IsAny<object>(), It.IsAny<Stream>()));
-
+            
             var moqPassive = new Mock<IPassiveMessage>();
             moqPassive
-                .Setup(x => x.Serialize(serializerMoq.Object))
-                .Returns("success");
+                .Setup(x => x.SerializeTo(It.IsAny<Stream>(), It.IsAny<HubContext>()))
+                .Returns(new Task(() => { }));
 
             builder.RegisterMessageType<TestTextMessage>();
             builder.RegisterMessageHandler(typeof (TestTextMessage), new TestTextHandler());
@@ -89,7 +84,7 @@ namespace Lubala.Core.Pushing.Tests
             {
                 using (var fakeTargetStream = new MemoryStream())
                 {
-                    ph.Interpreting(t.Stream, fakeTargetStream, null);
+                    await ph.InterpretingAsync(t.Stream, fakeTargetStream, null);
 
                     fakeTargetStream.Position = 0;
                     using (var reader = new StreamReader(fakeTargetStream))
@@ -97,7 +92,7 @@ namespace Lubala.Core.Pushing.Tests
                         var result = reader.ReadToEnd();
                         Assert.Equal(result, "");
                     }
-                    moqPassive.Verify(x => x.Serialize(It.IsAny<IXmlSerializer>()), Times.Never);
+                    moqPassive.Verify(x => x.SerializeTo(It.IsAny<Stream>(), It.IsAny<HubContext>()), Times.Never);
                 }
             }
         }
@@ -106,22 +101,10 @@ namespace Lubala.Core.Pushing.Tests
     [Serializable]
     [MsgType("text")]
     [XmlRoot("xml")]
-    public class TestTextMessage : IPushingMessage
+    public class TestTextMessage : PushingMessage
     {
-        [XmlElement("ToUserName")]
-        public string ToUserName { get; set; }
-
-        [XmlElement("FromUserName")]
-        public string FromUserName { get; set; }
-
-        [XmlElement("CreateTime")]
-        public int CreateTime { get; set; }
-
         [XmlElement("MsgType")]
-        public string MsgType { get; set; }
-
-        [XmlElement("CreateTime", typeof (long))]
-        public long MsgId { get; }
+        public override string MsgType => "text";
 
         [XmlElement("Content")]
         public string Content { get; set; }
@@ -129,7 +112,7 @@ namespace Lubala.Core.Pushing.Tests
 
     public class TestTextHandler : IMessageHandler
     {
-        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
         {
             Assert.Equal(context.SupportPassiveMessage, false);
             Assert.Equal(context.TypeIdentity.MsgType, "text");

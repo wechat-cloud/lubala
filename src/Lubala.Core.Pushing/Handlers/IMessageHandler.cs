@@ -5,7 +5,7 @@ namespace Lubala.Core.Pushing
 {
     public interface IMessageHandler
     {
-        PassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context);
+        IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context);
     }
 }
 

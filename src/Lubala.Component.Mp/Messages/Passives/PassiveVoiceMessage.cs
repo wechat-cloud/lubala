@@ -8,6 +8,6 @@ namespace Lubala.Component.Mp.Messages
         [Node("MediaId")]
         public string MediaId { get; set; }
 
-        public override string MsgType => "voice";
+        protected override string MsgType => "voice";
     }
 }

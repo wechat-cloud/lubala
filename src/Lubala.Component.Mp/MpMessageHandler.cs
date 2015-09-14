@@ -12,7 +12,7 @@ namespace Lubala.Component.Mp
     public abstract class MpMessageHandler : IMessageHandler
     {
         internal abstract Type IncomingMessageType { get; }
-        public abstract PassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context);
+        public abstract IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context);
     }
 
     public abstract class MPMessageHandler<TIn, TOut> : MpMessageHandler
@@ -23,7 +23,7 @@ namespace Lubala.Component.Mp
 
         protected abstract TOut HandleMessage(TIn incomingMessage, MessageContext context);
 
-        public sealed override PassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
+        public sealed override IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
         {
 			var typedMessage = incomingMessage as TIn;
             if (typedMessage != null)

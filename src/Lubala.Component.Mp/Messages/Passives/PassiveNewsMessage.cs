@@ -31,7 +31,7 @@ namespace Lubala.Component.Mp.Messages
         [Node("Url")]
         public string Url { get; set; }
 
-        public override string MsgType => "news";
+        protected override string MsgType => "news";
     }
     
     public class ArticleItem

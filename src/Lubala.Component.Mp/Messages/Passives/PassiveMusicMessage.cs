@@ -20,6 +20,6 @@ namespace Lubala.Component.Mp.Messages
         [Node("ThumbMediaId")]
         public string ThumbMediaId { get; set; }
 
-        public override string MsgType => "image";
+        protected override string MsgType => "image";
     }
 }

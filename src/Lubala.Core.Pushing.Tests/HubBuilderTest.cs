@@ -46,7 +46,8 @@ namespace Lubala.Core.Pushing.Tests
         }
     }
 
-    public class FakeMessage : IPushingMessage
+    public class FakeMessage : PushingMessage
     {
+        public override string MsgType { get; }
     }
 }

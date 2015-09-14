@@ -67,7 +67,7 @@
     <Compile Include="PushingHub.cs" />
     <Compile Include="TypeIdentity.cs" />
     <Compile Include="Messages\XmlPassiveMessage.cs" />
-    <Compile Include="Messages\PassiveMessage.cs" />
+    <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="Messages\EncryptedPassiveMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

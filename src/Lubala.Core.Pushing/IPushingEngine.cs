@@ -6,6 +6,6 @@ namespace Lubala.Core.Pushing
 {
     internal interface IPushingEngine
     {
-        Task<PassiveMessage> ProducePassiveMessage(Stream sourceStream, HubContext context, IDictionary<string, string> payloads);
+        Task<IPassiveMessage> ProducePassiveMessage(Stream sourceStream, HubContext context, IDictionary<string, string> payloads);
     }
 }

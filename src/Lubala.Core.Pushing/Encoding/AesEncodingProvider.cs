@@ -20,7 +20,7 @@ namespace Lubala.Core.Pushing.Encoding
             _aesCrypography = aesCrypography;
         }
 
-		public PassiveMessage EncryptMessage(PassiveMessage message, CryptographyContext context){
+		public IPassiveMessage EncryptMessage(IPassiveMessage message, CryptographyContext context){
 			using (var stream = new MemoryStream()) {
 				message.SerializeTo(stream, context.HubContext);
 				stream.Position = 0;

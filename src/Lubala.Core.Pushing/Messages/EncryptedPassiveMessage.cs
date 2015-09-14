@@ -4,7 +4,7 @@ using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Core.Pushing.Messages
 {
-	internal class EncryptedPassiveMessage : PassiveMessage
+	internal class EncryptedPassiveMessage : XmlPassiveMessage
 	{
 		[Node("MsgSignature")]
 		public string MsgSignature { get; internal set; }

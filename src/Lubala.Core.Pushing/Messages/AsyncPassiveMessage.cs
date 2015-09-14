@@ -8,9 +8,9 @@ using System.IO;
 
 namespace Lubala.Core.Pushing.Messages
 {
-	public sealed class AsyncPassiveMessage : PassiveMessage
+	public sealed class AsyncPassiveMessage : IPassiveMessage
     {
-		internal override Task SerializeTo(Stream targetStream, HubContext context) {
+		public Task SerializeTo(Stream targetStream, HubContext context) {
 			var encoding = System.Text.Encoding.Unicode;
 			var bytes = encoding.GetBytes(string.Empty);
 

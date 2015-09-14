@@ -8,6 +8,6 @@ namespace Lubala.Component.Mp.Messages
         [Node("Content")]
         public string Content { get; set; }
 
-        public override string MsgType => "text";
+        protected override string MsgType => "text";
     }
 }

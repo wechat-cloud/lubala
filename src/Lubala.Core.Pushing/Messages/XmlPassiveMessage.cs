@@ -6,18 +6,12 @@ using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Core.Pushing
 {
-	public abstract class XmlPassiveMessage : PassiveMessage
+	public abstract class XmlPassiveMessage : IPassiveMessage
 	{
-		[Node("ToUserName")]
-		internal string ToUserName { get; set; }
-
-		[Node("FromUserName")]
-		internal string FromUserName { get; set; }
-
-		[Node("CreateTime")]
-		internal long CreateTime { get; set; }
-
-		[Node("MsgType")]
-		internal abstract string MsgType { get; }
-	}
+        public Task SerializeTo(Stream targetStream, HubContext context)
+        {
+            var xmlSerializer = context.Resolver.Resolve<IXmlSerializer>();
+            return Task.Factory.StartNew(() => xmlSerializer.Serialize(this, targetStream));
+        }
+    }
 }
