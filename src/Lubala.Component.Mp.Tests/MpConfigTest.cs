@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lubala.Component.Mp.Messages;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Messages;
 using Moq;
 using Xunit;
 

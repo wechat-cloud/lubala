@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace Lubala.Core.Pushing
+namespace Lubala.Core.Pushing.Services
 {
     public interface ITypeDetector
     {

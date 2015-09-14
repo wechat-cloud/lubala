@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Lubala.Core.Serialization;
 using System.IO;
 
-namespace Lubala.Core.Pushing
+namespace Lubala.Core.Pushing.Messages
 {
 	public interface IPassiveMessage
 	{

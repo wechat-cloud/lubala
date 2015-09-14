@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lubala.Component.Mp;
-using Lubala.Component.Mp.Messages;
-using Lubala.Core.Pushing;
 
-namespace Lubala.Pushing
+namespace Lubala.Core.Pushing
 {
     public static class HubBuilderExtension
     {

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lubala.Core.Pushing.Messages;
 
-namespace Lubala.Core.Pushing
+namespace Lubala.Core.Pushing.Services
 {
     internal class HandlerPicker
     {
@@ -16,7 +13,7 @@ namespace Lubala.Core.Pushing
             _handlers = handlers;
         }
 
-        public IMessageHandler Picking(PushingMessage message)
+        public IMessageHandler Picking(IPushingMessage message)
         {
             var trueType = message.GetType();
             if (_handlers.ContainsKey(trueType))

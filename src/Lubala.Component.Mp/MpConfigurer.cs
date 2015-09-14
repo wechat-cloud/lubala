@@ -1,6 +1,6 @@
 ﻿using System;
-using Lubala.Component.Mp.Messages;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp
 {
@@ -38,8 +38,8 @@ namespace Lubala.Component.Mp
             return this;
         }
 
-        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, MpPassiveMessage> lightweightFunc)
-            where TIn : MpRawMessage
+        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, WechatPassiveMessage> lightweightFunc)
+            where TIn : WechatPushingMessage
         {
             var handler = new LightweightMessageHandler<TIn>(lightweightFunc);
             return RegisterMessageHandler(handler);

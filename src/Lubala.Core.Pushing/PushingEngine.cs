@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Lubala.Core.Pushing.Encoding;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
 using System.Threading.Tasks;
+using Lubala.Core.Pushing.Crypography;
+using Lubala.Core.Pushing.Services;
 
 namespace Lubala.Core.Pushing
 {
@@ -92,7 +93,7 @@ namespace Lubala.Core.Pushing
                 return new AsyncPassiveMessage();
             }
 
-            var message = (PushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
+            var message = (IPushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
 
             var handlerPicker = new HandlerPicker(context.GetMessageHandlers());
             var handler = handlerPicker.Picking(message);
@@ -109,7 +110,7 @@ namespace Lubala.Core.Pushing
             return safeHandler.HandleMessage(message, messageContext);
         }
 
-        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml, PushingMessage message)
+        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml, IPushingMessage message)
         {
             var supportPassiveMessage = message is IAcceptPassiveMessage;
             return new MessageContext

@@ -12,7 +12,7 @@ namespace Lubala.Core.Pushing
             _innerHandler = innerHandler;
         }
 
-        public IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
         {
             try
             {

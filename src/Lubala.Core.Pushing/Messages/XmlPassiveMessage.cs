@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
 using Lubala.Core.Serialization.Attributes;
 
-namespace Lubala.Core.Pushing
+namespace Lubala.Core.Pushing.Messages
 {
 	public abstract class XmlPassiveMessage : IPassiveMessage
 	{

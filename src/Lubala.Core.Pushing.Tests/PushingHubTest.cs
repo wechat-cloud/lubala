@@ -37,7 +37,7 @@ namespace Lubala.Core.Pushing.Tests
                 .Returns(new Task(() => { }));
             var handler = new Mock<IMessageHandler>();
             handler
-                .Setup(x => x.HandleMessage(It.IsAny<PushingMessage>(), It.IsAny<MessageContext>()))
+                .Setup(x => x.HandleMessage(It.IsAny<IPushingMessage>(), It.IsAny<MessageContext>()))
                 .Returns(moqPassive.Object);
 
             builder.RegisterMessageType<TestTextMessage>();
@@ -101,18 +101,15 @@ namespace Lubala.Core.Pushing.Tests
     [Serializable]
     [MsgType("text")]
     [XmlRoot("xml")]
-    public class TestTextMessage : PushingMessage
+    public class TestTextMessage : IPushingMessage
     {
-        [XmlElement("MsgType")]
-        public override string MsgType => "text";
-
         [XmlElement("Content")]
         public string Content { get; set; }
     }
 
     public class TestTextHandler : IMessageHandler
     {
-        public IPassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
         {
             Assert.Equal(context.SupportPassiveMessage, false);
             Assert.Equal(context.TypeIdentity.MsgType, "text");

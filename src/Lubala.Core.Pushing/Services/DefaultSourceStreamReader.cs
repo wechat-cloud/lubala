@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using System.Xml.Linq;
-using Lubala.Core.Pushing;
 
-namespace Lubala.Core
+namespace Lubala.Core.Pushing.Services
 {
     internal class DefaultSourceStreamReader : ISourceStreamReader
     {

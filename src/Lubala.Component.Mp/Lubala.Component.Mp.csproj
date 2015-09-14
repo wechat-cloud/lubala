@@ -40,30 +40,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LightweightMessageHandler.cs" />
-    <Compile Include="Messages\Raws\RawClickEvent.cs" />
-    <Compile Include="Messages\Raws\RawLocationEvent.cs" />
-    <Compile Include="Messages\Raws\RawScanEvent.cs" />
-    <Compile Include="Messages\Raws\RawSubscribeEvent.cs" />
-    <Compile Include="Messages\Raws\RawUnsubscribeEvent.cs" />
-    <Compile Include="Messages\Passives\PassiveImageMessage.cs" />
-    <Compile Include="Messages\Passives\PassiveMusicMessage.cs" />
-    <Compile Include="Messages\Passives\PassiveNewsMessage.cs" />
-    <Compile Include="Messages\Passives\PassiveTextMessage.cs" />
-    <Compile Include="Messages\Passives\PassiveVideoMessage.cs" />
-    <Compile Include="Messages\Passives\PassiveVoiceMessage.cs" />
+    <Compile Include="PushingEvents\RawClickEvent.cs" />
+    <Compile Include="PushingEvents\RawLocationEvent.cs" />
+    <Compile Include="PushingEvents\RawScanEvent.cs" />
+    <Compile Include="PushingEvents\RawSubscribeEvent.cs" />
+    <Compile Include="PushingEvents\RawUnsubscribeEvent.cs" />
+    <Compile Include="PassiveMessages\PassiveImageMessage.cs" />
+    <Compile Include="PassiveMessages\PassiveMusicMessage.cs" />
+    <Compile Include="PassiveMessages\PassiveNewsMessage.cs" />
+    <Compile Include="PassiveMessages\PassiveTextMessage.cs" />
+    <Compile Include="PassiveMessages\PassiveVideoMessage.cs" />
+    <Compile Include="PassiveMessages\PassiveVoiceMessage.cs" />
     <Compile Include="MpConfigurer.cs" />
     <Compile Include="MpMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HubBuilderExtension.cs" />
-    <Compile Include="Messages\MpRawMessage.cs" />
-    <Compile Include="Messages\MpPassiveMessage.cs" />
-    <Compile Include="Messages\Raws\RawImageMessage.cs" />
-    <Compile Include="Messages\Raws\RawLinkMessage.cs" />
-    <Compile Include="Messages\Raws\RawLocationMessage.cs" />
-    <Compile Include="Messages\Raws\RawShortVideoMessage.cs" />
-    <Compile Include="Messages\Raws\RawTextMessage.cs" />
-    <Compile Include="Messages\Raws\RawVideoMessage.cs" />
-    <Compile Include="Messages\Raws\RawVoiceMessage.cs" />
+    <Compile Include="PushingMessages\RawImageMessage.cs" />
+    <Compile Include="PushingMessages\RawLinkMessage.cs" />
+    <Compile Include="PushingMessages\RawLocationMessage.cs" />
+    <Compile Include="PushingMessages\RawShortVideoMessage.cs" />
+    <Compile Include="PushingMessages\RawTextMessage.cs" />
+    <Compile Include="PushingMessages\RawVideoMessage.cs" />
+    <Compile Include="PushingMessages\RawVoiceMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lubala.Core.Pushing\Lubala.Core.Pushing.csproj">
