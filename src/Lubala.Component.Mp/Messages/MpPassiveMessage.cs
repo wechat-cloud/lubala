@@ -2,24 +2,18 @@
 using System.IO;
 using Lubala.Core.Pushing;
 using Lubala.Core.Serialization;
+using Lubala.Core;
 
 namespace Lubala.Component.Mp.Messages
 {
-	public abstract class MpPassiveMessage : PushingMessage, IPassiveMessage
-    {
-        public string Serialize(IXmlSerializer xmlSerializer)
-	    {
-            using (var stream = new MemoryStream())
-            {
-                xmlSerializer.Serialize(this, stream);
-                stream.Position = 0;
-
-                using (var reader = new StreamReader(stream))
-                {
-                    return reader.ReadToEnd();
-                }
-            }
-	    }
+	public abstract class MpPassiveMessage : XmlPassiveMessage
+	{
+		internal void ReplyTo(MpRawMessage rawMessage)
+		{
+			this.FromUserName = rawMessage.ToUserName;
+			this.ToUserName = rawMessage.FromUserName;
+			this.CreateTime = DateTimeOffset.UtcNow.DateTimeToEpoch();
+		}
 	}
 }
 

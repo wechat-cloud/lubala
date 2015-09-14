@@ -57,30 +57,12 @@ namespace Lubala.Core.Pushing
             return result == signature;
         }
 
-        public Task InterpretingAsync(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                Interpreting(sourceStream, targetStream, payloads);
-            });
-        }
+        public async Task InterpretingAsync(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads)
+		{
+			var engine = Resolver.Resolve<IPushingEngine>();
+			var result = await engine.ProducePassiveMessage(sourceStream, _hubContext, payloads);
 
-        public void Interpreting(Stream sourceStream, Stream targetStream, IDictionary<string, string> payloads)
-        {
-            var engine = Resolver.Resolve<IPushingEngine>();
-            var raw = engine.ProducePassiveMessage(sourceStream, _hubContext, payloads);
-
-            using (var tempStream = new MemoryStream())
-            {
-                using (var writer = new StreamWriter(tempStream))
-                {
-                    writer.Write(raw);
-                    writer.Flush();
-
-                    tempStream.Position = 0;
-                    tempStream.WriteTo(targetStream);
-                }
-            }
+			await result.SerializeTo(targetStream, _hubContext);
         }
     }
 }

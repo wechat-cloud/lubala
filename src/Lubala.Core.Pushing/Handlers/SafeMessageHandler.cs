@@ -12,7 +12,7 @@ namespace Lubala.Core.Pushing
             _innerHandler = innerHandler;
         }
 
-        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
+        public PassiveMessage HandleMessage(PushingMessage incomingMessage, MessageContext context)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Lubala.Core.Pushing
                 // TODO: log
             }
 
-            return new EmptyPassiveMessage();
+            return new AsyncPassiveMessage();
         }
     }
 }

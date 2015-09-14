@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using Lubala.Core.Pushing.Encoding;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
+using System.Threading.Tasks;
 
 namespace Lubala.Core.Pushing
 {
@@ -27,7 +28,7 @@ namespace Lubala.Core.Pushing
             _xmlSerializer = xmlSerializer;
         }
 
-        public string ProducePassiveMessage(Stream sourceStream, HubContext context,
+		public Task<PassiveMessage> ProducePassiveMessage(Stream sourceStream, HubContext context,
             IDictionary<string, string> payloads)
         {
             var rawXml = _sourceStreamReader.ReadAsXml(sourceStream);
@@ -39,15 +40,14 @@ namespace Lubala.Core.Pushing
                 rawXml = _encodingProvider.DecryptMessage(rawXml, cryptographyContext);
             }
 
-            var message = ProducePassiveMessageCore(rawXml, context, payloads);
-            var result = message.Serialize(_xmlSerializer);
+            var result = ProducePassiveMessageCore(rawXml, context, payloads);
 
             if (IsEncodingEnabled(context))
             {
                 result = _encodingProvider.EncryptMessage(result, cryptographyContext);
             }
 
-            return result;
+			return Task.FromResult(result);
         }
 
         private bool IsEncodingEnabled(HubContext context)
@@ -71,7 +71,8 @@ namespace Lubala.Core.Pushing
                     EncodingAesKey = context.EncodingSignature,
                     MsgSignature = msgSignature,
                     MsgTimestamp = msgTimestamp,
-                    MsgNonce = msgNonce
+                    MsgNonce = msgNonce,
+					HubContext = context
                 };
                 return cryptographyContext;
             }
@@ -79,8 +80,7 @@ namespace Lubala.Core.Pushing
             throw new InvalidOperationException("missing necessary key/value.");
         }
         
-        private IPassiveMessage ProducePassiveMessageCore(XDocument rawXml, HubContext context,
-            IDictionary<string, string> payloads)
+        private PassiveMessage ProducePassiveMessageCore(XDocument rawXml, HubContext context, IDictionary<string, string> payloads)
         {
             var typeIdentity = _typeDetector.Detecting(rawXml);
 
@@ -89,17 +89,17 @@ namespace Lubala.Core.Pushing
 
             if (targetType == null)
             {
-                return new EmptyPassiveMessage();
+                return new AsyncPassiveMessage();
             }
 
-            var message = (IPushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
+            var message = (PushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
 
             var handlerPicker = new HandlerPicker(context.GetMessageHandlers());
             var handler = handlerPicker.Picking(message);
 
             if (handler == null)
             {
-                return new EmptyPassiveMessage();
+				return new AsyncPassiveMessage();
             }
 
             var messageContext = BuideMessageContext(context, typeIdentity, rawXml, message);
@@ -109,8 +109,7 @@ namespace Lubala.Core.Pushing
             return safeHandler.HandleMessage(message, messageContext);
         }
 
-        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml,
-            IPushingMessage message)
+        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml, PushingMessage message)
         {
             var supportPassiveMessage = message is IAcceptPassiveMessage;
             return new MessageContext

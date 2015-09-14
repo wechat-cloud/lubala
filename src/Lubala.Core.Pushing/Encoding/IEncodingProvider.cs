@@ -9,7 +9,7 @@ namespace Lubala.Core.Pushing.Encoding
 {
     public interface IEncodingProvider
     {
-        string EncryptMessage(string message, CryptographyContext context);
+		PassiveMessage EncryptMessage(PassiveMessage message, CryptographyContext context);
         XDocument DecryptMessage(XDocument xml, CryptographyContext context);
     }
 }

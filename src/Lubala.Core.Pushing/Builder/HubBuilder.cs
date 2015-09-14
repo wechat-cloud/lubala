@@ -25,7 +25,7 @@ namespace Lubala.Core.Pushing
             return this;
         }
 
-        public IHubBuilder RegisterMessageType<T>() where T : IPushingMessage
+        public IHubBuilder RegisterMessageType<T>() where T : PushingMessage
         {
             var targetType = typeof (T);
             var msgTypeAttribute = targetType.GetCustomAttribute(typeof (MsgTypeAttribute));

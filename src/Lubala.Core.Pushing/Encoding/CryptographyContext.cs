@@ -14,5 +14,7 @@ namespace Lubala.Core.Pushing.Encoding
         public string MsgSignature { get; internal set; }
         public string MsgTimestamp { get; internal set; }
         public string MsgNonce { get; internal set; }
+
+		internal HubContext HubContext{ get; set; }
     }
 }

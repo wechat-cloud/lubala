@@ -5,16 +5,10 @@ using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp.Messages
 {
-	public abstract class MpRawMessage : PushingMessage, IPushingMessage, IDuplicateCheckable
+	public abstract class MpRawMessage : PushingMessage, IDuplicateCheckable
     {
         [XmlElement("CreateTime", typeof(long))]
         public long MsgId { get; private set; }
-
-        public IPassiveMessage Reply(MpPassiveMessage passiveMessage)
-        {
-            BridgeTo(passiveMessage);
-            return passiveMessage;
-        }
     }
 }
 

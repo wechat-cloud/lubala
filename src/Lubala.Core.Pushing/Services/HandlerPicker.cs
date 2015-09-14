@@ -16,7 +16,7 @@ namespace Lubala.Core.Pushing
             _handlers = handlers;
         }
 
-        public IMessageHandler Picking(IPushingMessage message)
+        public IMessageHandler Picking(PushingMessage message)
         {
             var trueType = message.GetType();
             if (_handlers.ContainsKey(trueType))

@@ -8,7 +8,7 @@ using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Core.Pushing.Messages
 {
-    public abstract class PushingEvent : PushingMessage, IPushingMessage
+    public abstract class PushingEvent : PushingMessage
     {
         public override string MsgType => "event";
 

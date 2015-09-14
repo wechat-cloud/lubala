@@ -17,12 +17,5 @@ namespace Lubala.Core.Pushing
 
         [Node("MsgType")]
         public abstract string MsgType { get; }
-
-        protected void BridgeTo(PushingMessage target)
-        {
-            target.FromUserName = ToUserName;
-            target.ToUserName = FromUserName;
-            target.CreateTime = DateTimeOffset.UtcNow.DateTimeToEpoch();
-        }
     }
 }

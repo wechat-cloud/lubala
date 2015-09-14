@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Lubala.Core.Cryptographic;
+using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Core.Pushing.Encoding
 {
@@ -19,7 +20,26 @@ namespace Lubala.Core.Pushing.Encoding
             _aesCrypography = aesCrypography;
         }
 
-        public string EncryptMessage(string message, CryptographyContext context)
+		public PassiveMessage EncryptMessage(PassiveMessage message, CryptographyContext context){
+			using (var stream = new MemoryStream()) {
+				message.SerializeTo(stream, context.HubContext);
+				stream.Position = 0;
+				using (var reader = new StreamReader(stream)) {
+					var originalMessage = reader.ReadToEnd();
+					var encryptedMessage = EncryptMessage(originalMessage, context);
+					var signature = GenarateSinature(originalMessage, context);
+
+					return new EncryptedPassiveMessage{ 
+						MsgSignature = signature,
+						TimeStamp = context.MsgTimestamp,
+						Nonce = context.MsgNonce,
+						Encrypt = encryptedMessage
+					};
+				}
+			}
+		}
+
+		private string EncryptMessage(string rawMessage, CryptographyContext context)
         {
             if (context.EncodingAesKey.Length != 43)
             {
@@ -28,25 +48,14 @@ namespace Lubala.Core.Pushing.Encoding
             var raw = "";
             try
             {
-                raw = _aesCrypography.AesEncrypting(message, context.EncodingAesKey, context.AppId);
+                raw = _aesCrypography.AesEncrypting(rawMessage, context.EncodingAesKey, context.AppId);
             }
             catch (Exception)
             {
                 throw new CryptographyException(CrypographyConstant.WXBizMsgCrypt_EncryptAES_Error);
             }
 
-            var signature = GenarateSinature(raw, context);
-
-            var xml = GenerateXmlDocument(context, raw, signature);
-
-            using (var stringWriter = new StringWriter())
-            {
-                using (var textWriter = new XmlTextWriter(stringWriter))
-                {
-                    xml.WriteTo(textWriter);
-                    return stringWriter.ToString();
-                }
-            }
+			return raw;
         }
 
         public XDocument DecryptMessage(XDocument xml, CryptographyContext context)
