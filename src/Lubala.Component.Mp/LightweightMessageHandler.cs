@@ -4,7 +4,7 @@ using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp
 {
-    internal class LightweightMessageHandler<TIn> : MPMessageHandler<TIn, WechatPassiveMessage>
+    internal class LightweightMessageHandler<TIn> : MpMessageHandler<TIn, WechatPassiveMessage>
         where TIn : WechatPushingMessage
     {
         private readonly Func<TIn, MessageContext, WechatPassiveMessage> _lightweightFunc;

@@ -31,7 +31,9 @@ namespace Lubala.Component.Mp
             _hubBuilder.RegisterMessageType<RawUnsubscribeEvent>();
         }
 
-        public MpConfigurer RegisterMessageHandler(MpMessageHandler handler)
+        public MpConfigurer RegisterMessageHandler<TIn, TOut>(MpMessageHandler<TIn, TOut> handler)
+            where TIn : WechatPushingMessage
+            where TOut : WechatPassiveMessage
         {
             var incomingMessageType = handler.IncomingMessageType;
             _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);

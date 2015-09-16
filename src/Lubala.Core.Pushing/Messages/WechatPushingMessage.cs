@@ -20,7 +20,7 @@ namespace Lubala.Core.Pushing.Messages
         [Node("MsgType")]
         public abstract string MsgType { get; }
 
-        [XmlElement("CreateTime", typeof(long))]
+        [XmlElement("MsgId", typeof(long))]
         public long MsgId { get; private set; }
     }
 }

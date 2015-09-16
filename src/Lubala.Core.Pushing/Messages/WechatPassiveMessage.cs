@@ -11,23 +11,23 @@ namespace Lubala.Core.Pushing.Messages
 	public abstract class WechatPassiveMessage : XmlPassiveMessage
     {
         [Node("ToUserName")]
-        protected string ToUserName { get; set; }
+        internal string ToUserName { get; set; }
 
         [Node("FromUserName")]
-        protected string FromUserName { get; set; }
+        internal string FromUserName { get; set; }
 
         [Node("CreateTime")]
-        protected long CreateTime { get; set; }
+        internal long CreateTime { get; set; }
 
         [Node("MsgType")]
         protected abstract string MsgType { get; }
 
-        internal void ReplyTo(WechatPushingMessage rawMessage)
-		{
-			this.FromUserName = rawMessage.ToUserName;
-			this.ToUserName = rawMessage.FromUserName;
-			this.CreateTime = DateTimeOffset.UtcNow.DateTimeToEpoch();
-		}
-	}
+        public void BridgeTo(WechatPushingMessage rawMessage)
+        {
+            this.FromUserName = rawMessage.ToUserName;
+            this.ToUserName = rawMessage.FromUserName;
+            this.CreateTime = DateTimeOffset.UtcNow.DateTimeToEpoch();
+        }
+    }
 }
 
