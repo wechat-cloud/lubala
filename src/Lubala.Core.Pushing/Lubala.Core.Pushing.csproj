@@ -29,8 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EventTypeAttribute.cs" />
@@ -39,29 +39,28 @@
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
+    <Compile Include="Messages\IPushingMessage.cs" />
+    <Compile Include="Messages\WechatPassiveMessage.cs" />
+    <Compile Include="Messages\WechatPushingMessage.cs" />
     <Compile Include="Services\DefaultSourceStreamReader.cs" />
-    <Compile Include="Encoding\AesCrypography.cs" />
-    <Compile Include="Encoding\AesEncodingProvider.cs" />
-    <Compile Include="Encoding\CrypographyConstant.cs" />
-    <Compile Include="Encoding\CryptographyContext.cs" />
-    <Compile Include="Encoding\CryptographyException.cs" />
-    <Compile Include="Encoding\IAesCrypography.cs" />
-    <Compile Include="Encoding\IEncodingProvider.cs" />
+    <Compile Include="Crypography\AesCrypography.cs" />
+    <Compile Include="Crypography\AesEncodingProvider.cs" />
+    <Compile Include="Crypography\CrypographyConstant.cs" />
+    <Compile Include="Crypography\CryptographyContext.cs" />
+    <Compile Include="Crypography\CryptographyException.cs" />
+    <Compile Include="Crypography\IAesCrypography.cs" />
+    <Compile Include="Crypography\IEncodingProvider.cs" />
     <Compile Include="Services\HandlerPicker.cs" />
     <Compile Include="Handlers\SafeMessageHandler.cs" />
     <Compile Include="IPushingEngine.cs" />
     <Compile Include="Services\ISourceStreamReader.cs" />
     <Compile Include="Services\ITypeDetector.cs" />
-    <Compile Include="Messages\EmptyPassiveMessage.cs" />
     <Compile Include="PushingEngine.cs" />
     <Compile Include="Services\TypePicker.cs" />
     <Compile Include="Messages\AsyncPassiveMessage.cs" />
     <Compile Include="Messages\IAcceptPassiveMessage.cs" />
-    <Compile Include="Messages\PushingEvent.cs" />
-    <Compile Include="Messages\IPushingMessage.cs" />
+    <Compile Include="Messages\WechatPushingEvent.cs" />
     <Compile Include="Messages\IDuplicateCheckable.cs" />
-    <Compile Include="Messages\PushingMessage.cs" />
-    <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="Services\TypeDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushingExtension.cs" />
@@ -69,6 +68,9 @@
     <Compile Include="Handlers\IMessageHandler.cs" />
     <Compile Include="PushingHub.cs" />
     <Compile Include="TypeIdentity.cs" />
+    <Compile Include="Messages\XmlPassiveMessage.cs" />
+    <Compile Include="Messages\IPassiveMessage.cs" />
+    <Compile Include="Messages\EncryptedPassiveMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

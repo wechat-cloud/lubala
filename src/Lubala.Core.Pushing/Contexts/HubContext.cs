@@ -6,7 +6,7 @@ using Lubala.Core.Resolvers;
 
 namespace Lubala.Core.Pushing
 {
-    internal class HubContext
+    public class HubContext
     {
         internal HubContext()
         {

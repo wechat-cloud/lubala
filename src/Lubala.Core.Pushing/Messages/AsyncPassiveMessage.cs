@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
-using Lubala.Core.Serialization;
 
 namespace Lubala.Core.Pushing.Messages
 {
     public sealed class AsyncPassiveMessage : IPassiveMessage
     {
-        public string Serialize(IXmlSerializer xmlSerializer)
+        public Task SerializeTo(Stream targetStream, HubContext context)
         {
-            return string.Empty;
+            var encoding = System.Text.Encoding.Unicode;
+            var bytes = encoding.GetBytes(string.Empty);
+
+            return targetStream.WriteAsync(bytes, 0, bytes.Length);
         }
     }
 }

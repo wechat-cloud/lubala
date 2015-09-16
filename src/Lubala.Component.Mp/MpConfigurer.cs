@@ -1,6 +1,6 @@
 ﻿using System;
-using Lubala.Component.Mp.Messages;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp
 {
@@ -31,15 +31,17 @@ namespace Lubala.Component.Mp
             _hubBuilder.RegisterMessageType<RawUnsubscribeEvent>();
         }
 
-        public MpConfigurer RegisterMessageHandler(MpMessageHandler handler)
+        public MpConfigurer RegisterMessageHandler<TIn, TOut>(MpMessageHandler<TIn, TOut> handler)
+            where TIn : WechatPushingMessage
+            where TOut : WechatPassiveMessage
         {
             var incomingMessageType = handler.IncomingMessageType;
             _hubBuilder.RegisterMessageHandler(incomingMessageType, handler);
             return this;
         }
 
-        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, MpPassiveMessage> lightweightFunc)
-            where TIn : MpRawMessage
+        public MpConfigurer RegisterMessageHandler<TIn>(Func<TIn, MessageContext, WechatPassiveMessage> lightweightFunc)
+            where TIn : WechatPushingMessage
         {
             var handler = new LightweightMessageHandler<TIn>(lightweightFunc);
             return RegisterMessageHandler(handler);

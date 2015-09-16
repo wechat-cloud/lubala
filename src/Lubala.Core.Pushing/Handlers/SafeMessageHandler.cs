@@ -28,7 +28,7 @@ namespace Lubala.Core.Pushing
                 // TODO: log
             }
 
-            return new EmptyPassiveMessage();
+            return new AsyncPassiveMessage();
         }
     }
 }

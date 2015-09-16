@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lubala.Component.Mp.Messages;
 using Lubala.Core.Pushing;
+using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Component.Mp
 {
-    internal class LightweightMessageHandler<TIn> : MPMessageHandler<TIn, MpPassiveMessage>
-        where TIn : MpRawMessage
+    internal class LightweightMessageHandler<TIn> : MpMessageHandler<TIn, WechatPassiveMessage>
+        where TIn : WechatPushingMessage
     {
-        private readonly Func<TIn, MessageContext, MpPassiveMessage> _lightweightFunc;
-        internal LightweightMessageHandler(Func<TIn, MessageContext, MpPassiveMessage> lightweightFunc)
+        private readonly Func<TIn, MessageContext, WechatPassiveMessage> _lightweightFunc;
+
+        internal LightweightMessageHandler(Func<TIn, MessageContext, WechatPassiveMessage> lightweightFunc)
         {
             if (lightweightFunc == null)
             {
@@ -22,7 +19,7 @@ namespace Lubala.Component.Mp
             _lightweightFunc = lightweightFunc;
         }
 
-        protected override MpPassiveMessage HandleMessage(TIn incomingMessage, MessageContext context)
+        protected override WechatPassiveMessage HandleMessage(TIn incomingMessage, MessageContext context)
         {
             return _lightweightFunc(incomingMessage, context);
         }
