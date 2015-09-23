@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Lubala.Core.Logs;
 
 namespace Lubala.Core.Serialization
 {
@@ -14,6 +15,7 @@ namespace Lubala.Core.Serialization
     {
         public void Serialize<T>(T obj, Stream targetStream)
         {
+            Log.Logger.Debug("serializing message.");
             var serializer = new XmlSerializer(typeof(T));
 
             var xmlSettings = new XmlWriterSettings
@@ -34,6 +36,7 @@ namespace Lubala.Core.Serialization
                 stream.Position = 0;
                 stream.WriteTo(targetStream);
             }
+            Log.Logger.Debug("serializing message done.");
         }
         
         public T Deserialize<T>(XDocument xml)
@@ -45,8 +48,10 @@ namespace Lubala.Core.Serialization
         {
             using (var reader = xml.CreateReader())
             {
+                Log.Logger.Debug("deserializing message.");
                 var serializer = new XmlSerializer(type);
                 var result = serializer.Deserialize(reader);
+                Log.Logger.Debug("deserializing message done.");
                 return result;
             }
         }

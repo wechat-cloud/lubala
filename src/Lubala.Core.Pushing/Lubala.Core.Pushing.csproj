@@ -39,6 +39,7 @@
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
+    <Compile Include="Extensions\LogExtension.cs" />
     <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="Messages\WechatPassiveMessage.cs" />
     <Compile Include="Messages\WechatPushingMessage.cs" />

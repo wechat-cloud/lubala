@@ -1,5 +1,6 @@
 ﻿using Lubala.Core.Cryptographic;
 using Lubala.Core.HttpGateway;
+using Lubala.Core.Logs;
 using Lubala.Core.Serialization;
 using Lubala.Core.Tokens;
 
@@ -30,6 +31,7 @@ namespace Lubala.Core.Resolvers
             Resolver.Register<IXmlSerializer, WechatXmlSerializer>();
             Resolver.Register<ITokenSource, DefaultTokenSource>();
             Resolver.Register<IHttpRequester, DefaultHttpRequester>();
+            Resolver.Register<ILogger, DebugLogger>();
         }
     }
 }

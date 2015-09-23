@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Lubala.Core.Cryptographic;
+using Lubala.Core.Logs;
 using Lubala.Core.Pushing.Crypography;
 using Lubala.Core.Pushing.Services;
 using Lubala.Core.Resolvers;
@@ -47,12 +48,21 @@ namespace Lubala.Core.Pushing
 
         public bool Verify(string timestamp, string nonce, string signature, string verifyToken)
         {
+            Log.Logger.Debug("verifing server.");
+            Log.Logger.Info("timestamp: {0}, nonce: {1}, signature: {2}, verifyToken: {3}",
+                timestamp,
+                nonce,
+                signature,
+                verifyToken);
             var tokenValue = verifyToken;
             var tempArray = new SortedSet<string> {timestamp, nonce, tokenValue};
             var toHash = string.Join("", tempArray);
 
             var hasher = Resolver.Resolve<ISha1Hasher>();
             var result = hasher.HashString(toHash, Encoding.ASCII);
+
+            Log.Logger.Info("verified signature: {0}", result);
+            Log.Logger.Debug("verifing server done.");
 
             return result == signature;
         }

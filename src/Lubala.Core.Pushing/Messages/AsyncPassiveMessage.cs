@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
+using Lubala.Core.Logs;
 
 namespace Lubala.Core.Pushing.Messages
 {
@@ -7,6 +8,7 @@ namespace Lubala.Core.Pushing.Messages
     {
         public Task SerializeTo(Stream targetStream, HubContext context)
         {
+            Log.Logger.Info("write blank message into output stream.");
             var encoding = System.Text.Encoding.Unicode;
             var bytes = encoding.GetBytes(string.Empty);
 

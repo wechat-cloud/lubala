@@ -5,7 +5,9 @@ using System.Xml.Linq;
 using Lubala.Core.Pushing.Messages;
 using Lubala.Core.Serialization;
 using System.Threading.Tasks;
+using Lubala.Core.Logs;
 using Lubala.Core.Pushing.Crypography;
+using Lubala.Core.Pushing.Extensions;
 using Lubala.Core.Pushing.Services;
 
 namespace Lubala.Core.Pushing
@@ -33,19 +35,28 @@ namespace Lubala.Core.Pushing
             IDictionary<string, string> payloads)
         {
             var rawXml = _sourceStreamReader.ReadAsXml(sourceStream);
+		    Log.Logger.Info("raw message:\n{0}", rawXml.ToStringWithDeclaration());
 
             CryptographyContext cryptographyContext = null;
             if (IsEncodingEnabled(context))
             {
+                Log.Logger.Debug("decrypting message.");
                 cryptographyContext = BuildCryptographyContext(context, payloads);
                 rawXml = _encodingProvider.DecryptMessage(rawXml, cryptographyContext);
+                Log.Logger.Debug("decrypting message done.");
             }
 
+            Log.Logger.Debug("processing message.");
             var result = ProducePassiveMessageCore(rawXml, context, payloads);
+		    Log.Logger.Info("result message:\n{0}", result.Format(context));
+            Log.Logger.Debug("processing message done.");
 
             if (IsEncodingEnabled(context))
             {
+                Log.Logger.Debug("encrypting message.");
                 result = _encodingProvider.EncryptMessage(result, cryptographyContext);
+                Log.Logger.Info("encrypted result message:\n{0}", result.Format(context));
+                Log.Logger.Debug("encrypting message done.");
             }
 
 			return Task.FromResult(result);
@@ -90,6 +101,7 @@ namespace Lubala.Core.Pushing
 
             if (targetType == null)
             {
+                Log.Logger.Debug("unrecognized message type. system doesn't register this type: {0}");
                 return new AsyncPassiveMessage();
             }
 
@@ -100,7 +112,8 @@ namespace Lubala.Core.Pushing
 
             if (handler == null)
             {
-				return new AsyncPassiveMessage();
+                Log.Logger.Debug("cannot find proper message handler.");
+                return new AsyncPassiveMessage();
             }
 
             var messageContext = BuideMessageContext(context, typeIdentity, rawXml, message);

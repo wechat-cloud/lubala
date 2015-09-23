@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
+using Lubala.Core.Logs;
 using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Core.Serialization
@@ -13,11 +14,13 @@ namespace Lubala.Core.Serialization
     {
         public void Serialize<T>(T obj, Stream targetStream)
         {
+            Log.Logger.Debug("serializing message.");
             var targetType = obj.GetType();
             var xml = new XmlDocument();
             var root = CreateElement("xml", obj, targetType, xml);
             xml.AppendChild(root);
             xml.Save(targetStream);
+            Log.Logger.Debug("serializing message done.");
         }
 
         public T Deserialize<T>(XDocument xml)
@@ -27,8 +30,10 @@ namespace Lubala.Core.Serialization
 
         public object Deserialize(XDocument xml, Type type)
         {
+            Log.Logger.Debug("serializing message.");
             var root = xml.Root;
             var target = CreateObject(root, type);
+            Log.Logger.Debug("serializing message done.");
             return target;
         }
 

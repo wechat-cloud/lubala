@@ -1,5 +1,6 @@
 ﻿using System;
 using Lubala.Core.HttpGateway;
+using Lubala.Core.Logs;
 using Lubala.Core.Resolvers;
 using Lubala.Core.Tokens;
 
@@ -12,6 +13,11 @@ namespace Lubala.Core
             Resolver = TypeResolver.Resolver;
             TokenSource = Resolver.Resolve<ITokenSource>();
             HttpRequester = Resolver.Resolve<IHttpRequester>();
+
+            if (Log.Logger == null)
+            {
+                Log.Logger = Resolver.Resolve<ILogger>();
+            }
 
             AppId = appId;
             AppSecret = appSecret;
@@ -28,6 +34,8 @@ namespace Lubala.Core
 
         public T Request<T>(string resource, Action<ApiContext> action) where T : new()
         {
+            Log.Logger.Info("requesting resource: {0}", resource);
+
             var context = new ApiContext();
             action(context);
 

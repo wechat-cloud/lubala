@@ -46,6 +46,10 @@
     <Compile Include="HttpGateway\DefaultHttpRequester.cs" />
     <Compile Include="HttpGateway\IHttpRequester.cs" />
     <Compile Include="HttpGateway\InvokeApiFailed.cs" />
+    <Compile Include="Logs\DebugLogger.cs" />
+    <Compile Include="Logs\ILogger.cs" />
+    <Compile Include="Logs\Logger.cs" />
+    <Compile Include="Logs\LoggerExtension.cs" />
     <Compile Include="Resolvers\DefaultTypeResolver.cs" />
     <Compile Include="EncodingMode.cs" />
     <Compile Include="Resolvers\ITypeResolver.cs" />

@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Lubala.Core.Logs;
+using RestSharp;
 using RestSharp.Deserializers;
 using RestSharp.Serializers;
 
@@ -27,6 +28,9 @@ namespace Lubala.Core.HttpGateway
             var failedTest = deserializer.Deserialize<InvokeApiFailed>(response);
             if (failedTest.IsFailed())
             {
+                Log.Logger.Error("requesting resource error. errorcode: {0}, errormsg: {1}",
+                    failedTest.errcode,
+                    failedTest.errmsg);
                 throw new ApiInvokeException(failedTest.errcode, failedTest.errmsg);
             }
 

@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using Lubala.Core.Logs;
 
 namespace Lubala.Core.Pushing.Services
 {
@@ -13,6 +14,8 @@ namespace Lubala.Core.Pushing.Services
 
             var msgType = msgTypeElement?.Value;
             var eventType = eventTypeElement?.Value;
+
+            Log.Logger.Info("MsgType: {0}, Event: {1}", msgType, eventType);
 
             return new TypeIdentity
             {

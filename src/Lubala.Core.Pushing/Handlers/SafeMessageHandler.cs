@@ -1,4 +1,5 @@
 ﻿using System;
+using Lubala.Core.Logs;
 using Lubala.Core.Pushing.Messages;
 
 namespace Lubala.Core.Pushing
@@ -20,15 +21,18 @@ namespace Lubala.Core.Pushing
 
                 if (context.SupportPassiveMessage && passive is WechatPassiveMessage)
                 {
+                    Log.Logger.Debug("imcoming message support passive message.");
                     var wechatPassive = (WechatPassiveMessage) passive;
                     wechatPassive.BridgeTo(incomingMessage);
+                    Log.Logger.Debug("passive message bind to incoming message.");
 
                     return passive;
                 }
             }
             catch (Exception exp)
             {
-                // TODO: log
+                Log.Logger.Fatal(exp, "execute message handler failed.");
+                throw;
             }
 
             return new AsyncPassiveMessage();
