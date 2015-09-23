@@ -6,7 +6,7 @@ namespace Lubala.Component.Mp
 {
     public abstract class MpMessageHandler<TIn, TOut> : IMessageHandler
         where TIn : WechatPushingMessage
-        where TOut : WechatPassiveMessage
+        where TOut : IPassiveMessage
     {
         internal Type IncomingMessageType => typeof (TIn);
 
