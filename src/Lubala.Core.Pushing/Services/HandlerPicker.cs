@@ -13,7 +13,7 @@ namespace Lubala.Core.Pushing.Services
             _handlers = handlers;
         }
 
-        public IMessageHandler Picking(IPushingMessage message)
+        public IMessageHandler Picking(WechatPushingMessage message)
         {
             var trueType = message.GetType();
             if (_handlers.ContainsKey(trueType))

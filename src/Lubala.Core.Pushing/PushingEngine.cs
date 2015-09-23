@@ -93,7 +93,7 @@ namespace Lubala.Core.Pushing
                 return new AsyncPassiveMessage();
             }
 
-            var message = (IPushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
+            var message = (WechatPushingMessage) _xmlSerializer.Deserialize(rawXml, targetType);
 
             var handlerPicker = new HandlerPicker(context.GetMessageHandlers());
             var handler = handlerPicker.Picking(message);
@@ -110,7 +110,7 @@ namespace Lubala.Core.Pushing
             return safeHandler.HandleMessage(message, messageContext);
         }
 
-        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml, IPushingMessage message)
+        private MessageContext BuideMessageContext(HubContext context, TypeIdentity typeIdentity, XDocument rawXml, WechatPushingMessage message)
         {
             var supportPassiveMessage = message is IAcceptPassiveMessage;
             return new MessageContext

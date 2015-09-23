@@ -39,7 +39,7 @@
     <Compile Include="Builder\HubBuilder.cs" />
     <Compile Include="Contexts\HubContext.cs" />
     <Compile Include="Contexts\MessageContext.cs" />
-    <Compile Include="Messages\IPushingMessage.cs" />
+    <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="Messages\WechatPassiveMessage.cs" />
     <Compile Include="Messages\WechatPushingMessage.cs" />
     <Compile Include="Services\DefaultSourceStreamReader.cs" />
@@ -69,7 +69,6 @@
     <Compile Include="PushingHub.cs" />
     <Compile Include="TypeIdentity.cs" />
     <Compile Include="Messages\XmlPassiveMessage.cs" />
-    <Compile Include="Messages\IPassiveMessage.cs" />
     <Compile Include="Messages\EncryptedPassiveMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

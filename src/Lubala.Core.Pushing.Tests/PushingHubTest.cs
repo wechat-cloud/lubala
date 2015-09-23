@@ -37,7 +37,7 @@ namespace Lubala.Core.Pushing.Tests
                 .Returns(new Task(() => { }));
             var handler = new Mock<IMessageHandler>();
             handler
-                .Setup(x => x.HandleMessage(It.IsAny<IPushingMessage>(), It.IsAny<MessageContext>()))
+                .Setup(x => x.HandleMessage(It.IsAny<WechatPushingMessage>(), It.IsAny<MessageContext>()))
                 .Returns(moqPassive.Object);
 
             builder.RegisterMessageType<TestTextMessage>();
@@ -101,15 +101,17 @@ namespace Lubala.Core.Pushing.Tests
     [Serializable]
     [MsgType("text")]
     [XmlRoot("xml")]
-    public class TestTextMessage : IPushingMessage
+    public class TestTextMessage : WechatPushingMessage
     {
         [XmlElement("Content")]
         public string Content { get; set; }
+
+        public override string MsgType => "text";
     }
 
     public class TestTextHandler : IMessageHandler
     {
-        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(WechatPushingMessage incomingMessage, MessageContext context)
         {
             Assert.Equal(context.SupportPassiveMessage, false);
             Assert.Equal(context.TypeIdentity.MsgType, "text");

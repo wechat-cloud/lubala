@@ -6,7 +6,7 @@ using Lubala.Core.Serialization.Attributes;
 
 namespace Lubala.Core.Pushing.Messages
 {
-	public abstract class WechatPushingMessage : IPushingMessage,  IDuplicateCheckable
+	public abstract class WechatPushingMessage : IDuplicateCheckable
     {
         [Node("ToUserName")]
         public string ToUserName { get; protected set; }

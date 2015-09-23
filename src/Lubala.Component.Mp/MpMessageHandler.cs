@@ -12,7 +12,7 @@ namespace Lubala.Component.Mp
 
         protected abstract TOut HandleMessage(TIn incomingMessage, MessageContext context);
 
-        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(WechatPushingMessage incomingMessage, MessageContext context)
         {
             var typedMessage = incomingMessage as TIn;
             if (typedMessage != null)

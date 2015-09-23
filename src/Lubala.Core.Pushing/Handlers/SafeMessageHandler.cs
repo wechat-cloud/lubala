@@ -12,14 +12,17 @@ namespace Lubala.Core.Pushing
             _innerHandler = innerHandler;
         }
 
-        public IPassiveMessage HandleMessage(IPushingMessage incomingMessage, MessageContext context)
+        public IPassiveMessage HandleMessage(WechatPushingMessage incomingMessage, MessageContext context)
         {
             try
             {
                 var passive = _innerHandler.HandleMessage(incomingMessage, context);
 
-                if (context.SupportPassiveMessage)
+                if (context.SupportPassiveMessage && passive is WechatPassiveMessage)
                 {
+                    var wechatPassive = (WechatPassiveMessage) passive;
+                    wechatPassive.BridgeTo(incomingMessage);
+
                     return passive;
                 }
             }

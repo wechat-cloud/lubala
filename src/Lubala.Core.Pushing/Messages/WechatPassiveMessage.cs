@@ -22,7 +22,7 @@ namespace Lubala.Core.Pushing.Messages
         [Node("MsgType")]
         protected abstract string MsgType { get; }
 
-        public void BridgeTo(WechatPushingMessage rawMessage)
+        internal void BridgeTo(WechatPushingMessage rawMessage)
         {
             this.FromUserName = rawMessage.ToUserName;
             this.ToUserName = rawMessage.FromUserName;
