@@ -149,7 +149,7 @@ namespace Lubala.Core.Pushing.Crypography
         {
             var sortList = new SortedSet<string>
             {
-                context.Token,
+                context.ServerToken,
                 context.MsgTimestamp,
                 context.MsgNonce,
                 encryptContent

@@ -13,7 +13,7 @@ namespace Lubala.Core
 		    configurer(builder);
 
 		    var pushingHub = builder.BuildPushingHub();
-            Log.Logger.Debug("created pushing hub.");
+            Log.Logger.Debug("creating pushing hub done.");
             return pushingHub;
         }
 	}

@@ -20,7 +20,7 @@ namespace Lubala.Core.Pushing
         public IDictionary<Type, IMessageHandler> MessageHandlers { get; }
         public ITypeResolver Resolver { get; internal set; }
         public EncodingMode EncodingMode { get; internal set; } = EncodingMode.Plain;
-        internal string EncodingSignature { get; set; }
+        internal string EncodingAesKey { get; set; }
         internal string ServerToken { get; set; }
 
         public IReadOnlyDictionary<TypeIdentity, Type> GetMessageTypes()

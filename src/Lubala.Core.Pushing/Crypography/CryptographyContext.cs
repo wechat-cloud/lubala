@@ -2,7 +2,7 @@
 {
     public class CryptographyContext
     {
-        public string Token { get; internal set; }
+        public string ServerToken { get; internal set; }
         public string AppId { get; internal set; }
         public string EncodingAesKey { get; internal set; }
         public string MsgSignature { get; internal set; }
