@@ -2,7 +2,7 @@ using System;
 
 namespace Lubala.Core.HttpGateway
 {
-    internal class ApiInvokeException : Exception
+    internal sealed class ApiInvokeException : Exception
     {
         public ApiInvokeException(string errcode, string errmsg) : base(errmsg)
         {

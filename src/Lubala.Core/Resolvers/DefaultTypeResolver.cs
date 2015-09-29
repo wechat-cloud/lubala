@@ -8,7 +8,7 @@ namespace Lubala.Core.Resolvers
 {
     internal class DefaultTypeResolver : ITypeResolver
     {
-        private static IDictionary<Type, Type> _internalTypeDictionary = new ConcurrentDictionary<Type, Type>();
+        private static readonly IDictionary<Type, Type> InnerTypeDict = new ConcurrentDictionary<Type, Type>();
 
         public T Resolve<T>()
         {
@@ -20,10 +20,29 @@ namespace Lubala.Core.Resolvers
             return Resolve(type, new Dictionary<Type, object>());
         }
 
+        public void Register<TInterface, TImplementation>() where TImplementation : TInterface
+        {
+            var interfaceType = typeof (TInterface);
+            if (InnerTypeDict.ContainsKey(interfaceType))
+            {
+                throw new InvalidOperationException("type already regsitered.");
+            }
+            InnerTypeDict.Add(interfaceType, typeof (TImplementation));
+        }
+
+        public void Replace<TInterface, TImplementation>() where TImplementation : TInterface
+        {
+            var interfaceType = typeof (TInterface);
+            if (InnerTypeDict.ContainsKey(interfaceType))
+            {
+                InnerTypeDict[interfaceType] = typeof (TImplementation);
+            }
+        }
+
         private object Resolve(Type type, IDictionary<Type, object> resolvedInstances)
         {
             Type rootType;
-            if (_internalTypeDictionary.TryGetValue(type, out rootType))
+            if (InnerTypeDict.TryGetValue(type, out rootType))
             {
                 var constructor = GetDefaultConstructorParames(rootType);
                 var targetInstance = ActivateTargetType(constructor, resolvedInstances, rootType);
@@ -38,7 +57,7 @@ namespace Lubala.Core.Resolvers
         {
             var paramInfos = constructor.GetParameters();
             var paramInstances = new object[paramInfos.Length];
-            for (int i = 0; i < paramInfos.Length; i++)
+            for (var i = 0; i < paramInfos.Length; i++)
             {
                 var paramType = paramInfos[i].ParameterType;
 
@@ -74,25 +93,6 @@ namespace Lubala.Core.Resolvers
             }
 
             throw new InvalidOperationException("no constructor found.");
-        }
-
-        public void Register<TInterface, TImplementation>() where TImplementation : TInterface
-        {
-            var interfaceType = typeof (TInterface);
-            if (_internalTypeDictionary.ContainsKey(interfaceType))
-            {
-                throw new InvalidOperationException("type already regsitered.");
-            }
-            _internalTypeDictionary.Add(interfaceType, typeof (TImplementation));
-        }
-
-        public void Replace<TInterface, TImplementation>() where TImplementation : TInterface
-        {
-            var interfaceType = typeof (TInterface);
-            if (_internalTypeDictionary.ContainsKey(interfaceType))
-            {
-                _internalTypeDictionary[interfaceType] = typeof (TImplementation);
-            }
         }
     }
 }

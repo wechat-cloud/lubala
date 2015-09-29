@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace Lubala.Core.Tokens
+﻿namespace Lubala.Core.Tokens
 {
-	public interface ITokenSource
-	{
+    public interface ITokenSource
+    {
         WechatToken RetrieveToken(string appId, string appSecret, ILubalaChannel channel);
     }
 }
-

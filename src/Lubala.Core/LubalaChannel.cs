@@ -26,11 +26,11 @@ namespace Lubala.Core
         internal IHttpRequester HttpRequester { get; }
         internal string AppSecret { get; }
 
-        public ITokenSource TokenSource { get; set; }
-        public ITypeResolver Resolver { get; }
-        public WechatToken Token => TokenSource.RetrieveToken(AppId, AppSecret, this);
+        public ITokenSource TokenSource { get; }
 
         public string AppId { get; }
+        public ITypeResolver Resolver { get; }
+        public WechatToken Token => TokenSource.RetrieveToken(AppId, AppSecret, this);
 
         public T Request<T>(string resource, Action<ApiContext> action) where T : new()
         {

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -16,12 +12,12 @@ namespace Lubala.Core.Serialization
         public void Serialize<T>(T obj, Stream targetStream)
         {
             Log.Logger.Debug("serializing message.");
-            var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(typeof (T));
 
             var xmlSettings = new XmlWriterSettings
             {
                 Indent = true,
-                OmitXmlDeclaration = true,
+                OmitXmlDeclaration = true
             };
             using (var stream = new MemoryStream())
             {
@@ -38,10 +34,10 @@ namespace Lubala.Core.Serialization
             }
             Log.Logger.Debug("serializing message done.");
         }
-        
+
         public T Deserialize<T>(XDocument xml)
         {
-            return (T) Deserialize(xml, typeof(T));
+            return (T) Deserialize(xml, typeof (T));
         }
 
         public object Deserialize(XDocument xml, Type type)

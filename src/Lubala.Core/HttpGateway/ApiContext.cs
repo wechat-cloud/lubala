@@ -2,19 +2,19 @@
 
 namespace Lubala.Core.HttpGateway
 {
-    public class ApiContext
+    public sealed class ApiContext
     {
         public ApiContext()
         {
-            Params = new List<RequestParam>();
+            Params = new List<RequestParameter>();
         }
 
-        internal IList<RequestParam> Params { get; set; }
+        internal IList<RequestParameter> Params { get; set; }
         internal bool AutoToken { get; set; } = true;
 
         public ApiContext AddParam(string key, string value)
         {
-            Params.Add(RequestParam.Create(key, value));
+            Params.Add(new RequestParameter(key, value));
             return this;
         }
 

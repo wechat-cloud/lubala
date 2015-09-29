@@ -1,7 +1,6 @@
 ﻿using Lubala.Core.Logs;
 using RestSharp;
 using RestSharp.Deserializers;
-using RestSharp.Serializers;
 
 namespace Lubala.Core.HttpGateway
 {

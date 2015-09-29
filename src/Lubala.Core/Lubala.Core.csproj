@@ -54,7 +54,6 @@
     <Compile Include="EncodingMode.cs" />
     <Compile Include="Resolvers\ITypeResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Cryptographic\IMessageCryptographicService.cs" />
     <Compile Include="Serialization\Attributes\ArrayAttribute.cs" />
     <Compile Include="Serialization\Attributes\ArrayItemAttribute.cs" />
     <Compile Include="Serialization\Attributes\IgnoreAttribute.cs" />
@@ -69,7 +68,7 @@
     <Compile Include="Tokens\DefaultTokenSource.cs" />
     <Compile Include="ILubalaChannel.cs" />
     <Compile Include="LubalaChannelFactory.cs" />
-    <Compile Include="HttpGateway\RequestParam.cs" />
+    <Compile Include="HttpGateway\RequestParameter.cs" />
     <Compile Include="Tokens\Token.cs" />
     <Compile Include="Resolvers\TypeResolver.cs" />
     <Compile Include="Tokens\WechatToken.cs" />
